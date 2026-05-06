@@ -8,18 +8,23 @@
 ```text
 你是这个项目的 Anchor PM 线程管理线程。
 
-请使用下面的本地开发包，把 Anchor PM 1.0 集成到当前目标项目中。
+请使用下面的公开 GitHub package source，把 Anchor PM 1.0 集成到当前目标项目中。
 
-Package path:
-/mnt/g/data/anchor_pm_framework/packages/anchor-pm-1.0-standard
+Repository:
+https://github.com/libingfei/threadsmith
+
+Package directory:
+packages/anchor-pm-1.0-standard
 
 请在内部执行以下流程：
 
-1. 读取 package path 下的 PACKAGE_MANIFEST.md。
-2. 读取 package path 下的 ACTIVE_INSTALL_PLAN.md。
-3. 按 active install plan 以及它引用的 workflows/checklists 执行。
-4. 在写入任何文件之前，先检查当前目标项目。
-5. 先输出安装提案，等待我批准。
+1. 从上面的 repository 获取或读取 package source。如果本地还不可用，请克隆或
+   fetch 到目标项目之外的临时位置。
+2. 读取 package directory 下的 PACKAGE_MANIFEST.md。
+3. 读取 package directory 下的 ACTIVE_INSTALL_PLAN.md。
+4. 按 active install plan 以及它引用的 workflows/checklists 执行。
+5. 在写入任何文件之前，先检查当前目标项目。
+6. 先输出安装提案，等待我批准。
 
 语言：
 
@@ -90,7 +95,8 @@ AGENTS.md 处理：
 
 在我明确批准安装提案之前，不要写入文件。
 
-不要删除文件、修改业务代码、运行部署命令、运行迁移命令或覆盖现有项目规则。
+不要把 Threadsmith 仓库复制进当前目标项目。不要删除文件、修改业务代码、运
+行部署命令、运行迁移命令或覆盖现有项目规则。
 
 批准安装完成后，输出一个简短完成页：
 
@@ -114,8 +120,3 @@ AGENTS.md 处理：
 
 安装任务到这里停止。除非我明确要求，否则不要继续优化业务项目。
 ```
-
-## 未来发布
-
-当 Anchor PM 通过 URL 发布时，把本地 package path 替换成正式 release package URL。
-其余提示词保持不变。

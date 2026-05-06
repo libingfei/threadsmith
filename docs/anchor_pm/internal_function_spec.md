@@ -48,7 +48,7 @@ Inputs:
 - Language-specific install prompts:
   - `ANCHOR_PM_INSTALL_PROMPT.en.md`
   - `ANCHOR_PM_INSTALL_PROMPT.zh.md`
-- Package path or release package URL.
+- Public GitHub repository URL and package directory.
 - User's preferred conversation language.
 
 Outputs:
@@ -63,7 +63,7 @@ Acceptance:
 - The entry path is copy-paste-ready.
 - No user-filled placeholders are required for the package path in released
   prompts.
-- README states current development status when prompts still use local paths.
+- README states the public package source used by the install prompts.
 - User can tell when Anchor PM is probably unnecessary.
 
 Failure Signals:
@@ -71,7 +71,7 @@ Failure Signals:
 - User asks what file to copy.
 - User copies the wrong prompt language.
 - User cannot tell whether to use Anchor PM for their project.
-- Local package path causes public install failure without warning.
+- Public install prompt points to a stale local package path.
 
 ## 2. Thread Management Installer
 

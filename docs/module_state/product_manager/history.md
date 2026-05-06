@@ -13,6 +13,8 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Reworked the README example into a generic promotional scenario for solo developers or small teams whose projects have outgrown one Codex chat.
 - Added README tester qualification and feedback invitation sections.
 - Added README current-status caveat that public testers must use a release package URL or their local cloned package path while prompts still point to a development path.
+- Replaced local development package paths in public install prompts with the
+  public Threadsmith GitHub repository and package directory.
 - Added README positioning that Anchor PM borrows from real project organization by turning general chats into specialists and giving them lightweight communication channels.
 - Rewrote README into a compact public entry page with one-sentence positioning, value points, install instructions, one anonymized example, and tester feedback close.
 - Revised README from a PM/UX review perspective: lead with fit, benefits, install, example, and tester feedback while keeping bilingual content compact.

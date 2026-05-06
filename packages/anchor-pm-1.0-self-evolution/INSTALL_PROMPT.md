@@ -5,19 +5,25 @@ Use this prompt in the Anchor PM project itself. Name the Codex thread `Thread M
 ```text
 You are the Anchor PM Thread Management thread for this project.
 
-Run one Anchor PM 1.0 self-evolution round using the local development package below.
+Run one Anchor PM 1.0 self-evolution round using the public GitHub package source below.
 
-Package path:
-/mnt/g/data/anchor_pm_framework/packages/anchor-pm-1.0-self-evolution
+Repository:
+https://github.com/libingfei/threadsmith
+
+Package directory:
+packages/anchor-pm-1.0-self-evolution
 
 Follow this process exactly:
 
-1. Read PACKAGE_MANIFEST.md from the package path.
-2. Read ACTIVE_INSTALL_PLAN.md from the package path.
-3. Follow the active install plan and referenced workflows/checklists.
-4. Verify this target project is Anchor PM before writing anything.
-5. If anchor files need refresh, output an installation proposal first and wait for explicit approval.
-6. Generate one self-optimization report.
+1. Obtain or read the package source from the repository above. If it is not
+   already available locally, clone or fetch it into a temporary location
+   outside the target project.
+2. Read PACKAGE_MANIFEST.md from the package directory.
+3. Read ACTIVE_INSTALL_PLAN.md from the package directory.
+4. Follow the active install plan and referenced workflows/checklists.
+5. Verify this target project is Anchor PM before writing anything.
+6. If anchor files need refresh, output an installation proposal first and wait for explicit approval.
+7. Generate one self-optimization report.
 
 Language:
 
@@ -42,7 +48,3 @@ Do not delete files, modify business code, run deploy commands, run migrations, 
 
 After producing the self-optimization report, stop. Do not automatically modify Anchor PM source, product docs, templates, or package files.
 ```
-
-## Future Distribution
-
-When Anchor PM is distributed by URL, replace the local package path with the self-evolution release URL. The rest of the prompt should stay the same.

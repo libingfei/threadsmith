@@ -40,9 +40,9 @@ reply:
 
 - `Approve install`
 
-Development status: the current prompts may contain a local package path.
-Public testers should replace that line with a release package URL or the local
-path to their cloned Anchor PM package.
+The install prompts use the public GitHub package source:
+`https://github.com/libingfei/threadsmith`, package directory
+`packages/anchor-pm-1.0-standard`.
 
 ### Example
 
@@ -95,8 +95,9 @@ Anchor PM 把分散的 AI 编程对话，收束成一组可重锚、可交接、
 
 - `批准安装`
 
-开发状态：当前提示词里可能包含本地 package path。公开测试时，请把那一行替
-换成 release package URL，或你本地克隆后的 Anchor PM package 路径。
+安装提示词使用公开 GitHub package source：
+`https://github.com/libingfei/threadsmith`，package directory 为
+`packages/anchor-pm-1.0-standard`。
 
 ### 案例
 

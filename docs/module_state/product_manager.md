@@ -19,7 +19,9 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Public examples should stay generic and anonymized so they can recruit testers without exposing private source projects.
 - README should stay compact: one-sentence positioning, attractive value points, install path, one example, and a feedback-oriented close.
 - README should help first-time readers self-qualify before installation by separating `Best Fit / 适合谁` from `What You Get / 你会得到什么`, including when Anchor PM is probably unnecessary.
-- README should not imply public install is fully distribution-ready while install prompts still contain a local development package path.
+- README should state the public GitHub package source used by install prompts:
+  `https://github.com/libingfei/threadsmith` with package directory
+  `packages/anchor-pm-1.0-standard`.
 - README should explicitly invite feedback about installation clarity, thread-boundary choice, and whether reanchor/module state reduces repeat explanations.
 - Product work must continuously test whether Anchor PM improves real AI coding experience; if users struggle to understand/use it, or if evidence suggests it does not improve experience, this thread should report that clearly and recommend stopping or changing direction.
 - Internal function behavior should be documented separately from README in `docs/anchor_pm/internal_function_spec.md`, with module-level inputs, outputs, owners, acceptance criteria, and failure signals.
@@ -94,6 +96,8 @@ When evaluating a user flow:
 - Reworked the README example into a generic promotional scenario for solo developers or small teams whose projects have outgrown one Codex chat.
 - Added README tester qualification and feedback invitation sections.
 - Added README current-status caveat that public testers must use a release package URL or their local cloned package path while prompts still point to a development path.
+- Replaced local development package paths in public install prompts with the
+  public Threadsmith GitHub repository and package directory.
 - Added README positioning that Anchor PM borrows from real project organization by turning general chats into specialists and giving them lightweight communication channels.
 - Rewrote README into a compact public entry page with one-sentence positioning, value points, install instructions, one anonymized example, and tester feedback close.
 - Revised README from a PM/UX review perspective: lead with fit, benefits, install, example, and tester feedback while keeping bilingual content compact.

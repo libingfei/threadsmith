@@ -35,8 +35,9 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - README should help first-time readers self-qualify before installation by
   separating `Best Fit / 适合谁` from `What You Get / 你会得到什么`, including
   when Anchor PM is probably unnecessary.
-- README should not imply public install is fully distribution-ready while
-  install prompts still contain a local development package path.
+- README should state the public GitHub package source used by install prompts:
+  `https://github.com/libingfei/threadsmith` with package directory
+  `packages/anchor-pm-1.0-standard`.
 - README should explicitly invite feedback about installation clarity,
   thread-boundary choice, and whether reanchor/module state reduces repeat
   explanations.

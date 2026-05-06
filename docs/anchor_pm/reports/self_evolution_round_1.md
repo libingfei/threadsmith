@@ -14,7 +14,7 @@ Run type: manual package-guided self-evolution round
 
 Observed:
 
-- The target root is `/mnt/g/data/anchor_pm_framework`.
+- The target root is the local Anchor PM development checkout.
 - The target is clearly Anchor PM: product docs mention Anchor PM, coordination anchors exist, and `packages/anchor-pm-1.0/` exists.
 - Required anchor files already exist:
   - `AGENTS.md`

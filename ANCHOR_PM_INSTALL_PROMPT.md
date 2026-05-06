@@ -16,5 +16,8 @@ or `线程管理`, then paste one full prompt block from the selected file.
 ## Notes
 
 - The prompt language controls the installer conversation language.
+- The prompts use the public GitHub source
+  `https://github.com/libingfei/threadsmith` and package directory
+  `packages/anchor-pm-1.0-standard`.
 - Generated project documents may remain English unless you ask otherwise.
 - The installer should show a concise installation proposal before writing files.

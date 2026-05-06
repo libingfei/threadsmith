@@ -26,7 +26,8 @@ The only release-level differences are:
 - `ACTIVE_INSTALL_PLAN.md`
 - `INSTALL_PROMPT.md`
 
-`INSTALL_PROMPT.md` may differ because development builds include a concrete local package path.
+`INSTALL_PROMPT.md` may differ by mode because it points to the relevant public
+package directory.
 
 ## Required Package Files
 

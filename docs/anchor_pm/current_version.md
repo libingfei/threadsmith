@@ -48,6 +48,9 @@ This means this repository uses its own minimal Anchor PM structure and now cont
   before substantial thread work, use a programmatic detector when available,
   fall back to reading required anchors only as a degraded compatibility path,
   and avoid asking users to run CLI commands manually.
+- Updated public install prompts to use
+  `https://github.com/libingfei/threadsmith` and package directory
+  `packages/anchor-pm-1.0-standard` instead of a local development package path.
 
 ## Reanchor Requirement
 
