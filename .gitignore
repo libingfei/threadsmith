@@ -1,0 +1,15 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Local runtime/checkpoint state
+docs/anchor_pm/.state/
+.anchor_pm_state/
+
+# Build/test artifacts
+bin/
+dist/
+coverage/
+*.test
