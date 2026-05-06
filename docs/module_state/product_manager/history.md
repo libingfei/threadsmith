@@ -57,3 +57,5 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Rewrote the MVP manual validation protocol around the complete lifecycle from
   new project adoption through issue solving, handoff, closeout knowledge sync,
   shared-state recovery, and restore.
+- Added Pre-test GitHub Sync Gate so public GitHub-based tests use the latest
+  prompts and validation docs rather than stale remote files.

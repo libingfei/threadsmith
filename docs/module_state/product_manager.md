@@ -66,6 +66,10 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   project adoption, module/subsystem thread generation, thread prompt creation,
   Reanchor Start, scoped issue solving, handoff, Closeout Knowledge Sync,
   shared-state recovery, and repository restore.
+- Before the user starts any public GitHub-based test, Product Manager should
+  run a Pre-test GitHub Sync Gate: check for local changes, commit the intended
+  changes, push to `origin/main`, verify remote HEAD, and tell the user which
+  commit and GitHub links to test.
 - Contract state detector file granularity should keep status checks cheap: Layer 1 has one thread-definition handle per thread; Layer 2 supports sparse directed dependency files such as `<source>__to_<target>` instead of eagerly creating every possible `N * (N - 1)` file; Layer 3 has category split points and should split local memory by category only when the state file becomes too large or volatile.
 - Long-lived threads should run a periodic reanchor safety check every 10 conversation rounds: confirm all registered layer fingerprints, then read only changed, unknown, unreadable, or task-relevant layers.
 - This repository now has an initialized numbered Layer 0 through Layer 3 structure: `00_framework_baseline`, `01_thread_definitions`, `02_shared_state`, and `03_thread_local_memory.md`, plus `docs/module_state/product_manager/` as the first category-level Layer 3 pilot. Current authoritative files remain `AGENTS.md`, `current_version.md`, `contracts.md`, and `docs/module_state/*.md` until Coordination promotes the split.
@@ -148,6 +152,18 @@ PM Review Gate before declaring an install or workflow acceptable:
 6. If this review changes product behavior, update this thread state before
    final response or explicitly state why no durable state update is needed.
 
+Pre-test GitHub Sync Gate:
+
+1. When the user says they are about to test public GitHub behavior, check
+   `git status --short --branch`.
+2. If local intended changes exist, commit and push them before the user starts
+   the test.
+3. Verify `git ls-remote origin refs/heads/main` matches local `HEAD`.
+4. Give the user the commit SHA and direct GitHub links for the files they will
+   paste or follow.
+5. If changes should not be pushed, clearly tell the user to test with local
+   files instead of GitHub links.
+
 ## History / Notes
 
 - Created to own user operation flows and UX optimization for Anchor PM.
@@ -199,3 +215,5 @@ PM Review Gate before declaring an install or workflow acceptable:
 - Rewrote the MVP manual validation protocol around the complete lifecycle from
   new project adoption through issue solving, handoff, closeout knowledge sync,
   shared-state recovery, and restore.
+- Added Pre-test GitHub Sync Gate so public GitHub-based tests use the latest
+  prompts and validation docs rather than stale remote files.

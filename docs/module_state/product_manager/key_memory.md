@@ -37,3 +37,5 @@ Key memory:
   specialist thread, run Reanchor Start, solve a scoped problem, hand off
   cross-boundary work, run Closeout Knowledge Sync, verify shared-state recovery,
   then restore the repo.
+- Before the user tests from GitHub, sync the repository first. Stale remote
+  prompts invalidate install-flow test results.

@@ -36,3 +36,15 @@ PM Review Gate before declaring an install or workflow acceptable:
    blocked even if every checklist field exists.
 6. If this review changes product behavior, update thread state before final
    response or explicitly state why no durable state update is needed.
+
+Pre-test GitHub Sync Gate:
+
+1. When the user says they are about to test public GitHub behavior, check
+   `git status --short --branch`.
+2. If local intended changes exist, commit and push them before the user starts
+   the test.
+3. Verify `git ls-remote origin refs/heads/main` matches local `HEAD`.
+4. Give the user the commit SHA and direct GitHub links for the files they will
+   paste or follow.
+5. If changes should not be pushed, clearly tell the user to test with local
+   files instead of GitHub links.

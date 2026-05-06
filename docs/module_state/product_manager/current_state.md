@@ -100,6 +100,10 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   project adoption, module/subsystem thread generation, thread prompt creation,
   Reanchor Start, scoped issue solving, handoff, Closeout Knowledge Sync,
   shared-state recovery, and repository restore.
+- Before the user starts any public GitHub-based test, Product Manager should
+  run a Pre-test GitHub Sync Gate: check for local changes, commit the intended
+  changes, push to `origin/main`, verify remote HEAD, and tell the user which
+  commit and GitHub links to test.
 - Contract state detector file granularity should keep status checks cheap.
 - Long-lived threads should run a periodic reanchor safety check every 10
   conversation rounds.

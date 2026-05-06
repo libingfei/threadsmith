@@ -28,6 +28,16 @@ MVP 核心链路：
 
 本轮不把程序化 `anchorpm reanchor` 作为 blocker。若 detector/CLI 不可用，线程可以走降级读取路径，但必须明确表现为 degraded fallback，不能声称程序化锚定已完成。
 
+## 测试前 GitHub 同步门禁
+
+如果本轮要测试 public GitHub 链接，开始前必须确认远端已经是最新版本：
+
+1. 在 Threadsmith 仓库运行 `git status --short --branch`。
+2. 如果有本轮测试相关的本地修改，先 commit 并 push 到 `origin/main`。
+3. 运行 `git ls-remote origin refs/heads/main`，确认远端提交等于本地 `HEAD`。
+4. 记录本轮测试使用的 commit SHA。
+5. 如果无法推送或不应推送，本轮必须改用本地提示词链接，不要用 GitHub 链接测试。
+
 ## 测试项目
 
 | 测试档位 | 项目 | 本地目录 |
