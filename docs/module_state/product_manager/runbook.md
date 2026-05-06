@@ -20,3 +20,19 @@ For reanchor-model work:
 3. Prefer sparse dependency files over full cross-thread matrices.
 4. Treat automatic full rereading as degraded fallback, not target behavior.
 5. Handoff implementation behavior to the owning thread.
+
+PM Review Gate before declaring an install or workflow acceptable:
+
+1. Confirm the flow matches real Codex client behavior; do not depend on steps
+   the user cannot perform before the first message.
+2. Judge whether the output helps the target-project user decide the next step,
+   not whether it exposes enough Anchor PM internals.
+3. Verify proposed threads come from the target project's modules/subsystems or
+   durable maintenance boundaries, not from generic role buckets.
+4. Check whether each visible option has a clear, useful outcome. Remove or flag
+   options that create confusing partial integration.
+5. Try the target maintainer perspective: if the proposed threads would not
+   reduce context scope or repeated explanation, mark the result as retry or
+   blocked even if every checklist field exists.
+6. If this review changes product behavior, update thread state before final
+   response or explicitly state why no durable state update is needed.

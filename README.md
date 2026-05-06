@@ -29,8 +29,9 @@ one short chat.
 
 ### Install
 
-Open the target project in Codex, create a new thread named `Thread Management`,
-then paste one install prompt:
+Open the target project in Codex and start a new installation/thread-management
+conversation. Rename it `Thread Management` if your client supports that, then
+paste one install prompt:
 
 - [English install prompt](./ANCHOR_PM_INSTALL_PROMPT.en.md)
 - [中文安装提示词](./ANCHOR_PM_INSTALL_PROMPT.zh.md)
@@ -85,8 +86,8 @@ Anchor PM 把分散的 AI 编程对话，收束成一组可重锚、可交接、
 
 ### 安装
 
-在 Codex 中打开目标项目，新建一个 `线程管理` 或 `Thread Management`
-线程，然后粘贴一个安装提示词：
+在 Codex 中打开目标项目，开启一个安装/线程管理对话。如果客户端支持重命名，
+可以命名为 `线程管理` 或 `Thread Management`，然后粘贴一个安装提示词：
 
 - [English install prompt](./ANCHOR_PM_INSTALL_PROMPT.en.md)
 - [中文安装提示词](./ANCHOR_PM_INSTALL_PROMPT.zh.md)

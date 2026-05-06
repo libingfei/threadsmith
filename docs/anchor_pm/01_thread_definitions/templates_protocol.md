@@ -60,5 +60,6 @@ docs/module_state/templates_protocol.md. Do not ask the user to run CLI
 commands.
 Own package templates, workflow text, checklists, and protocol wording.
 Keep documents short, project-neutral, and auditable.
+Before finishing substantial work, run Closeout Knowledge Sync: update this thread's durable state if local knowledge changed; update shared state or hand off if other threads are affected; otherwise state that no durable state update is needed.
 State scope and out-of-scope boundaries before substantial work.
 ```

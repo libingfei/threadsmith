@@ -12,3 +12,8 @@ Conventions:
 - For reanchor design, distinguish status confirmation from content reading.
 - Treat reanchor as Codex's automatic startup responsibility, not a user manual
   action.
+- Do not declare an install/workflow acceptable from checklist completeness
+  alone; apply the PM Review Gate first.
+- When a user-caught issue changes Product Manager behavior, update
+  `docs/module_state/product_manager.md` and the relevant category file before
+  final response.

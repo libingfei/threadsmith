@@ -22,6 +22,17 @@ Core user value:
   information;
 - keep conclusions conservative and auditable.
 
+Lifecycle model:
+
+- `Reanchor Start` is the pre-work read side: detect changed anchor knowledge,
+  refresh only required context, and confirm the thread boundary before
+  substantial reasoning.
+- `Closeout Knowledge Sync` is the pre-response write side: classify new or
+  changed durable knowledge and update local state, shared state, or handoff
+  before the final answer.
+- The two hooks are symmetric. Reanchor without closeout makes anchors stale
+  over time; closeout without reanchor risks writing from stale context.
+
 ## Module Map
 
 ```text
@@ -34,6 +45,7 @@ User README / Prompt Entry
   -> Post-Install Thread Creation Guide
   -> Contract Version / Reanchor State Detector
   -> Reanchor / Handoff / Status Workflows
+  -> Closeout Knowledge Sync
   -> Validation / Feedback Loop
 ```
 
@@ -91,16 +103,17 @@ Outputs Before Approval:
 - Concise installation proposal, not a package execution log.
 - Target project path.
 - Detected project type: `existing project` or `new project`.
-- Recommended thread count and thread names.
-- One-sentence responsibility per thread.
+- Recommended project specialist thread count and thread names.
+- One-sentence module/subsystem responsibility per specialist thread.
 - File create/update summary.
 - `AGENTS.md` handling recommendation.
-- Safety promises.
 - 1-3 approval-relevant risks or decisions.
+- Internal safety constraints should not be expanded as a visible proposal
+  section unless the user asks.
 - Localized reply options such as:
   - `Approve install`
   - `Adjust threads: ...`
-  - `Install docs only; do not update AGENTS.md`
+  - `Adjust AGENTS.md: ...`
   - `Cancel`
 
 Outputs After Approval:
@@ -170,10 +183,24 @@ Inputs:
 
 - Target audit output.
 - User-provided thread preferences.
-- Default bootstrap rule:
-  - small/new project: `Coordination`, `Implementation`, `Validation`
-  - larger project: only add extra threads when responsibilities are clearly
-    separate
+- Thread-management context:
+  - the current install conversation is the Thread Management entrypoint;
+  - Thread Management is not counted as a target-project business specialist;
+  - Anchor PM internal roles such as `Coordination` must not be proposed as
+    ordinary target-project specialist threads.
+- Existing-project split rule:
+  - derive threads from the target project's real modules, subsystems, or
+    durable maintenance boundaries;
+  - inspect source packages, runtime surfaces, APIs/plugins, CLI, docs, tests,
+    config, and CI signals before proposing boundaries;
+  - avoid broad function buckets such as `Implementation` or default standalone
+    `Validation` unless the project structure genuinely supports them;
+  - each module specialist should normally own code, tests, docs, and validation
+    evidence for that module.
+- New/empty project fallback:
+  - starter threads are allowed only as provisional defaults;
+  - they must be marked adjustable and should not be presented as discovered
+    project modules.
 - Existing project structure and docs.
 
 Outputs:
@@ -193,9 +220,17 @@ Acceptance:
 - User does not fill `<thread name>`, `<thread_file>`, or similar placeholders.
 - Thread boundaries are easy to read.
 - Cross-boundary work has a handoff path.
+- Existing projects receive module/subsystem-based specialist threads, not
+  Anchor PM internal threads.
+- The first Codex message does not require the user to have renamed the
+  conversation in advance.
 
 Failure Signals:
 
+- Installer proposes `Coordination` for an ordinary target project.
+- Installer collapses most business code into one broad `Implementation` thread
+  when observable module boundaries exist.
+- Installer presents generic starter threads as discovered project structure.
 - Threads are added for hypothetical future work.
 - User cannot distinguish two thread responsibilities.
 - The generated prompts contain unresolved placeholders.
@@ -423,7 +458,70 @@ Failure Signals:
 - Thread works outside contract without handoff.
 - Reanchor requires reading a document pile.
 
-## 10. Handoff Workflow
+## 10. Closeout Knowledge Sync Workflow
+
+Owner: Templates / Protocol for default workflow text; Product Manager for UX;
+Reanchor Detector Core for future programmatic closeout planning; Coordination
+for cross-thread policy.
+
+Purpose: ensure every long-lived thread checks whether the conversation created
+new durable knowledge or changed existing knowledge before the final response.
+
+This is the symmetric write-side counterpart to `Reanchor Start`. Reanchor
+loads changed knowledge before work; closeout preserves newly produced knowledge
+before reply. Together they let Anchor PM improve as conversation rounds
+accumulate.
+
+Inputs:
+
+- Current thread identity and scope.
+- Current task outcome.
+- Files changed or decisions made in this conversation.
+- User corrections, critiques, or confirmed product/business facts.
+- Known Layer 2 shared-state dependencies and current Layer 3 module state.
+
+Outputs:
+
+- One of:
+  - no durable state update needed;
+  - Layer 3 local-memory update for the current thread;
+  - Layer 2 shared-state update or directed handoff for affected threads;
+  - handoff to Thread Management for Layer 1 thread-definition changes;
+  - handoff to Coordination or framework owner for Layer 0/framework changes.
+- Final response should mention the state update when it matters, without
+  dumping internal logs.
+
+Decision Rules:
+
+- Local durable knowledge goes to the current thread's Layer 3 module state or
+  category file.
+- Knowledge other threads need goes to Layer 2 shared state or a structured
+  handoff.
+- Scope, ownership, thread list, or thread prompt changes go through Thread
+  Management; ordinary specialist threads should not silently rewrite Layer 1.
+- Framework baseline or global protocol changes go through Coordination or the
+  owning framework thread.
+- Temporary observations, unverified guesses, and one-off task details should
+  not be promoted into durable state unless they affect future work.
+
+Acceptance:
+
+- Every substantial long-lived thread closeout performs this check.
+- Important user corrections become durable state instead of remaining only in
+  chat history.
+- Shared knowledge reaches affected threads without forcing them to reread all
+  thread-local files.
+- State files stay sparse; they do not become full chat transcripts.
+
+Failure Signals:
+
+- A thread repeats a previously corrected mistake because the correction was not
+  written to its state.
+- A cross-thread dependency changes but no Layer 2 update or handoff is made.
+- A thread silently changes its own scope or another thread's scope.
+- State files accumulate transient discussion instead of durable facts.
+
+## 11. Handoff Workflow
 
 Owner: Templates / Protocol.
 
@@ -455,7 +553,7 @@ Failure Signals:
 - Handoff includes unconfirmed inference as fact.
 - Handoff is too vague for target thread to act.
 
-## 11. Status / Drift / Review Workflows
+## 12. Status / Drift / Review Workflows
 
 Owner: Dogfood / Validation for evidence; Coordination for rule changes;
 Templates / Protocol for workflow text.
@@ -487,7 +585,7 @@ Failure Signals:
 - Review findings directly mutate contracts without Coordination review.
 - UX confusion is dismissed as user error.
 
-## 12. Validation Criteria
+## 13. Validation Criteria
 
 Anchor PM should continue development only if evidence supports real AI coding
 experience improvement.

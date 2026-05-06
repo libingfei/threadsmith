@@ -7,11 +7,12 @@ Choose the prompt language that matches your normal Codex conversation.
 - [English install prompt](./ANCHOR_PM_INSTALL_PROMPT.en.md)
 - [中文安装提示词](./ANCHOR_PM_INSTALL_PROMPT.zh.md)
 
-Open the target project in Codex, create a new thread named `Thread Management`
-or `线程管理`, then paste one full prompt block from the selected file.
+Open the target project in Codex and start a new installation/thread-management
+conversation. Rename it `Thread Management` or `线程管理` if your client
+supports that, then paste one full prompt block from the selected file.
 
-在 Codex 中打开目标项目，新建一个 `Thread Management` / `线程管理` 线程，
-然后从所选文件中复制完整提示词块。
+在 Codex 中打开目标项目，开启一个安装/线程管理对话。如果客户端支持重命名，
+可以命名为 `Thread Management` / `线程管理`，然后从所选文件中复制完整提示词块。
 
 ## Notes
 

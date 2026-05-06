@@ -199,11 +199,14 @@ docs/module_state/<thread>.md
 
 ## 8. New Project Bootstrap
 
-新项目初始化可以使用默认短线程集合：
+新项目或空项目初始化可以使用临时 starter threads，但必须标记为后续可调整。
+不要把这些 starter threads 当作已有项目的真实模块识别结果。
 
-- `Coordination`
-- `Implementation`
-- `Validation`
+已有项目安装必须优先根据项目真实模块、子系统和长期维护边界拆分线程，而不是
+默认使用 `Coordination` / `Implementation` / `Validation` 这类通用职责桶。
+
+普通目标项目不应生成 `Coordination` 线程；线程管理由安装对话承担，并保留给
+后续新增、删除、重命名或重新生成线程提示词。
 
 如果用户提供线程列表，以用户列表为准。
 

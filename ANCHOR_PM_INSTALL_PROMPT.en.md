@@ -1,12 +1,16 @@
 # Anchor PM Install Prompt - English
 
-Use this prompt in a new Codex thread inside the target project. Name the thread
-`Thread Management`.
+Open the target project in Codex and start a new installation/thread-management
+conversation. If your Codex client supports renaming conversations, name it
+`Thread Management`; if not, just paste the prompt below.
 
 Copy only the prompt block below.
 
 ```text
-You are the Anchor PM Thread Management thread for this project.
+You are the Anchor PM Thread Management conversation for this project.
+
+This conversation is the installation and future thread-management entrypoint;
+do not treat it as a business specialist thread for the target project.
 
 Integrate Anchor PM 1.0 into this project using the public GitHub package source below.
 
@@ -27,6 +31,12 @@ Follow this process internally:
 5. Inspect this target project before writing anything.
 6. Output an installation proposal first.
 
+If package documents mention generic sample thread names such as Coordination,
+Implementation, or Validation, treat them only as fallback examples for a new
+or empty project. For an existing project, generate project specialist threads
+from the target project's real modules, subsystems, and long-term maintenance
+boundaries.
+
 Language:
 
 - Reply to me in English.
@@ -39,6 +49,26 @@ User-facing output:
 - Treat the first response as an installation confirmation page, not an audit report.
 - Show only the information I need to approve, adjust, or cancel.
 - Keep detailed thread prompts and long-term usage instructions in generated files and link to those files after installation.
+
+Thread-splitting principles:
+
+- For an existing project, first understand its real modules and subsystems from
+  source packages, runtime core, APIs/plugin surfaces, CLI, docs, tests,
+  configuration, and CI signals.
+- Recommended threads should be named around target-project modules,
+  subsystems, or durable maintenance boundaries, not around Anchor PM internals.
+- Do not recommend a `Coordination` thread for an ordinary target project.
+  Thread management is handled by this current conversation and should not count
+  as a business specialist thread.
+- Do not default to one broad `Implementation` thread for all code. Only suggest
+  that if the project is truly small or module boundaries are unclear, and mark
+  it as a fallback that needs confirmation.
+- Each project specialist thread should normally own code, tests, docs, and
+  validation evidence for its own module. Do not create `Validation` as a
+  default standalone thread unless the target project has a clearly separate
+  validation/release subsystem or the user asks for it.
+- For a new or empty project, provisional starter threads are acceptable, but
+  label them as adjustable.
 
 AGENTS.md handling:
 
@@ -61,22 +91,18 @@ Project:
 - Detected type: existing project / new project
 
 Recommendation:
-- Create N long-lived threads.
+- Keep this conversation as the thread-management entrypoint.
+- Create N project specialist threads.
 
 Threads:
-- Coordination: one sentence responsibility.
-- Implementation: one sentence responsibility.
-- Validation: one sentence responsibility.
+- <project module or subsystem thread name>: one sentence responsibility.
+- <project module or subsystem thread name>: one sentence responsibility.
+- <project module or subsystem thread name>: one sentence responsibility.
 
 Changes:
 - Create: X Anchor PM files.
 - Update: Y existing files.
 - AGENTS.md: create / append Anchor PM discovery section / leave untouched pending confirmation.
-
-Safety:
-- I will not modify business code.
-- I will not run deploy commands, migrations, or destructive commands.
-- I will not overwrite existing project rules without explicit approval.
 
 Needs your decision:
 - List only the 1-3 decisions or risks that matter for approval.
@@ -84,7 +110,7 @@ Needs your decision:
 Reply options:
 - Approve install
 - Adjust threads: ...
-- Install docs only; do not update AGENTS.md
+- Adjust AGENTS.md: ...
 - Cancel
 
 Decision details:
@@ -96,17 +122,18 @@ Do not make me fill in placeholders such as <thread name> or <thread_file>. Gene
 
 Do not write files until I explicitly approve the proposal.
 
-Do not copy the Threadsmith repository into this target project. Do not delete
-files, modify business code, run deploy commands, run migrations, or overwrite
-existing project rules.
+Internal constraints: do not copy the Threadsmith repository into this target
+project. Do not delete files, modify business code, run deploy commands, run
+migrations, or overwrite existing project rules. Unless I ask, do not expand
+these internal safety constraints into user-facing explanation.
 
 After approved installation, output a short completion page:
 
 # Anchor PM Installed
 
 Next steps:
-1. Keep this Thread Management thread. Use it later to add, remove, rename, or regenerate Anchor PM threads.
-2. Create the long-lived threads listed in docs/anchor_pm/thread_initialization.md.
+1. Keep this Thread Management conversation. Use it later to add, remove, rename, or regenerate Anchor PM threads.
+2. Create the project specialist threads listed in docs/anchor_pm/thread_initialization.md.
 3. Use docs/anchor_pm/interaction_guide.md for daily Anchor PM usage.
 
 Links:

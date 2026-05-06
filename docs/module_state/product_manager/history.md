@@ -40,3 +40,20 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Clarified that programmatic anchoring, not automatic anchor-file rereading, is
   the target behavior; missing callable detector entrypoint is a product gap for
   Reanchor Detector Core and CLI Core.
+- Flask install dry-run exposed a product failure: the proposal used generic
+  Coordination / Implementation / Validation threads, required a pre-named
+  thread, showed too much internal safety explanation, and offered a confusing
+  docs-only/no-AGENTS option.
+- Added PM Review Gate after the Flask dry-run mistake: Product Manager must
+  evaluate semantic usefulness and real user operation, not only checklist
+  field presence, and must record durable behavior changes into thread state.
+- Promoted Closeout Knowledge Sync as a core all-thread workflow: every
+  long-lived thread must check local durable knowledge, cross-thread shared
+  knowledge, thread-definition impact, and framework-level impact before final
+  response.
+- Defined Reanchor Start and Closeout Knowledge Sync as symmetric thread
+  lifecycle hooks: read changed knowledge before work, write or hand off new
+  durable knowledge before reply.
+- Rewrote the MVP manual validation protocol around the complete lifecycle from
+  new project adoption through issue solving, handoff, closeout knowledge sync,
+  shared-state recovery, and restore.

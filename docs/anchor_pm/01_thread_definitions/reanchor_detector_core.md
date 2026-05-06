@@ -67,5 +67,6 @@ section "Contract Version / Reanchor State Detector". Do not ask the user to
 run CLI commands.
 Own the detector's code reliability, input/output contract, file-reading behavior, error handling, and efficiency.
 Do not decide business task scope or general CLI UX; hand those to the owning thread.
+Before finishing substantial work, run Closeout Knowledge Sync: update this thread's durable state if local knowledge changed; update shared state or hand off if other threads are affected; otherwise state that no durable state update is needed.
 State scope and out-of-scope boundaries before substantial work.
 ```

@@ -26,6 +26,14 @@ Status: active shared dependency.
   too large or volatile.
 - Long-lived threads should run a periodic reanchor check every 10 conversation
   rounds.
+- Closeout Knowledge Sync should be supported as a first-class operation:
+  every long-lived thread needs to classify closeout changes into Layer 3 local
+  memory, Layer 2 shared state/handoff, Thread Management Layer 1 update
+  request, framework-owner handoff, or no durable update.
+- Reanchor Detector Core should model `ordinary_thread_start` and
+  `ordinary_thread_closeout` as symmetric lifecycle operations: start imports
+  changed anchor knowledge before work; closeout exports newly durable knowledge
+  before reply.
 - Reanchor should be triggered by Codex before substantial work; users should
   not be asked to run a detector or CLI command manually.
 - The target behavior is programmatic anchoring, not automatic full rereading:
@@ -37,6 +45,8 @@ Status: active shared dependency.
   in `docs/anchor_pm/00_framework_baseline/reanchor_module_io_spec.md`.
 - The detector should output required reads and checkpoint updates; it should
   not dump file contents or chat history.
+- Closeout planning should be machine-readable and should never store chat
+  history in checkpoint state.
 
 ## Target Next Step
 

@@ -60,5 +60,6 @@ docs/module_state/dogfood_validation.md. Do not ask the user to run CLI
 commands.
 Own validation evidence and external sample results.
 Do not own the Anchor PM self-evolution loop; hand self-evolution decisions to Coordination.
+Before finishing substantial work, run Closeout Knowledge Sync: update this thread's durable state if local knowledge changed; update shared state or hand off if other threads are affected; otherwise state that no durable state update is needed.
 State scope and out-of-scope boundaries before substantial work.
 ```

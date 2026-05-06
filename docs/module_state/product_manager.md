@@ -13,6 +13,24 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Thread initialization prompts must be complete and copy-paste-ready; users should not fill in placeholders Codex can generate.
 - Installer replies should follow the user's usual language, while generated project docs may remain English unless requested otherwise.
 - `Thread Management` should remain available after installation for future thread additions, removals, renames, or prompt regeneration.
+- Install prompts must not depend on the user naming the Codex conversation
+  before the first message; thread naming can be optional when the client
+  supports it.
+- The current install conversation is the Thread Management entrypoint, not a
+  target-project business specialist thread.
+- Existing-project thread generation should be based on the target project's
+  real modules, subsystems, and durable maintenance boundaries, not generic
+  responsibility buckets.
+- Ordinary target projects should not receive an Anchor PM internal
+  `Coordination` thread. Generic `Implementation` or standalone `Validation`
+  threads are fallback-only and require clear justification.
+- Installation proposals should stay user-facing and decision-focused; verbose
+  internal safety explanations and package execution details should remain
+  hidden unless the user asks.
+- "Install docs only; do not update AGENTS.md" should not be a default approval
+  option because it creates a confusing partial integration. If AGENTS handling
+  is blocked, the installer should explain the consequence and ask for a
+  specific merge/skip decision.
 - README should state the exact approval reply and explain that post-install long-lived threads are created from `docs/anchor_pm/thread_initialization.md`.
 - README should frame the primary value as modular specialist threads: narrower business scope per thread, less unrelated context, better Codex answer quality, and reanchor/module-state synchronization when paths, data, commands, or methods change.
 - Public positioning should explain Anchor PM as organization design for AI coding: stable general AI capability is directed into focused specialist threads, with lightweight communication channels for dependency information.
@@ -24,12 +42,30 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   `packages/anchor-pm-1.0-standard`.
 - README should explicitly invite feedback about installation clarity, thread-boundary choice, and whether reanchor/module state reduces repeat explanations.
 - Product work must continuously test whether Anchor PM improves real AI coding experience; if users struggle to understand/use it, or if evidence suggests it does not improve experience, this thread should report that clearly and recommend stopping or changing direction.
+- Product Manager must not treat checklist completeness as product success.
+  Install and workflow evaluations require a PM Review Gate that checks real
+  Codex operation, user-visible clarity, project-specific thread semantics, and
+  whether each option has meaningful user value.
 - Internal function behavior should be documented separately from README in `docs/anchor_pm/internal_function_spec.md`, with module-level inputs, outputs, owners, acceptance criteria, and failure signals.
 - The system should include a Contract Version / Reanchor State Detector that checks whether shared anchors changed at thread start and decides whether common knowledge files must be reread.
 - Contract state detector design should stay small and explicit: state model, fingerprints, decision rules, minimal chat output, checkpoint persistence, and failure signals.
 - Contract state detector monitoring scope should distinguish framework baseline, thread definition, cross-thread shared state, thread local memory, Anchor PM development-only files, and business files that should not trigger reanchor by default.
 - Contract state detector monitoring should be modeled as a horizontally extensible four-layer tree with task-specific refresh profiles instead of one flat monitored-file list.
 - Contract state detector monitoring should use a four-layer product model: Layer 0 framework baseline, Layer 1 thread definition, Layer 2 cross-thread shared state, and Layer 3 thread local memory. Non-thread-management threads should confirm all four layer states at conversation start, then read only changed or task-relevant layers. At closeout, they should update Layer 3 for durable local knowledge and Layer 2 or handoff when other threads are affected; Layer 0 and Layer 1 changes belong to framework upgrade or Thread Management flows.
+- Closeout Knowledge Sync is a core Anchor PM workflow for every long-lived
+  thread: before final response after substantial work, the thread must decide
+  whether new or changed knowledge belongs in its own Layer 3 state, a Layer 2
+  shared-state file/handoff, a Thread Management Layer 1 update request, or a
+  framework-owner handoff. If nothing durable changed, it should state that no
+  durable state update is needed.
+- Reanchor Start and Closeout Knowledge Sync are symmetric lifecycle hooks:
+  Reanchor Start is the pre-work read/refresh/boundary-confirmation side;
+  Closeout Knowledge Sync is the pre-response write/propagation side. Anchor PM
+  only evolves across conversation rounds when both hooks run consistently.
+- MVP manual validation must test the full lifecycle, not only installation:
+  project adoption, module/subsystem thread generation, thread prompt creation,
+  Reanchor Start, scoped issue solving, handoff, Closeout Knowledge Sync,
+  shared-state recovery, and repository restore.
 - Contract state detector file granularity should keep status checks cheap: Layer 1 has one thread-definition handle per thread; Layer 2 supports sparse directed dependency files such as `<source>__to_<target>` instead of eagerly creating every possible `N * (N - 1)` file; Layer 3 has category split points and should split local memory by category only when the state file becomes too large or volatile.
 - Long-lived threads should run a periodic reanchor safety check every 10 conversation rounds: confirm all registered layer fingerprints, then read only changed, unknown, unreadable, or task-relevant layers.
 - This repository now has an initialized numbered Layer 0 through Layer 3 structure: `00_framework_baseline`, `01_thread_definitions`, `02_shared_state`, and `03_thread_local_memory.md`, plus `docs/module_state/product_manager/` as the first category-level Layer 3 pilot. Current authoritative files remain `AGENTS.md`, `current_version.md`, `contracts.md`, and `docs/module_state/*.md` until Coordination promotes the split.
@@ -57,6 +93,12 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Need a real user-facing walkthrough from new target project to installed Anchor PM anchors using the language-specific root install prompt files.
 - Need Codex App testing of `Thread Management` install prompt.
 - Need Codex Skill / Package Installer and Templates / Protocol handoff to mirror the new confirmation-page output shape into package release prompts.
+- Need Templates / Protocol and Codex Skill / Package Installer to replace
+  generic Coordination / Implementation / Validation defaults for existing
+  projects with module/subsystem-based thread generation.
+- Need package release artifacts to stop exposing docs-only/no-AGENTS as a
+  default approval path; partial integration should be exceptional and clearly
+  labeled.
 - Templates / Protocol and Codex Skill / Package Installer need to mirror the
   automatic Reanchor Start behavior into package workflow text and install
   prompts without making users run CLI commands.
@@ -66,6 +108,9 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Reanchor Detector Core and CLI Core need a callable programmatic reanchor
   entrypoint; until that exists, automatic rereading is only a degraded fallback
   and does not satisfy the product requirement.
+- Templates / Protocol and Codex Skill / Package Installer need to ensure every
+  generated thread prompt includes Closeout Knowledge Sync, not only Reanchor
+  Start.
 - Need to track recurring first-time-user confusion as product requirements, not ad hoc discussion.
 
 ## Runbook
@@ -86,6 +131,22 @@ When evaluating a user flow:
 3. Mark any place where the user must guess a value.
 4. Propose the smallest change that removes the guess.
 5. Handoff implementation details to the owning thread.
+
+PM Review Gate before declaring an install or workflow acceptable:
+
+1. Confirm the flow matches real Codex client behavior; do not depend on steps
+   the user cannot perform before the first message.
+2. Judge whether the output helps the target-project user decide the next step,
+   not whether it exposes enough Anchor PM internals.
+3. Verify proposed threads come from the target project's modules/subsystems or
+   durable maintenance boundaries, not from generic role buckets.
+4. Check whether each visible option has a clear, useful outcome. Remove or
+   flag options that create confusing partial integration.
+5. Try the target maintainer perspective: if the proposed threads would not
+   reduce context scope or repeated explanation, mark the result as retry or
+   blocked even if every checklist field exists.
+6. If this review changes product behavior, update this thread state before
+   final response or explicitly state why no durable state update is needed.
 
 ## History / Notes
 
@@ -121,3 +182,20 @@ When evaluating a user flow:
 - Clarified that programmatic anchoring, not automatic anchor-file rereading, is
   the target behavior; missing callable detector entrypoint is a product gap for
   Reanchor Detector Core and CLI Core.
+- Flask install dry-run exposed a product failure: the proposal used generic
+  Coordination / Implementation / Validation threads, required a pre-named
+  thread, showed too much internal safety explanation, and offered a confusing
+  docs-only/no-AGENTS option.
+- Added PM Review Gate after the Flask dry-run mistake: Product Manager must
+  evaluate semantic usefulness and real user operation, not only checklist
+  field presence, and must record durable behavior changes into thread state.
+- Promoted Closeout Knowledge Sync as a core all-thread workflow: every
+  long-lived thread must check local durable knowledge, cross-thread shared
+  knowledge, thread-definition impact, and framework-level impact before final
+  response.
+- Defined Reanchor Start and Closeout Knowledge Sync as symmetric thread
+  lifecycle hooks: read changed knowledge before work, write or hand off new
+  durable knowledge before reply.
+- Rewrote the MVP manual validation protocol around the complete lifecycle from
+  new project adoption through issue solving, handoff, closeout knowledge sync,
+  shared-state recovery, and restore.

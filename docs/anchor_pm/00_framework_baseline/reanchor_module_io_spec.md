@@ -202,6 +202,23 @@ Rules:
 - `cross_thread_handoff` inspects named Layer 2 dependency files and named Layer
   3 source/target files.
 
+## Lifecycle Symmetry
+
+`ordinary_thread_start` and `ordinary_thread_closeout` are paired lifecycle
+operations.
+
+- `ordinary_thread_start` is the read-side hook before work: compare
+  fingerprints, return changed/unknown anchors, and tell Codex which files must
+  be read before substantial reasoning.
+- `ordinary_thread_closeout` is the write-side hook before final response:
+  classify durable changes into Layer 3 local memory, Layer 2 shared state,
+  Thread Management Layer 1 requests, framework-owner handoffs, or no durable
+  update.
+
+The system only improves over long conversations if both hooks run. Start
+without closeout refreshes stale context but never captures new corrections.
+Closeout without start risks preserving conclusions made from stale anchors.
+
 ## Registry File Entry
 
 Each registered anchor file should use this shape.
@@ -413,7 +430,10 @@ Checkpoint rules:
 
 ## Closeout Input
 
-Closeout uses the same request envelope plus durable-change events.
+Every substantial long-lived thread should run Closeout Knowledge Sync before
+the final response. Closeout uses the same request envelope plus
+durable-change events. If no durable or shared knowledge changed, the caller may
+record no events and report that no closeout state update is needed.
 
 ```json
 {

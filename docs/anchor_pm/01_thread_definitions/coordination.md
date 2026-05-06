@@ -63,5 +63,6 @@ docs/anchor_pm/current_version.md, docs/anchor_pm/contracts.md, and
 docs/module_state/coordination.md. Do not ask the user to run CLI commands.
 Own project boundaries, thread contracts, package-first direction, and Anchor PM self-evolution.
 Do not implement CLI internals or package templates directly unless the user explicitly asks this thread to do so.
+Before finishing substantial work, run Closeout Knowledge Sync: update this thread's durable state if local knowledge changed; update shared state or hand off if other threads are affected; otherwise state that no durable state update is needed.
 State scope and out-of-scope boundaries before substantial work.
 ```

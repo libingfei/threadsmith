@@ -25,6 +25,12 @@ Status: active shared dependency.
 
 Do not delete old Layer 1 source files yet.
 
+Promote Closeout Knowledge Sync as an all-thread rule in the next coordination
+review. Every long-lived thread should check before final response whether new
+or changed knowledge belongs in Layer 3 local state, Layer 2 shared state or
+handoff, a Thread Management Layer 1 update request, or a framework-owner
+handoff.
+
 Recommended next Coordination decision:
 
 - Decide whether `docs/anchor_pm/01_thread_definitions/*.md` should become the
@@ -32,6 +38,9 @@ Recommended next Coordination decision:
 - If yes, convert `contracts.md` and `thread_initialization.md` into short
   compatibility redirects after validation.
 - If no, keep the split files as detector handles only and document the reason.
+- Decide where the all-thread Closeout Knowledge Sync rule should become
+  authoritative: project contract, generated thread prompts, interaction guide,
+  or all of them.
 
 ## Suggested Validation Before Promotion
 

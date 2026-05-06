@@ -51,6 +51,14 @@ This means this repository uses its own minimal Anchor PM structure and now cont
 - Updated public install prompts to use
   `https://github.com/libingfei/threadsmith` and package directory
   `packages/anchor-pm-1.0-standard` instead of a local development package path.
+- Promoted Closeout Knowledge Sync as a core all-thread workflow in product
+  state, interaction guidance, internal function spec, detector product docs,
+  and current project thread initialization prompts.
+- Defined Reanchor Start and Closeout Knowledge Sync as symmetric lifecycle
+  hooks: read/refresh/confirm before work, then write/handoff durable knowledge
+  before reply.
+- Added `docs/anchor_pm/mvp_manual_test_protocol.md` so the full MVP manual
+  validation flow is available from the public repository.
 
 ## Reanchor Requirement
 

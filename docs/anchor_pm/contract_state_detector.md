@@ -32,6 +32,20 @@ Reanchor should feel automatic to users.
   version, thread contracts, and current thread state file.
 - Chat output should show only the minimal anchor result unless blocked.
 
+## Lifecycle Symmetry
+
+Anchor PM has a symmetric thread lifecycle:
+
+- Start hook: `Reanchor Start` runs before substantial work. It reads or
+  refreshes changed knowledge and confirms the current boundary.
+- End hook: `Closeout Knowledge Sync` runs before the final response. It writes
+  back local durable knowledge, updates shared state, or produces handoffs.
+
+The detector exists to make both sides cheap and deterministic. Over many
+conversation rounds, the start hook imports relevant anchor changes and the end
+hook exports durable new knowledge. Without the end hook, anchors stop evolving;
+without the start hook, threads reason from stale boundaries.
+
 ## State Model
 
 The detector compares the thread's last known anchor state with the current
@@ -261,11 +275,16 @@ At closeout:
 
 ```text
 Closeout:
-  1. If this thread learned durable local information, update Layer 3.
-  2. If this thread changed something other threads depend on, update Layer 2 or
+  1. Run Closeout Knowledge Sync before the final response.
+  2. If this thread learned durable local information, update Layer 3.
+  3. If this thread changed something other threads depend on, update Layer 2 or
      produce a handoff that names the affected thread state.
-  3. If the work implies thread-definition changes, hand off to
+  4. If the work implies thread-definition changes, hand off to
      Thread Management instead of editing Layer 1 directly.
+  5. If the work implies framework-level behavior changes, hand off to
+     Coordination or the owning framework thread.
+  6. If no durable or shared knowledge changed, state that no closeout state
+     update is needed.
 ```
 
 This preserves the main product promise: ordinary specialist threads keep a
