@@ -37,9 +37,15 @@ Status: active shared dependency.
   subsystem or the user asks for it.
 - User-facing install proposals should hide verbose internal safety constraints
   and package execution details unless the user asks.
+- User-visible thread names must follow the selected install prompt language.
+  For the Chinese root prompt, thread names should be Chinese while technical
+  terms such as Sans-IO, CLI, HTTP, and API may remain in English.
 - "Install docs only; do not update AGENTS.md" should not appear as a default
   approval option. If AGENTS handling is blocked, the package should describe
   the consequence and ask for a specific merge/skip decision.
+- `Adjust AGENTS.md` should not appear as a default reply option. Default
+  options should be approve, adjust threads, and cancel; AGENTS-specific choices
+  should appear only as concrete decisions when a real conflict or risk exists.
 - Every generated long-lived thread prompt must include Closeout Knowledge Sync:
   before final response after substantial work, the thread checks whether new or
   changed knowledge belongs in its own Layer 3 state, a Layer 2 shared-state

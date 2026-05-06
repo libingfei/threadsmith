@@ -32,9 +32,15 @@ Status: active shared dependency.
 - User-facing install proposals should be concise confirmation pages. Safety
   constraints and package execution internals should stay internal unless the
   user asks.
+- User-visible thread names must follow the selected install prompt language.
+  For the Chinese install prompt, use Chinese thread names while preserving
+  conventional technical terms when useful.
 - Do not expose "install docs only; do not update AGENTS.md" as a normal
   approval option; if AGENTS handling is blocked, ask for a specific merge/skip
   decision and mark the consequence.
+- Do not expose `Adjust AGENTS.md` as a default reply option. The default
+  install choices should be approve, adjust threads, and cancel; AGENTS-specific
+  decisions should appear only when the inspected project requires one.
 - Generated thread prompts must include Closeout Knowledge Sync, not only
   Reanchor Start. At closeout, Codex should decide whether to update local
   Layer 3 state, Layer 2 shared state/handoff, request Thread Management for

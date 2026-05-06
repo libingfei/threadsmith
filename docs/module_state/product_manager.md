@@ -27,6 +27,11 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Installation proposals should stay user-facing and decision-focused; verbose
   internal safety explanations and package execution details should remain
   hidden unless the user asks.
+- User-visible thread names should use the same language as the selected
+  install prompt. Technical terms may remain in their conventional language.
+- Default install reply options should be limited to approve, adjust threads,
+  and cancel. `Adjust AGENTS.md` should not appear as a default option; AGENTS
+  conflicts should be handled as specific decisions only when needed.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
   is blocked, the installer should explain the consequence and ask for a
@@ -103,6 +108,12 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Need package release artifacts to stop exposing docs-only/no-AGENTS as a
   default approval path; partial integration should be exceptional and clearly
   labeled.
+- Need install prompt/package wording to enforce thread-name language matching
+  the selected install prompt, and remove `Adjust AGENTS.md` from default reply
+  options.
+- Need package release artifacts and future Skill behavior to mirror the
+  root-prompt rule that default reply options are approve, adjust threads, and
+  cancel; AGENTS decisions appear only as concrete approval risks when blocked.
 - Templates / Protocol and Codex Skill / Package Installer need to mirror the
   automatic Reanchor Start behavior into package workflow text and install
   prompts without making users run CLI commands.
@@ -217,3 +228,7 @@ Pre-test GitHub Sync Gate:
   shared-state recovery, and restore.
 - Added Pre-test GitHub Sync Gate so public GitHub-based tests use the latest
   prompts and validation docs rather than stale remote files.
+- Flask install retest showed improved module-based thread splitting, but
+  thread names were still English under the Chinese prompt and `Adjust
+  AGENTS.md` remained as a default reply option; recorded both as product
+  wording fixes.

@@ -61,7 +61,7 @@ packages/anchor-pm-1.0-standard
 - 本地中文安装提示词：[ANCHOR_PM_INSTALL_PROMPT.zh.md](/mnt/g/data/anchor_pm_framework/ANCHOR_PM_INSTALL_PROMPT.zh.md)
 - 还原脚本：[threadsmith_restore_tests.sh](/mnt/g/data/threadsmith_restore_tests.sh)
 
-如果测试 public GitHub 流程，先确认 GitHub 上的中文安装提示词已经包含最新规则：不要求首轮先命名线程、不默认 `Coordination / Implementation / Validation`、包含 `Closeout Knowledge Sync`。如果还没有 push 最新版本，先用本地中文安装提示词验证产品逻辑。
+如果测试 public GitHub 流程，先确认 GitHub 上的中文安装提示词已经包含最新规则：不要求首轮先命名线程、不默认 `Coordination / Implementation / Validation`、中文提示词下使用中文线程名、不默认提供 `调整 AGENTS.md`、包含 `Closeout Knowledge Sync`。如果还没有 push 最新版本，先用本地中文安装提示词验证产品逻辑。
 
 ## 安装后锚点文件快速入口
 
@@ -103,6 +103,7 @@ packages/anchor-pm-1.0-standard
 - 已有项目 / 新项目判断。
 - 推荐项目专家线程数量。
 - 每个专家线程的一句话职责。
+- 线程名称语言与安装提示词语言一致。中文提示词下应使用中文线程名称，技术名词可保留英文。
 - 线程拆分依据来自项目模块、子系统或长期维护边界。
 - 将创建 / 更新的文件数量。
 - [AGENTS.md](#安装后锚点文件快速入口) 处理策略。
@@ -114,6 +115,7 @@ packages/anchor-pm-1.0-standard
 - `Coordination / Implementation / Validation` 作为已有项目默认线程。
 - 大段 package 执行日志。
 - 大段内部安全声明。
+- `调整 AGENTS.md` 作为默认回复选项。
 - `只安装 docs，不更新 AGENTS.md` 这类默认半集成选项。
 - 要求用户手动填写 `<thread name>`、`{{...}}` 等占位符。
 
@@ -316,6 +318,7 @@ packages/anchor-pm-1.0-standard
 - 能从 public GitHub package source 完成安装，或在 GitHub 未更新时能从本地最新提示词完成同等安装。
 - 明确批准前没有任何文件写入。
 - 已有项目线程拆分来自真实模块/子系统，而不是通用职责桶。
+- 线程名称语言与安装提示词语言一致。
 - 安装后线程提示词可以直接复制使用，无用户占位符。
 - 每个线程提示词包含 `Reanchor Start` 和 `Closeout Knowledge Sync`。
 - 提出并解决一个小问题时，线程能在 scope 内读取最小必要上下文。
@@ -335,6 +338,8 @@ packages/anchor-pm-1.0-standard
 - 未批准前写入文件。
 - 修改业务代码、运行部署命令或运行迁移命令。
 - 已有项目安装提案使用 `Coordination / Implementation / Validation` 代替项目模块拆分。
+- 线程名称语言与安装提示词语言不一致。
+- 默认提供 `调整 AGENTS.md` 作为回复选项。
 - 用户可见安装提案大量解释内部安全约束、package 执行细节或 Anchor PM 内部机制。
 - 默认提供“只安装 docs，不更新 AGENTS.md”之类会让集成不生效或让用户难以理解后果的选项。
 - 线程没有 `Reanchor Start`。

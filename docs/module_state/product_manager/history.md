@@ -59,3 +59,7 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   shared-state recovery, and restore.
 - Added Pre-test GitHub Sync Gate so public GitHub-based tests use the latest
   prompts and validation docs rather than stale remote files.
+- Flask install retest showed improved module-based thread splitting, but
+  thread names were still English under the Chinese prompt and `Adjust
+  AGENTS.md` remained as a default reply option; recorded both as product
+  wording fixes.

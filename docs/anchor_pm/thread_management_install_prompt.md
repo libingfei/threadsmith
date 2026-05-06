@@ -21,9 +21,16 @@ Show in chat:
 - thread names with one-sentence responsibilities;
 - create/update counts;
 - `AGENTS.md` handling choice;
-- safety promise;
 - at most 1-3 approval-relevant risks;
 - explicit reply options in the user's conversation language.
+
+Thread names shown to users should follow the selected install prompt language.
+For Chinese prompts, use Chinese thread names while preserving technical terms
+such as Sans-IO, CLI, HTTP, and API when useful.
+
+Default reply options should be limited to approve, adjust threads, and cancel.
+Do not expose `Adjust AGENTS.md` as a default option; AGENTS-specific decisions
+belong in the approval-risk area only when the inspected project requires one.
 
 Link or write to generated files:
 

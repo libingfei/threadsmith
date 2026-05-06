@@ -17,6 +17,12 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Need package release artifacts to stop exposing docs-only/no-AGENTS as a
   default approval path; partial integration should be exceptional and clearly
   labeled.
+- Need install prompt/package wording to enforce thread-name language matching
+  the selected install prompt, and remove `Adjust AGENTS.md` from default reply
+  options.
+- Need package release artifacts and future Skill behavior to mirror the
+  root-prompt rule that default reply options are approve, adjust threads, and
+  cancel; AGENTS decisions appear only as concrete approval risks when blocked.
 - Templates / Protocol and Codex Skill / Package Installer need to mirror
   automatic Reanchor Start behavior into package workflow text and install
   prompts without making users run CLI commands.

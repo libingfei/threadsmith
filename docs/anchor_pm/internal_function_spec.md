@@ -104,6 +104,7 @@ Outputs Before Approval:
 - Target project path.
 - Detected project type: `existing project` or `new project`.
 - Recommended project specialist thread count and thread names.
+- Thread-name language follows the selected install prompt language.
 - One-sentence module/subsystem responsibility per specialist thread.
 - File create/update summary.
 - `AGENTS.md` handling recommendation.
@@ -113,7 +114,6 @@ Outputs Before Approval:
 - Localized reply options such as:
   - `Approve install`
   - `Adjust threads: ...`
-  - `Adjust AGENTS.md: ...`
   - `Cancel`
 
 Outputs After Approval:
@@ -218,6 +218,8 @@ Acceptance:
 
 - Thread count is minimal.
 - User does not fill `<thread name>`, `<thread_file>`, or similar placeholders.
+- User-visible thread names use the same language as the selected install
+  prompt, while technical terms may remain in their conventional language.
 - Thread boundaries are easy to read.
 - Cross-boundary work has a handoff path.
 - Existing projects receive module/subsystem-based specialist threads, not
@@ -231,6 +233,8 @@ Failure Signals:
 - Installer collapses most business code into one broad `Implementation` thread
   when observable module boundaries exist.
 - Installer presents generic starter threads as discovered project structure.
+- Installer generates thread names in the wrong language for the selected
+  install prompt.
 - Threads are added for hypothetical future work.
 - User cannot distinguish two thread responsibilities.
 - The generated prompts contain unresolved placeholders.

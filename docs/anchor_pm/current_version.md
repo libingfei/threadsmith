@@ -59,6 +59,9 @@ This means this repository uses its own minimal Anchor PM structure and now cont
   before reply.
 - Added `docs/anchor_pm/mvp_manual_test_protocol.md` so the full MVP manual
   validation flow is available from the public repository.
+- Tightened install proposal UX: user-visible thread names follow the selected
+  install prompt language, and `Adjust AGENTS.md` is no longer a default reply
+  option.
 
 ## Reanchor Requirement
 

@@ -39,3 +39,6 @@ Key memory:
   then restore the repo.
 - Before the user tests from GitHub, sync the repository first. Stale remote
   prompts invalidate install-flow test results.
+- User-visible thread names must follow the selected install prompt language.
+  AGENTS.md handling belongs in the proposal risk/decision area only when it is
+  approval-relevant; do not expose `Adjust AGENTS.md` as a default reply option.

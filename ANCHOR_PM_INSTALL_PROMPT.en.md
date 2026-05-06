@@ -40,6 +40,7 @@ boundaries.
 Language:
 
 - Reply to me in English.
+- User-visible thread names must be in English. Keep technical terms as needed.
 - Project files and generated Anchor PM documents may use English unless I ask otherwise.
 
 User-facing output:
@@ -57,6 +58,8 @@ Thread-splitting principles:
   configuration, and CI signals.
 - Recommended threads should be named around target-project modules,
   subsystems, or durable maintenance boundaries, not around Anchor PM internals.
+- Thread-name language must follow the selected install prompt language. With
+  this English prompt, generate English thread names.
 - Do not recommend a `Coordination` thread for an ordinary target project.
   Thread management is handled by this current conversation and should not count
   as a business specialist thread.
@@ -110,7 +113,6 @@ Needs your decision:
 Reply options:
 - Approve install
 - Adjust threads: ...
-- Adjust AGENTS.md: ...
 - Cancel
 
 Decision details:

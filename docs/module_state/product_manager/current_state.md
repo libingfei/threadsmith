@@ -33,6 +33,11 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Installation proposals should stay user-facing and decision-focused; verbose
   internal safety explanations and package execution details should remain
   hidden unless the user asks.
+- User-visible thread names should use the same language as the selected
+  install prompt. Technical terms may remain in their conventional language.
+- Default install reply options should be limited to approve, adjust threads,
+  and cancel. `Adjust AGENTS.md` should not appear as a default option; AGENTS
+  conflicts should be handled as specific decisions only when needed.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
   is blocked, the installer should explain the consequence and ask for a

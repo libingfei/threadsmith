@@ -10,3 +10,6 @@ Current entries:
   it produced generic Coordination / Implementation / Validation threads for an
   existing project, required a pre-named conversation, showed too much internal
   safety explanation, and offered a confusing docs-only/no-AGENTS option.
+- Flask install retest still had a language/option defect: Chinese install
+  prompt output used English thread names and exposed `Adjust AGENTS.md` as a
+  default reply option.
