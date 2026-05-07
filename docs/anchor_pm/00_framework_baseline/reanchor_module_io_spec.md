@@ -190,34 +190,40 @@ validation
 
 Rules:
 
-- `ordinary_thread_start` confirms Layer 0 through Layer 3 status, then reads
-  only changed, unknown, unreadable, inbound, or task-relevant files.
+- `ordinary_thread_start` is invoked inside the lightweight Anchor Gate. It
+  confirms Layer 0 through Layer 3 status, then reads only changed, unknown,
+  unreadable, inbound, or task-relevant files.
 - `periodic_reanchor` runs every 10 conversation rounds and confirms all
   registered layer fingerprints.
-- `ordinary_thread_closeout` plans Layer 3 updates for local durable memory and
-  Layer 2 updates or handoffs for cross-thread impact.
+- `ordinary_thread_closeout` is invoked inside the Knowledge Sync Gate. It plans
+  Layer 3 updates for local durable memory and Layer 2 updates or handoffs for
+  cross-thread impact only when durable knowledge changed.
 - `thread_management` may inspect all Layer 1 thread definitions.
 - `framework_upgrade` may inspect Layer 0 and approved Layer 1 regeneration
   outputs.
 - `cross_thread_handoff` inspects named Layer 2 dependency files and named Layer
   3 source/target files.
 
-## Lifecycle Symmetry
+## Lightweight Gate Model
 
 `ordinary_thread_start` and `ordinary_thread_closeout` are paired lifecycle
 operations.
 
-- `ordinary_thread_start` is the read-side hook before work: compare
+- `ordinary_thread_start` is the Anchor Gate read side before work: compare
   fingerprints, return changed/unknown anchors, and tell Codex which files must
   be read before substantial reasoning.
-- `ordinary_thread_closeout` is the write-side hook before final response:
-  classify durable changes into Layer 3 local memory, Layer 2 shared state,
-  Thread Management Layer 1 requests, framework-owner handoffs, or no durable
-  update.
+- `ordinary_thread_closeout` is the Knowledge Sync Gate write side before final
+  response: classify durable changes into Layer 3 local memory, Layer 2 shared
+  state, Thread Management Layer 1 requests, framework-owner handoffs, or no
+  durable update.
 
-The system only improves over long conversations if both hooks run. Start
-without closeout refreshes stale context but never captures new corrections.
-Closeout without start risks preserving conclusions made from stale anchors.
+The system only improves over long conversations if both gates run. Anchor Gate
+without Knowledge Sync Gate refreshes stale context but never captures new
+corrections. Knowledge Sync Gate without Anchor Gate risks preserving
+conclusions made from stale anchors.
+Both gates should default to silent/no-write/minimal-read behavior; they
+escalate only when changed, unknown, blocked, conflicting, degraded, or
+durability-relevant.
 
 ## Registry File Entry
 
@@ -430,10 +436,11 @@ Checkpoint rules:
 
 ## Closeout Input
 
-Every substantial long-lived thread should run Closeout Knowledge Sync before
-the final response. Closeout uses the same request envelope plus
-durable-change events. If no durable or shared knowledge changed, the caller may
-record no events and report that no closeout state update is needed.
+Every substantial long-lived thread should run Knowledge Sync Gate before the
+final response. Closeout uses the same request envelope plus durable-change
+events. If no durable or shared knowledge changed, the caller may record no
+events and should not spend visible chat space on closeout status unless the
+user asked for it.
 
 ```json
 {

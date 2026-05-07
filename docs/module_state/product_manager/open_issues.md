@@ -24,8 +24,8 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   root-prompt rule that default reply options are approve, adjust threads, and
   cancel; AGENTS decisions appear only as concrete approval risks when blocked.
 - Templates / Protocol and Codex Skill / Package Installer need to mirror
-  automatic Reanchor Start behavior into package workflow text and install
-  prompts without making users run CLI commands.
+  automatic lightweight Anchor Gate behavior into package workflow text and
+  install prompts without making users run CLI commands.
 - Package release artifacts still contain older read-first reanchor wording in
   `packages/*/workflows/reanchor.md` and related templates; this is assigned to
   Templates / Protocol rather than Product Manager direct edits.
@@ -33,7 +33,9 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   entrypoint; until that exists, automatic rereading is only a degraded fallback
   and does not satisfy the product requirement.
 - Templates / Protocol and Codex Skill / Package Installer need to ensure every
-  generated thread prompt includes Closeout Knowledge Sync, not only Reanchor
-  Start.
+  generated thread prompt includes Knowledge Sync Gate as well as Anchor Gate.
+- Templates / Protocol and Codex Skill / Package Installer need to include User
+  Delta Triage inside a lightweight Anchor Gate in generated thread prompts and
+  interaction guides, not as a verbose standalone step.
 - Need to track recurring first-time-user confusion as product requirements, not
   ad hoc discussion.

@@ -63,3 +63,14 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   thread names were still English under the Chinese prompt and `Adjust
   AGENTS.md` remained as a default reply option; recorded both as product
   wording fixes.
+- Added User Delta Triage as the pre-reanchor intake step: explicit durable user
+  corrections should be classified before reanchor so stale anchors do not
+  override the newest user intent; closeout remains necessary for knowledge
+  learned during execution.
+- Compressed anchor lifecycle into `Anchor Gate` and `Knowledge Sync Gate` so
+  ordinary turns do not lose context space to process. Default gate behavior is
+  silent, no-write, and minimal-read.
+- Updated root English and Chinese install prompts to require generated thread
+  prompts and interaction docs to use lightweight `Anchor Gate` and
+  `Knowledge Sync Gate` semantics, even if package templates still contain older
+  standalone Reanchor/Closeout wording.

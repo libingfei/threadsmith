@@ -24,14 +24,13 @@ Core user value:
 
 Lifecycle model:
 
-- `Reanchor Start` is the pre-work read side: detect changed anchor knowledge,
-  refresh only required context, and confirm the thread boundary before
-  substantial reasoning.
-- `Closeout Knowledge Sync` is the pre-response write side: classify new or
-  changed durable knowledge and update local state, shared state, or handoff
-  before the final answer.
-- The two hooks are symmetric. Reanchor without closeout makes anchors stale
-  over time; closeout without reanchor risks writing from stale context.
+- `Anchor Gate` runs before substantial work. It combines user-delta triage and
+  Reanchor Start, but defaults to no write, no full reread, and no visible
+  process explanation.
+- `Knowledge Sync Gate` runs before the final answer. It updates local state,
+  shared state, or handoff only when durable knowledge changed.
+- Gate handling should stay smaller than task handling. It escalates only for
+  changed, unknown, blocked, conflicting, or durable user-correction cases.
 
 ## Module Map
 
@@ -43,9 +42,10 @@ User README / Prompt Entry
   -> Anchor File Generator
   -> AGENTS.md Integration
   -> Post-Install Thread Creation Guide
+  -> Anchor Gate
   -> Contract Version / Reanchor State Detector
   -> Reanchor / Handoff / Status Workflows
-  -> Closeout Knowledge Sync
+  -> Knowledge Sync Gate
   -> Validation / Feedback Loop
 ```
 
@@ -425,7 +425,72 @@ Failure Signals:
 - No callable detector command/tool exists, so sessions rely on fallback anchor
   rereads rather than programmatic anchoring.
 
-## 9. Reanchor Workflow
+## 9. Anchor Gate Workflow
+
+Owner: Product Manager for UX and priority semantics; Templates / Protocol for
+prompt wording; Reanchor Detector Core for future machine-readable pending
+delta support.
+
+Purpose: keep pre-work anchor handling correct but cheap. The gate prevents
+stale anchors from overriding a fresh user correction, then runs Reanchor Start
+only as far as needed for the task.
+
+Inputs:
+
+- Latest user message.
+- Current thread identity and ownership boundaries.
+- Known Layer 0 through Layer 3 ownership rules.
+- Existing anchor state, when needed to apply a safe update.
+
+Outputs:
+
+- One of:
+  - no visible anchor action needed;
+  - safe local Layer 3 update or staged patch before reanchor;
+  - Layer 2 shared-state update or handoff before reanchor;
+  - pending high-priority user delta to carry into Reanchor Start;
+  - minimal required-read list from the detector or fallback;
+  - confirmation or owner-thread handoff for scope/framework changes.
+
+Decision Rules:
+
+- Default to no anchor write, no full reread, and no visible explanation.
+- Apply this only to explicit durable user corrections, rule changes,
+  preferences, or cross-thread facts. Ordinary task instructions do not become
+  durable anchors by default.
+- The latest user correction is a high-priority pending delta for the current
+  turn. Do not let older anchor text silently override it.
+- If the current thread owns the relevant state and the change is low-risk,
+  update or stage the anchor before Reanchor Start.
+- If the change affects Layer 0, Layer 1, another thread's Layer 3, or unclear
+  shared state, create a handoff or ask for confirmation instead of silently
+  editing.
+- If the user correction conflicts with current anchors, surface the conflict
+  briefly and treat the user correction as pending until reconciled.
+- Show an anchor status line only when changed, blocked, unknown, degraded, or
+  conflict-relevant.
+- Anchor Gate cost should stay below task cost; if it expands, collapse to a
+  handoff or confirmation instead of spending the turn on process.
+
+Acceptance:
+
+- User-discovered product or workflow corrections are not lost behind old
+  reanchor output.
+- Pre-work writes remain sparse and ownership-safe.
+- The thread can distinguish durable corrections from transient task
+  instructions.
+- Normal turns proceed directly to the actual task without visible ritual.
+
+Failure Signals:
+
+- A thread reanchors into old rules and then ignores the user's explicit
+  correction from the same message.
+- Every user comment creates state churn.
+- The gate output consumes more visible chat than the task itself.
+- A thread rewrites scope, framework rules, or another thread's state without
+  ownership or confirmation.
+
+## 10. Reanchor Workflow
 
 Owner: Templates / Protocol; Coordination for version semantics.
 
@@ -462,19 +527,19 @@ Failure Signals:
 - Thread works outside contract without handoff.
 - Reanchor requires reading a document pile.
 
-## 10. Closeout Knowledge Sync Workflow
+## 11. Knowledge Sync Gate Workflow
 
 Owner: Templates / Protocol for default workflow text; Product Manager for UX;
 Reanchor Detector Core for future programmatic closeout planning; Coordination
 for cross-thread policy.
 
 Purpose: ensure every long-lived thread checks whether the conversation created
-new durable knowledge or changed existing knowledge before the final response.
+new durable knowledge or changed existing knowledge before the final response,
+without turning every response into process output.
 
-This is the symmetric write-side counterpart to `Reanchor Start`. Reanchor
-loads changed knowledge before work; closeout preserves newly produced knowledge
-before reply. Together they let Anchor PM improve as conversation rounds
-accumulate.
+This is the write-side counterpart to Anchor Gate. Anchor Gate keeps the thread
+fresh before work; Knowledge Sync Gate preserves only durable new knowledge
+before reply.
 
 Inputs:
 
@@ -487,7 +552,7 @@ Inputs:
 Outputs:
 
 - One of:
-  - no durable state update needed;
+  - no durable state update needed, with no visible note by default;
   - Layer 3 local-memory update for the current thread;
   - Layer 2 shared-state update or directed handoff for affected threads;
   - handoff to Thread Management for Layer 1 thread-definition changes;
@@ -507,6 +572,9 @@ Decision Rules:
   owning framework thread.
 - Temporary observations, unverified guesses, and one-off task details should
   not be promoted into durable state unless they affect future work.
+- If no durable or shared knowledge changed, do not spend visible chat space on
+  closeout status unless the user asked for it.
+- Knowledge Sync Gate cost should stay below task-result explanation cost.
 
 Acceptance:
 
@@ -516,6 +584,7 @@ Acceptance:
 - Shared knowledge reaches affected threads without forcing them to reread all
   thread-local files.
 - State files stay sparse; they do not become full chat transcripts.
+- Normal turns with no durable change finish without visible closeout ritual.
 
 Failure Signals:
 
@@ -524,8 +593,9 @@ Failure Signals:
 - A cross-thread dependency changes but no Layer 2 update or handoff is made.
 - A thread silently changes its own scope or another thread's scope.
 - State files accumulate transient discussion instead of durable facts.
+- Closeout narration crowds out the actual answer.
 
-## 11. Handoff Workflow
+## 12. Handoff Workflow
 
 Owner: Templates / Protocol.
 
@@ -557,7 +627,7 @@ Failure Signals:
 - Handoff includes unconfirmed inference as fact.
 - Handoff is too vague for target thread to act.
 
-## 12. Status / Drift / Review Workflows
+## 13. Status / Drift / Review Workflows
 
 Owner: Dogfood / Validation for evidence; Coordination for rule changes;
 Templates / Protocol for workflow text.
@@ -589,7 +659,7 @@ Failure Signals:
 - Review findings directly mutate contracts without Coordination review.
 - UX confusion is dismissed as user error.
 
-## 13. Validation Criteria
+## 14. Validation Criteria
 
 Anchor PM should continue development only if evidence supports real AI coding
 experience improvement.

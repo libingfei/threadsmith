@@ -57,20 +57,19 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Contract state detector monitoring scope should distinguish framework baseline, thread definition, cross-thread shared state, thread local memory, Anchor PM development-only files, and business files that should not trigger reanchor by default.
 - Contract state detector monitoring should be modeled as a horizontally extensible four-layer tree with task-specific refresh profiles instead of one flat monitored-file list.
 - Contract state detector monitoring should use a four-layer product model: Layer 0 framework baseline, Layer 1 thread definition, Layer 2 cross-thread shared state, and Layer 3 thread local memory. Non-thread-management threads should confirm all four layer states at conversation start, then read only changed or task-relevant layers. At closeout, they should update Layer 3 for durable local knowledge and Layer 2 or handoff when other threads are affected; Layer 0 and Layer 1 changes belong to framework upgrade or Thread Management flows.
-- Closeout Knowledge Sync is a core Anchor PM workflow for every long-lived
-  thread: before final response after substantial work, the thread must decide
-  whether new or changed knowledge belongs in its own Layer 3 state, a Layer 2
-  shared-state file/handoff, a Thread Management Layer 1 update request, or a
-  framework-owner handoff. If nothing durable changed, it should state that no
-  durable state update is needed.
-- Reanchor Start and Closeout Knowledge Sync are symmetric lifecycle hooks:
-  Reanchor Start is the pre-work read/refresh/boundary-confirmation side;
-  Closeout Knowledge Sync is the pre-response write/propagation side. Anchor PM
-  only evolves across conversation rounds when both hooks run consistently.
+- Anchor handling should use lightweight gates, not visible process. `Anchor
+  Gate` runs before work and combines user-delta triage with Reanchor Start.
+  `Knowledge Sync Gate` runs before final response and updates or hands off only
+  durable knowledge.
+- Default gate behavior is no anchor write, no full reread, and no process
+  explanation. Escalate only for changed, unknown, blocked, conflicting,
+  degraded, cross-thread, or durable-correction cases.
+- Stale anchors should not override fresh user corrections in the same turn, but
+  ordinary task instructions should not become durable anchors by default.
 - MVP manual validation must test the full lifecycle, not only installation:
   project adoption, module/subsystem thread generation, thread prompt creation,
-  Reanchor Start, scoped issue solving, handoff, Closeout Knowledge Sync,
-  shared-state recovery, and repository restore.
+  Anchor Gate, scoped issue solving, handoff, Knowledge Sync Gate, shared-state
+  recovery, and repository restore.
 - Before the user starts any public GitHub-based test, Product Manager should
   run a Pre-test GitHub Sync Gate: check for local changes, commit the intended
   changes, push to `origin/main`, verify remote HEAD, and tell the user which
@@ -115,8 +114,8 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   root-prompt rule that default reply options are approve, adjust threads, and
   cancel; AGENTS decisions appear only as concrete approval risks when blocked.
 - Templates / Protocol and Codex Skill / Package Installer need to mirror the
-  automatic Reanchor Start behavior into package workflow text and install
-  prompts without making users run CLI commands.
+  automatic lightweight Anchor Gate behavior into package workflow text and
+  install prompts without making users run CLI commands.
 - Package release artifacts still contain older read-first reanchor wording in
   `packages/*/workflows/reanchor.md` and related templates; this is assigned to
   Templates / Protocol rather than Product Manager direct edits.
@@ -124,20 +123,26 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   entrypoint; until that exists, automatic rereading is only a degraded fallback
   and does not satisfy the product requirement.
 - Templates / Protocol and Codex Skill / Package Installer need to ensure every
-  generated thread prompt includes Closeout Knowledge Sync, not only Reanchor
-  Start.
+  generated thread prompt includes Knowledge Sync Gate as well as Anchor Gate.
+- Templates / Protocol and Codex Skill / Package Installer need to include
+  same-turn user correction handling inside a lightweight Anchor Gate in
+  generated thread prompts and interaction guides, not as a verbose standalone
+  step.
 - Need to track recurring first-time-user confusion as product requirements, not ad hoc discussion.
 
 ## Runbook
 
 Before substantial product-flow work:
 
-1. Run Reanchor Start automatically.
-2. Use the detector if available.
-3. If unavailable, report the degraded state, then read `AGENTS.md`,
+1. Run Anchor Gate silently unless changed, blocked, unknown, conflicting, or
+   degraded.
+2. Inside the gate, classify explicit durable user corrections or update
+   requests before Reanchor Start; write/stage only safe owned changes.
+3. Use the detector if available.
+4. If unavailable, report the degraded state, then read `AGENTS.md`,
    `docs/anchor_pm/current_version.md`,
    `docs/anchor_pm/contracts.md`, and this file.
-4. Show a short anchor-state line before continuing.
+5. Keep anchor handling below the task budget; do not explain unchanged gates.
 
 When evaluating a user flow:
 
@@ -161,7 +166,8 @@ PM Review Gate before declaring an install or workflow acceptable:
    reduce context scope or repeated explanation, mark the result as retry or
    blocked even if every checklist field exists.
 6. If this review changes product behavior, update this thread state before
-   final response or explicitly state why no durable state update is needed.
+   final response; otherwise keep Knowledge Sync Gate silent unless status was
+   requested.
 
 Pre-test GitHub Sync Gate:
 
@@ -232,3 +238,14 @@ Pre-test GitHub Sync Gate:
   thread names were still English under the Chinese prompt and `Adjust
   AGENTS.md` remained as a default reply option; recorded both as product
   wording fixes.
+- Added User Delta Triage as the pre-reanchor intake step: explicit durable user
+  corrections should be classified before reanchor so stale anchors do not
+  override the newest user intent; closeout remains necessary for knowledge
+  learned during execution.
+- Compressed anchor lifecycle into `Anchor Gate` and `Knowledge Sync Gate` so
+  ordinary turns do not lose context space to process. Default gate behavior is
+  silent, no-write, and minimal-read.
+- Updated root English and Chinese install prompts to require generated thread
+  prompts and interaction docs to use lightweight `Anchor Gate` and
+  `Knowledge Sync Gate` semantics, even if package templates still contain older
+  standalone Reanchor/Closeout wording.

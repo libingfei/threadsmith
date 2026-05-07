@@ -73,6 +73,26 @@ Thread-splitting principles:
 - For a new or empty project, provisional starter threads are acceptable, but
   label them as adjustable.
 
+Thread prompt and interaction guide rules:
+
+- Every long-lived thread prompt generated in docs/anchor_pm/thread_initialization.md
+  must include lightweight `Anchor Gate` and `Knowledge Sync Gate` wording.
+- If package templates or docs still describe `Reanchor Start` / `Closeout
+  Knowledge Sync` as standalone long-form steps, compress them into the
+  lightweight gate semantics below instead of exposing process logs to the user.
+- Recommended pre-work gate sentence:
+  `Before work, run Anchor Gate silently unless changed, blocked, unknown, conflicting, or degraded.`
+- Recommended pre-response gate sentence:
+  `Before final response, run Knowledge Sync Gate: update or hand off only durable local or shared knowledge; otherwise keep the gate silent.`
+- `Anchor Gate` defaults to no anchor write, no full reread, and no process
+  explanation. Escalate only when changed, blocked, unknown, conflicting,
+  degraded, or when the user gives an explicit durable correction.
+- `Knowledge Sync Gate` writes or reports only durable local knowledge, shared
+  knowledge, or handoff. If nothing durable changed, keep it silent; do not emit
+  a fixed `no durable state update needed` closeout line by default.
+- Visible anchor-gate content must stay shorter than the actual task answer. Do
+  not let Anchor PM process crowd out the business task.
+
 AGENTS.md handling:
 
 - If AGENTS.md does not exist, propose creating it.

@@ -22,29 +22,33 @@ Read only the anchors whose state changed, and treat unknown state as changed.
 
 Reanchor should feel automatic to users.
 
-- Codex triggers `Reanchor Start` before substantial work in a long-lived Anchor
-  PM thread.
+- Codex runs a lightweight `Anchor Gate` before substantial work in a long-lived
+  Anchor PM thread.
+- The gate checks for explicit durable user corrections, rule updates,
+  preferences, or cross-thread facts, then runs Reanchor Start only as far as
+  needed for the task.
 - The user should not be asked to run a CLI command manually.
 - If a detector command/tool is available, Codex runs it and follows
   `required_reads`, `blocked_by`, and `next_action`.
 - If no detector command/tool is available, Codex reports a degraded/unavailable
   anchor state, then performs the compatibility fallback: read the project
   version, thread contracts, and current thread state file.
-- Chat output should show only the minimal anchor result unless blocked.
+- Chat output should stay silent for unchanged anchor checks and show only a
+  minimal status when changed, unknown, blocked, conflicting, or degraded.
 
 ## Lifecycle Symmetry
 
-Anchor PM has a symmetric thread lifecycle:
+Anchor PM has two lightweight gates:
 
-- Start hook: `Reanchor Start` runs before substantial work. It reads or
-  refreshes changed knowledge and confirms the current boundary.
-- End hook: `Closeout Knowledge Sync` runs before the final response. It writes
-  back local durable knowledge, updates shared state, or produces handoffs.
+- `Anchor Gate` runs before substantial work. It handles same-turn user deltas,
+  reads or refreshes changed knowledge, and confirms the current boundary.
+- `Knowledge Sync Gate` runs before the final response. It writes back local
+  durable knowledge, updates shared state, or produces handoffs only when needed.
 
-The detector exists to make both sides cheap and deterministic. Over many
-conversation rounds, the start hook imports relevant anchor changes and the end
-hook exports durable new knowledge. Without the end hook, anchors stop evolving;
-without the start hook, threads reason from stale boundaries.
+The detector exists to make both gates cheap and deterministic. Over many
+conversation rounds, the first gate protects newest user intent and imports
+relevant anchor changes, while the second exports durable new knowledge. If gate
+handling crowds out the actual task, the product has failed its UX budget.
 
 ## State Model
 
@@ -274,8 +278,8 @@ protects context size.
 At closeout:
 
 ```text
-Closeout:
-  1. Run Closeout Knowledge Sync before the final response.
+Knowledge Sync Gate:
+  1. Run before the final response after substantial work.
   2. If this thread learned durable local information, update Layer 3.
   3. If this thread changed something other threads depend on, update Layer 2 or
      produce a handoff that names the affected thread state.
@@ -283,8 +287,8 @@ Closeout:
      Thread Management instead of editing Layer 1 directly.
   5. If the work implies framework-level behavior changes, hand off to
      Coordination or the owning framework thread.
-  6. If no durable or shared knowledge changed, state that no closeout state
-     update is needed.
+  6. If no durable or shared knowledge changed, keep the gate silent unless the
+     user asked for status.
 ```
 
 This preserves the main product promise: ordinary specialist threads keep a

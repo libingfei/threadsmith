@@ -24,21 +24,24 @@ Key memory:
 - PM validation must evaluate semantic product value, not checklist field
   presence. A proposal that is structurally complete but gives the wrong thread
   model, impossible user steps, or confusing options is a product failure.
-- Durable PM behavior changes must be written into thread state before closeout;
-  otherwise reanchor cannot carry the correction into future work.
-- Closeout Knowledge Sync is not PM-specific. Every long-lived thread must
-  check before final response whether new or changed knowledge belongs in local
-  Layer 3 state, Layer 2 shared state/handoff, a Thread Management Layer 1
+- Durable PM behavior changes must be written into thread state, but no-change
+  closeout should stay silent unless status was requested.
+- Knowledge Sync Gate is not PM-specific. Every long-lived thread must check
+  before final response whether new or changed durable knowledge belongs in
+  local Layer 3 state, Layer 2 shared state/handoff, a Thread Management Layer 1
   update request, or a framework-owner handoff.
-- Reanchor Start and Closeout Knowledge Sync are a symmetric pair: read changed
-  knowledge and confirm boundaries before work; write or hand off new durable
-  knowledge before reply. Without both, anchors do not continuously improve.
+- Anchor Gate and Knowledge Sync Gate are a pair: read only necessary changed
+  knowledge before work; write or hand off only durable new knowledge before
+  reply. Without both, anchors do not continuously improve.
 - MVP validation should follow the same lifecycle: install anchors, create
-  specialist thread, run Reanchor Start, solve a scoped problem, hand off
-  cross-boundary work, run Closeout Knowledge Sync, verify shared-state recovery,
+  specialist thread, run Anchor Gate, solve a scoped problem, hand off
+  cross-boundary work, run Knowledge Sync Gate, verify shared-state recovery,
   then restore the repo.
 - Before the user tests from GitHub, sync the repository first. Stale remote
   prompts invalidate install-flow test results.
 - User-visible thread names must follow the selected install prompt language.
   AGENTS.md handling belongs in the proposal risk/decision area only when it is
   approval-relevant; do not expose `Adjust AGENTS.md` as a default reply option.
+- Use lightweight gates: Anchor Gate before work and Knowledge Sync Gate before
+  final response. Default is silent/no-write/minimal-read; escalate only when
+  changed, unknown, blocked, conflicting, degraded, or durability-relevant.

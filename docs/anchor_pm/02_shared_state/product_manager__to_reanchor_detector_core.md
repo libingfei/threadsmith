@@ -26,14 +26,20 @@ Status: active shared dependency.
   too large or volatile.
 - Long-lived threads should run a periodic reanchor check every 10 conversation
   rounds.
-- Closeout Knowledge Sync should be supported as a first-class operation:
+- Knowledge Sync Gate should be supported as a first-class operation:
   every long-lived thread needs to classify closeout changes into Layer 3 local
   memory, Layer 2 shared state/handoff, Thread Management Layer 1 update
   request, framework-owner handoff, or no durable update.
-- Reanchor Detector Core should model `ordinary_thread_start` and
-  `ordinary_thread_closeout` as symmetric lifecycle operations: start imports
-  changed anchor knowledge before work; closeout exports newly durable knowledge
-  before reply.
+- Reanchor Detector Core should support a lightweight Anchor Gate before work
+  and Knowledge Sync Gate before final response. Normal unchanged gates should
+  produce no visible process output.
+- The start path should support same-turn user deltas inside Anchor Gate. A fresh
+  explicit user correction should be carried as a pending high-priority delta or
+  reflected in a safe owned anchor update before the detector computes required
+  reads.
+- Detector interface design should consider a future `pending_user_deltas` or
+  equivalent field so stale anchors do not silently override same-turn user
+  corrections.
 - Reanchor should be triggered by Codex before substantial work; users should
   not be asked to run a detector or CLI command manually.
 - The target behavior is programmatic anchoring, not automatic full rereading:

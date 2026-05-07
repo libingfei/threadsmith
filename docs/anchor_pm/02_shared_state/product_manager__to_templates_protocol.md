@@ -46,17 +46,15 @@ Status: active shared dependency.
 - `Adjust AGENTS.md` should not appear as a default reply option. Default
   options should be approve, adjust threads, and cancel; AGENTS-specific choices
   should appear only as concrete decisions when a real conflict or risk exists.
-- Every generated long-lived thread prompt must include Closeout Knowledge Sync:
-  before final response after substantial work, the thread checks whether new or
-  changed knowledge belongs in its own Layer 3 state, a Layer 2 shared-state
-  file or handoff, a Thread Management Layer 1 update request, or a
-  framework-owner handoff.
-- The generated interaction guide should treat Closeout Knowledge Sync as
-  mandatory all-thread behavior, parallel to Reanchor Start.
-- Wording should present Reanchor Start and Closeout Knowledge Sync as symmetric
-  lifecycle hooks: start reads changed knowledge and confirms boundaries before
-  work; closeout writes or hands off new durable knowledge before the final
-  reply.
+- Every generated long-lived thread prompt should include a lightweight Anchor
+  Gate before work and Knowledge Sync Gate before final response. The gates
+  should default to silent/no-write/minimal-read behavior.
+- Anchor Gate should include same-turn user correction handling and Reanchor
+  Start, but should not be exposed as multiple user-visible steps.
+- Knowledge Sync Gate should update or hand off only durable local/shared
+  knowledge; no durable change means no visible closeout note by default.
+- Wording should enforce an anchor budget: gate handling must not crowd out the
+  actual task response.
 
 ## Target Next Step
 
@@ -70,8 +68,8 @@ Additional locations needing owner-thread review after the Flask install
 dry-run include `packages/*/templates/thread_initialization.template.md`,
 `packages/*/workflows/new_project_bootstrap.md`,
 `packages/*/workflows/existing_project_adoption.md`, and package
-`INSTALL_PROMPT.md` files. Closeout Knowledge Sync also needs mirroring into
-`packages/*/templates/interaction_guide.template.md` and any generated
-per-thread prompt text.
+`INSTALL_PROMPT.md` files. Anchor Gate and Knowledge Sync Gate wording needs
+mirroring into `packages/*/templates/interaction_guide.template.md` and any
+generated per-thread prompt text.
 
 Do not change detector internals or CLI packaging here.

@@ -62,6 +62,10 @@ This means this repository uses its own minimal Anchor PM structure and now cont
 - Tightened install proposal UX: user-visible thread names follow the selected
   install prompt language, and `Adjust AGENTS.md` is no longer a default reply
   option.
+- Compressed thread lifecycle into lightweight gates: `Anchor Gate` before work
+  and `Knowledge Sync Gate` before final response. Default behavior should be
+  silent, no-write, and minimal-read unless changed, blocked, unknown,
+  conflicting, degraded, or durability-relevant.
 
 ## Reanchor Requirement
 

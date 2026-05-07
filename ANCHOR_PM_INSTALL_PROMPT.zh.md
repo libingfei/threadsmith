@@ -65,6 +65,22 @@ packages/anchor-pm-1.0-standard
   或用户明确要求。
 - 对新项目或空项目，可以使用临时 starter threads，但必须标记为可后续调整。
 
+线程提示词和交互文档规则：
+
+- 生成的 docs/anchor_pm/thread_initialization.md 中，每个长期线程提示词必须包含
+  轻量 `Anchor Gate` 和 `Knowledge Sync Gate`。
+- 如果 package 模板或文档仍把 `Reanchor Start` / `Closeout Knowledge Sync`
+  写成独立长流程，请按下面的轻量门控语义压缩，不要把它们展开成用户可见流程日志。
+- 每个线程提示词的前置门控建议使用：
+  `Before work, run Anchor Gate silently unless changed, blocked, unknown, conflicting, or degraded.`
+- 每个线程提示词的后置门控建议使用：
+  `Before final response, run Knowledge Sync Gate: update or hand off only durable local or shared knowledge; otherwise keep the gate silent.`
+- `Anchor Gate` 默认不写锚点、不全文重读、不解释流程；只在 changed / blocked /
+  unknown / conflicting / degraded 或用户明确提出持久纠偏时放大。
+- `Knowledge Sync Gate` 只在产生持久本地知识、共享知识或 handoff 时写入或说明；
+  没有持久变化时保持静默，不要输出 `no durable state update needed` 之类的固定收尾。
+- 锚点门控的可见内容必须短于实际任务回答；不要让 Anchor PM 流程淹没业务任务。
+
 AGENTS.md 处理：
 
 - 如果 AGENTS.md 不存在，提议创建。

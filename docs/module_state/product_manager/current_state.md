@@ -91,20 +91,17 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Contract state detector monitoring should use a four-layer product model:
   Layer 0 framework baseline, Layer 1 thread definition, Layer 2 cross-thread
   shared state, and Layer 3 thread local memory.
-- Closeout Knowledge Sync is a core Anchor PM workflow for every long-lived
-  thread: before final response after substantial work, the thread must decide
-  whether new or changed knowledge belongs in its own Layer 3 state, a Layer 2
-  shared-state file/handoff, a Thread Management Layer 1 update request, or a
-  framework-owner handoff. If nothing durable changed, it should state that no
-  durable state update is needed.
-- Reanchor Start and Closeout Knowledge Sync are symmetric lifecycle hooks:
-  Reanchor Start is the pre-work read/refresh/boundary-confirmation side;
-  Closeout Knowledge Sync is the pre-response write/propagation side. Anchor PM
-  only evolves across conversation rounds when both hooks run consistently.
+- Anchor handling should use lightweight gates, not visible process. `Anchor
+  Gate` runs before work and combines user-delta triage with Reanchor Start.
+  `Knowledge Sync Gate` runs before final response and updates or hands off only
+  durable knowledge.
+- Default gate behavior is no anchor write, no full reread, and no process
+  explanation. Escalate only for changed, unknown, blocked, conflicting,
+  degraded, cross-thread, or durable-correction cases.
 - MVP manual validation must test the full lifecycle, not only installation:
   project adoption, module/subsystem thread generation, thread prompt creation,
-  Reanchor Start, scoped issue solving, handoff, Closeout Knowledge Sync,
-  shared-state recovery, and repository restore.
+  Anchor Gate, scoped issue solving, handoff, Knowledge Sync Gate, shared-state
+  recovery, and repository restore.
 - Before the user starts any public GitHub-based test, Product Manager should
   run a Pre-test GitHub Sync Gate: check for local changes, commit the intended
   changes, push to `origin/main`, verify remote HEAD, and tell the user which
@@ -120,9 +117,9 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   it should return machine-readable refresh decisions and a short chat-facing
   summary.
 - Reanchor should be productized as automatic Codex behavior, not a user action:
-  before substantial work, Codex runs Reanchor Start, uses the detector if
+  before substantial work, Codex runs Anchor Gate, uses the detector if
   available, falls back to reading required anchors only as a degraded
-  compatibility path if unavailable, and shows only a short anchor-state line.
+  compatibility path if unavailable, and stays silent for unchanged gates.
 - Programmatic reanchor is the target behavior: Codex should receive a
   machine-readable detector result and read only `required_reads`; automatic
   full anchor rereading is not considered a completed implementation.

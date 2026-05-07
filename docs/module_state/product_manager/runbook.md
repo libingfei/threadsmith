@@ -6,12 +6,15 @@ Thread: `Product Manager`
 
 Before substantial product-flow work:
 
-1. Run Reanchor Start automatically.
-2. Use the detector if available.
-3. If unavailable, report the degraded state, then read `AGENTS.md`,
+1. Run Anchor Gate silently unless changed, blocked, unknown, conflicting, or
+   degraded.
+2. Inside the gate, classify explicit durable user corrections or update
+   requests before Reanchor Start; write/stage only safe owned changes.
+3. Use the detector if available.
+4. If unavailable, report the degraded state, then read `AGENTS.md`,
    `docs/anchor_pm/current_version.md`,
    `docs/anchor_pm/contracts.md`, and `docs/module_state/product_manager.md`.
-4. Show a short anchor-state line before continuing.
+5. Keep anchor handling below the task budget; do not explain unchanged gates.
 
 For reanchor-model work:
 
@@ -35,7 +38,8 @@ PM Review Gate before declaring an install or workflow acceptable:
    reduce context scope or repeated explanation, mark the result as retry or
    blocked even if every checklist field exists.
 6. If this review changes product behavior, update thread state before final
-   response or explicitly state why no durable state update is needed.
+   response; otherwise keep Knowledge Sync Gate silent unless status was
+   requested.
 
 Pre-test GitHub Sync Gate:
 

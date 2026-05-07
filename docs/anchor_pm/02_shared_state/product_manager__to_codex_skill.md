@@ -41,19 +41,21 @@ Status: active shared dependency.
 - Do not expose `Adjust AGENTS.md` as a default reply option. The default
   install choices should be approve, adjust threads, and cancel; AGENTS-specific
   decisions should appear only when the inspected project requires one.
-- Generated thread prompts must include Closeout Knowledge Sync, not only
-  Reanchor Start. At closeout, Codex should decide whether to update local
-  Layer 3 state, Layer 2 shared state/handoff, request Thread Management for
-  Layer 1 changes, or state that no durable update is needed.
-- Skill/installer guidance should frame Reanchor Start and Closeout Knowledge
-  Sync as symmetric lifecycle hooks: read before work, write or hand off before
-  reply.
+- Generated thread prompts should include a lightweight Anchor Gate before work
+  and Knowledge Sync Gate before final response. The gates should default to
+  silent/no-write/minimal-read behavior.
+- Anchor Gate includes same-turn user correction handling and Reanchor Start,
+  but should not be exposed as multiple user-visible steps.
+- Knowledge Sync Gate updates or hands off only durable local/shared knowledge;
+  no durable change means no visible closeout note by default.
+- Skill/installer guidance should enforce an anchor budget: gate handling must
+  not crowd out the actual task response.
 
 ## Target Next Step
 
 Update install prompt behavior and any future Skill guidance so automatic
-Reanchor Start is included in generated thread prompts without adding a user
-manual step, and so existing-project thread proposals are module/subsystem based
-instead of generic role based. Include Closeout Knowledge Sync in the generated
-thread behavior so knowledge updates become durable instead of remaining only in
-chat history.
+Anchor Gate is included in generated thread prompts without adding a user manual
+step, and so existing-project thread proposals are module/subsystem based
+instead of generic role based. Include Knowledge Sync Gate in the generated
+thread behavior so durable updates do not remain only in chat history, while
+normal turns stay silent when no state change is needed.

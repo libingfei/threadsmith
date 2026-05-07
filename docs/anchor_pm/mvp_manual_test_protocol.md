@@ -8,10 +8,10 @@ MVP 核心链路：
 接入项目
 -> 生成项目专家线程
 -> 提出一个问题
--> Reanchor Start：工作前读取更新知识、确认边界
+-> Anchor Gate：工作前轻量处理用户纠偏和必要锚点刷新
 -> 在线程边界内解决问题
 -> 必要时 handoff
--> Closeout Knowledge Sync：回复前写回或传播新知识
+-> Knowledge Sync Gate：回复前只在必要时写回或传播新知识
 -> 下一轮从更新后的锚点继续
 ```
 
@@ -23,7 +23,7 @@ MVP 核心链路：
 - 安装前必须有确认提案，未批准前不得写入。
 - 线程必须按目标项目模块/子系统/长期维护边界生成。
 - 生成的线程提示词必须可直接复制使用。
-- 每个长期线程必须包含 `Reanchor Start` 和 `Closeout Knowledge Sync`。
+- 每个长期线程必须包含轻量 `Anchor Gate` 和 `Knowledge Sync Gate`。
 - 能完成一个小问题的 read-only 解决链路，并把必要知识同步到合适锚点。
 
 本轮不把程序化 `anchorpm reanchor` 作为 blocker。若 detector/CLI 不可用，线程可以走降级读取路径，但必须明确表现为 degraded fallback，不能声称程序化锚定已完成。
@@ -61,7 +61,7 @@ packages/anchor-pm-1.0-standard
 - 本地中文安装提示词：[ANCHOR_PM_INSTALL_PROMPT.zh.md](/mnt/g/data/anchor_pm_framework/ANCHOR_PM_INSTALL_PROMPT.zh.md)
 - 还原脚本：[threadsmith_restore_tests.sh](/mnt/g/data/threadsmith_restore_tests.sh)
 
-如果测试 public GitHub 流程，先确认 GitHub 上的中文安装提示词已经包含最新规则：不要求首轮先命名线程、不默认 `Coordination / Implementation / Validation`、中文提示词下使用中文线程名、不默认提供 `调整 AGENTS.md`、包含 `Closeout Knowledge Sync`。如果还没有 push 最新版本，先用本地中文安装提示词验证产品逻辑。
+如果测试 public GitHub 流程，先确认 GitHub 上的中文安装提示词已经包含最新规则：不要求首轮先命名线程、不默认 `Coordination / Implementation / Validation`、中文提示词下使用中文线程名、不默认提供 `调整 AGENTS.md`、包含轻量 `Anchor Gate` 和 `Knowledge Sync Gate`。如果还没有 push 最新版本，先用本地中文安装提示词验证产品逻辑。
 
 ## 安装后锚点文件快速入口
 
@@ -142,7 +142,7 @@ packages/anchor-pm-1.0-standard
 - 没有修改业务代码、测试、配置或原有项目文档正文。
 - [AGENTS.md](#安装后锚点文件快速入口) 不覆盖已有规则；若原来不存在，可以创建。
 - [thread_initialization.md](#安装后锚点文件快速入口) 中每个线程提示词可直接复制。
-- 每个线程提示词同时包含 `Reanchor Start` 和 `Closeout Knowledge Sync`。
+- 每个线程提示词同时包含 `Anchor Gate` 和 `Knowledge Sync Gate`。
 
 ### 3. 创建项目专家线程
 
@@ -153,14 +153,14 @@ packages/anchor-pm-1.0-standard
 第一轮输入：
 
 ```text
-请先说明你的 scope 和 out-of-scope。然后说明你在工作前会如何执行 Reanchor Start，以及回复前会如何执行 Closeout Knowledge Sync。
+请先说明你的 scope 和 out-of-scope。然后简短说明你在工作前如何执行 Anchor Gate，以及回复前如何执行 Knowledge Sync Gate。不要展开流程日志。
 ```
 
 通过标准：
 
 - 能说明自身职责边界。
-- 能说明前置 `Reanchor Start` 是读取/刷新更新知识并确认边界。
-- 能说明收尾 `Closeout Knowledge Sync` 是写回/传播新知识。
+- 能说明前置 `Anchor Gate` 默认静默、最小读取，只在用户明确纠偏、锚点变更/未知/冲突/降级时放大。
+- 能说明收尾 `Knowledge Sync Gate` 只在有持久知识时写回/传播；没有持久变化时不应占用明显回复空间。
 - 若 detector/CLI 不可用，能明确说明 degraded fallback，而不是声称程序化锚定完成。
 
 ### 4. 提出并解决一个小问题
@@ -176,7 +176,8 @@ packages/anchor-pm-1.0-standard
 - 不修改业务代码、测试、配置或普通项目文档。
 - 只读取与你 scope 相关的最小必要文件。
 - 给出 Observed / Inference / Unverified。
-- 如果发现一个对本线程未来有用的稳定知识，请在回复前执行 Closeout Knowledge Sync，并说明应该更新哪个 module_state 或共享锚点。
+- 如果发现一个对本线程未来有用的稳定知识，请在回复前执行 Knowledge Sync Gate，并说明应该更新哪个 module_state 或共享锚点。
+- 锚点门控说明必须短于实际任务回答；没有变化时不要输出长流程说明。
 ```
 
 通过标准：
@@ -186,7 +187,8 @@ packages/anchor-pm-1.0-standard
 - 能解决问题：给出相关文件、验证入口、风险边界。
 - 结论区分 `Observed / Inference / Unverified`。
 - 如果产生稳定知识，更新或建议更新本线程 Layer 3。
-- 如果没有稳定知识，明确说 `Closeout Knowledge Sync: no durable state update needed.`。
+- 如果没有稳定知识，可以不展示收尾状态；若用户要求状态，只需一句说明没有持久更新。
+- Anchor Gate / Knowledge Sync Gate 不应淹没实际任务内容。
 
 阻塞失败：
 
@@ -233,7 +235,7 @@ packages/anchor-pm-1.0-standard
 - 未批准前不写入。
 - 更新范围集中在 [contracts.md](#安装后锚点文件快速入口)、[thread_initialization.md](#安装后锚点文件快速入口)、相关 [module_state/](#安装后锚点文件快速入口) 或等价 Anchor PM 文件。
 - 新增 Documentation 线程提示词可直接复制。
-- 新增线程提示词包含 `Reanchor Start` 和 `Closeout Knowledge Sync`。
+- 新增线程提示词包含 `Anchor Gate` 和 `Knowledge Sync Gate`。
 - 不留下占位符。
 
 ### 7. 测试共享信息同步
@@ -256,7 +258,7 @@ packages/anchor-pm-1.0-standard
 - 声称程序化重锚完成但没有 detector/CLI。
 - 共享信息更新后无法被其他线程恢复。
 
-### 8. 测试 Closeout Knowledge Sync 对称闭环
+### 8. 测试 Knowledge Sync Gate 闭环
 
 在任意项目专家线程中输入：
 
@@ -267,7 +269,7 @@ packages/anchor-pm-1.0-standard
 3. Thread Management 的线程定义更新；
 4. 框架级规则更新。
 
-如果没有，请明确说明 Closeout Knowledge Sync: no durable state update needed.
+如果没有，只用一句话说明没有持久更新，不要展开流程。
 ```
 
 通过标准：
@@ -275,7 +277,7 @@ packages/anchor-pm-1.0-standard
 - 能把本地知识、共享知识、线程定义、框架规则分开。
 - 不把临时讨论写入长期状态。
 - 需要写入时能指出目标文件或 handoff 对象。
-- 与 `Reanchor Start` 形成对称解释：工作前读，回复前写。
+- 与 `Anchor Gate` 形成闭环：工作前轻量读/确认，回复前只写持久变化。
 
 ### 9. 记录验证结果并还原
 
@@ -320,11 +322,12 @@ packages/anchor-pm-1.0-standard
 - 已有项目线程拆分来自真实模块/子系统，而不是通用职责桶。
 - 线程名称语言与安装提示词语言一致。
 - 安装后线程提示词可以直接复制使用，无用户占位符。
-- 每个线程提示词包含 `Reanchor Start` 和 `Closeout Knowledge Sync`。
+- 每个线程提示词包含 `Anchor Gate` 和 `Knowledge Sync Gate`。
 - 提出并解决一个小问题时，线程能在 scope 内读取最小必要上下文。
+- 锚点门控默认静默、最小读取、无变化不写入；流程说明不淹没实际任务。
 - 跨边界事项能 handoff，不被一个线程全部吞掉。
 - 新增线程后，共享锚点能被新线程恢复。
-- Closeout Knowledge Sync 能判断本地 Layer 3、Layer 2 shared state、Thread Management、框架级 handoff 的归属。
+- Knowledge Sync Gate 能判断本地 Layer 3、Layer 2 shared state、Thread Management、框架级 handoff 的归属。
 - [AGENTS.md](#安装后锚点文件快速入口) 已存在时不被静默覆盖。
 - 还原脚本可以把测试项目恢复到 clean 状态。
 - 每个项目都完成验证记录。
@@ -342,9 +345,10 @@ packages/anchor-pm-1.0-standard
 - 默认提供 `调整 AGENTS.md` 作为回复选项。
 - 用户可见安装提案大量解释内部安全约束、package 执行细节或 Anchor PM 内部机制。
 - 默认提供“只安装 docs，不更新 AGENTS.md”之类会让集成不生效或让用户难以理解后果的选项。
-- 线程没有 `Reanchor Start`。
-- 线程没有 `Closeout Knowledge Sync`。
-- Closeout 产生长期知识但没有写入、建议写入或 handoff。
+- 线程没有 `Anchor Gate`。
+- 线程没有 `Knowledge Sync Gate`。
+- 锚点流程说明明显淹没实际任务回答。
+- Knowledge Sync Gate 产生长期知识但没有写入、建议写入或 handoff。
 - 大型项目安装提案变成难以评审的长篇审计报告。
 - 线程无法维持职责边界，或共享锚点更新后无法被其他线程恢复。
 
@@ -366,7 +370,7 @@ packages/anchor-pm-1.0-standard
 线程提示词:
 - 通过 / 需要重试 / 阻塞
 
-Reanchor Start:
+Anchor Gate:
 - 通过 / 需要重试 / 阻塞
 
 问题解决:
@@ -375,7 +379,7 @@ Reanchor Start:
 Handoff:
 - 通过 / 需要重试 / 阻塞
 
-Closeout Knowledge Sync:
+Knowledge Sync Gate:
 - 通过 / 需要重试 / 阻塞
 
 共享信息同步:
