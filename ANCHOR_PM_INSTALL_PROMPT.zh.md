@@ -107,15 +107,13 @@ AGENTS.md 处理：
 - <项目模块或子系统线程名>：一句话说明职责。
 - <项目模块或子系统线程名>：一句话说明职责。
 
-AGENTS.md：创建 / 追加 Anchor PM discovery section / 暂不修改，等待确认。
-
 回复：
 - 批准安装
 - 调整线程：...
 - 取消
 
 默认不要在主视图展示文件创建/更新数量、Observed、Inference、Needs
-Confirmation 或内部安全说明。
+Confirmation、AGENTS.md 处理详情或内部安全说明。
 
 如果确实有批准前必须知道的冲突或风险，只在主视图增加一行：
 
@@ -128,6 +126,7 @@ Confirmation 或内部安全说明。
 <summary>查看判断依据和文件变更</summary>
 
 - 创建/更新文件数量。
+- AGENTS.md 处理：创建 / 追加 Anchor PM discovery section / 暂不修改，等待确认。
 - Observed：简短直接事实。
 - Inference：简短拆分依据。
 - Needs Confirmation：不能未经确认写入项目规则的假设。

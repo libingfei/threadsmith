@@ -121,15 +121,14 @@ Threads:
 - <project module or subsystem thread name>: one sentence responsibility.
 - <project module or subsystem thread name>: one sentence responsibility.
 
-AGENTS.md: create / append Anchor PM discovery section / leave untouched pending confirmation.
-
 Reply:
 - Approve install
 - Adjust threads: ...
 - Cancel
 
 Do not show file create/update counts, Observed, Inference, Needs Confirmation,
-or internal safety constraints in the main view by default.
+AGENTS.md handling details, or internal safety constraints in the main view by
+default.
 
 If there is a conflict or risk the user must know before approving, add one
 main-view line only:
@@ -144,6 +143,8 @@ instead of expanding them into the main response:
 <summary>View rationale and file changes</summary>
 
 - File create/update counts.
+- AGENTS.md handling: create / append Anchor PM discovery section / leave
+  untouched pending confirmation.
 - Observed: short direct facts.
 - Inference: short rationale for the proposed split.
 - Needs Confirmation: assumptions that must not become project rules without approval.

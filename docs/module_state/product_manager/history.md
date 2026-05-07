@@ -78,3 +78,6 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   `Needs your decision`, and `Decision details` sections from the main proposal;
   optional rationale should move to a collapsed block or
   `docs/anchor_pm/install_decision_record.md`.
+- Removed `AGENTS.md` handling from the default install proposal main view. It
+  should appear only as a short risk/decision line when a real conflict or merge
+  choice requires user input; otherwise record it after approval.

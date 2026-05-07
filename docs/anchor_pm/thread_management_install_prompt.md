@@ -18,13 +18,13 @@ Show in chat:
 
 - target project path and detected type;
 - thread names with one-sentence responsibilities;
-- `AGENTS.md` handling choice;
 - explicit reply options in the user's conversation language.
 - at most one short approval-relevant risk line, only when needed.
 
 Do not show by default in the main proposal:
 
 - create/update counts;
+- `AGENTS.md` handling details;
 - `Observed / Inference / Needs Confirmation`;
 - internal safety constraints;
 - package execution details.

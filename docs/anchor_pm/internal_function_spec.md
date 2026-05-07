@@ -105,14 +105,14 @@ Outputs Before Approval:
 - Main visible proposal contains only:
   - target project path and detected type;
   - proposed project specialist thread names with one-sentence responsibilities;
-  - `AGENTS.md` handling recommendation;
   - localized reply options such as:
   - `Approve install`
   - `Adjust threads: ...`
   - `Cancel`
 - Thread-name language follows the selected install prompt language.
-- File create/update counts, `Observed`, `Inference`, and `Needs Confirmation`
-  should not appear in the main visible proposal by default.
+- File create/update counts, `AGENTS.md` handling details, `Observed`,
+  `Inference`, and `Needs Confirmation` should not appear in the main visible
+  proposal by default.
 - Approval-relevant conflicts or risks may appear as one short `Note` line.
 - Optional rationale should be omitted before approval unless there is a real
   approval-blocking risk or the user asks for it. If needed, use a collapsed
@@ -126,6 +126,7 @@ Outputs After Approval:
 - Approved files created.
 - Approved files updated.
 - Files intentionally left untouched.
+- `AGENTS.md` handling outcome.
 - Links to generated thread prompts and usage docs.
 - `docs/anchor_pm/install_decision_record.md` containing detailed rationale and
   file change information.

@@ -33,9 +33,9 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   and cancel. `Adjust AGENTS.md` should not appear as a default option; AGENTS
   conflicts should be handled as specific decisions only when needed.
 - Installation proposal main view should show only project path/type,
-  specialist thread list, `AGENTS.md` handling, and reply options. File counts,
-  `Observed / Inference / Needs Confirmation`, and long decision details belong
-  in an optional collapsed block or post-approval
+  specialist thread list, and reply options. File counts, `AGENTS.md` handling
+  details, `Observed / Inference / Needs Confirmation`, and long decision
+  details belong in an optional collapsed block or post-approval
   `docs/anchor_pm/install_decision_record.md`.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
@@ -258,3 +258,6 @@ Pre-test GitHub Sync Gate:
   `Needs your decision`, and `Decision details` sections from the main proposal;
   optional rationale should move to a collapsed block or
   `docs/anchor_pm/install_decision_record.md`.
+- Removed `AGENTS.md` handling from the default install proposal main view. It
+  should appear only as a short risk/decision line when a real conflict or merge
+  choice requires user input; otherwise record it after approval.
