@@ -32,6 +32,11 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Default install reply options should be limited to approve, adjust threads,
   and cancel. `Adjust AGENTS.md` should not appear as a default option; AGENTS
   conflicts should be handled as specific decisions only when needed.
+- Installation proposal main view should show only project path/type,
+  specialist thread list, `AGENTS.md` handling, and reply options. File counts,
+  `Observed / Inference / Needs Confirmation`, and long decision details belong
+  in an optional collapsed block or post-approval
+  `docs/anchor_pm/install_decision_record.md`.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
   is blocked, the installer should explain the consequence and ask for a
@@ -249,3 +254,7 @@ Pre-test GitHub Sync Gate:
   prompts and interaction docs to use lightweight `Anchor Gate` and
   `Knowledge Sync Gate` semantics, even if package templates still contain older
   standalone Reanchor/Closeout wording.
+- Simplified install proposal UX: removed default `Recommendation`, `Changes`,
+  `Needs your decision`, and `Decision details` sections from the main proposal;
+  optional rationale should move to a collapsed block or
+  `docs/anchor_pm/install_decision_record.md`.

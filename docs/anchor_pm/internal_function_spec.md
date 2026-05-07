@@ -100,21 +100,26 @@ Inputs:
 
 Outputs Before Approval:
 
-- Concise installation proposal, not a package execution log.
-- Target project path.
-- Detected project type: `existing project` or `new project`.
-- Recommended project specialist thread count and thread names.
-- Thread-name language follows the selected install prompt language.
-- One-sentence module/subsystem responsibility per specialist thread.
-- File create/update summary.
-- `AGENTS.md` handling recommendation.
-- 1-3 approval-relevant risks or decisions.
-- Internal safety constraints should not be expanded as a visible proposal
-  section unless the user asks.
-- Localized reply options such as:
+- Extremely concise installation proposal, not a package execution log or audit
+  report.
+- Main visible proposal contains only:
+  - target project path and detected type;
+  - proposed project specialist thread names with one-sentence responsibilities;
+  - `AGENTS.md` handling recommendation;
+  - localized reply options such as:
   - `Approve install`
   - `Adjust threads: ...`
   - `Cancel`
+- Thread-name language follows the selected install prompt language.
+- File create/update counts, `Observed`, `Inference`, and `Needs Confirmation`
+  should not appear in the main visible proposal by default.
+- Approval-relevant conflicts or risks may appear as one short `Note` line.
+- Optional rationale should be omitted before approval unless there is a real
+  approval-blocking risk or the user asks for it. If needed, use a collapsed
+  details block; after approval, write details to
+  `docs/anchor_pm/install_decision_record.md`.
+- Internal safety constraints should not be expanded as a visible proposal
+  section unless the user asks.
 
 Outputs After Approval:
 
@@ -122,6 +127,8 @@ Outputs After Approval:
 - Approved files updated.
 - Files intentionally left untouched.
 - Links to generated thread prompts and usage docs.
+- `docs/anchor_pm/install_decision_record.md` containing detailed rationale and
+  file change information.
 - Clear next step: create long-lived threads from
   `docs/anchor_pm/thread_initialization.md`.
 - Reminder that `Thread Management` remains available for future thread changes.

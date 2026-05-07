@@ -17,12 +17,21 @@ installation confirmation page, not as a technical audit log.
 Show in chat:
 
 - target project path and detected type;
-- recommended thread count;
 - thread names with one-sentence responsibilities;
-- create/update counts;
 - `AGENTS.md` handling choice;
-- at most 1-3 approval-relevant risks;
 - explicit reply options in the user's conversation language.
+- at most one short approval-relevant risk line, only when needed.
+
+Do not show by default in the main proposal:
+
+- create/update counts;
+- `Observed / Inference / Needs Confirmation`;
+- internal safety constraints;
+- package execution details.
+
+Omit optional rationale before approval unless there is a real approval-blocking
+risk or the user asks for it. If needed, use a collapsed block. After approval,
+write details to `docs/anchor_pm/install_decision_record.md`.
 
 Thread names shown to users should follow the selected install prompt language.
 For Chinese prompts, use Chinese thread names while preserving technical terms
@@ -38,6 +47,7 @@ Link or write to generated files:
 - thread boundaries in `docs/anchor_pm/contracts.md`;
 - daily usage guidance in `docs/anchor_pm/interaction_guide.md`;
 - version/install state in `docs/anchor_pm/current_version.md`;
+- detailed install rationale in `docs/anchor_pm/install_decision_record.md`;
 - long-term thread state in `docs/module_state/*.md`.
 
 Do not show by default:

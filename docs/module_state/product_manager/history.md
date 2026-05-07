@@ -74,3 +74,7 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   prompts and interaction docs to use lightweight `Anchor Gate` and
   `Knowledge Sync Gate` semantics, even if package templates still contain older
   standalone Reanchor/Closeout wording.
+- Simplified install proposal UX: removed default `Recommendation`, `Changes`,
+  `Needs your decision`, and `Decision details` sections from the main proposal;
+  optional rationale should move to a collapsed block or
+  `docs/anchor_pm/install_decision_record.md`.

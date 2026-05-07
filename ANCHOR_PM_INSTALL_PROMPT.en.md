@@ -105,40 +105,50 @@ AGENTS.md handling:
   - docs/module_state/
 - If there is a conflict or uncertainty, do not update AGENTS.md automatically. Show the conflict and ask for an explicit merge decision.
 
-The installation proposal must be concise and use this shape:
+The installation proposal must be extremely concise. The main view should show
+only what the user needs to approve, adjust, or cancel. Do not show
+`Recommendation`, `Changes`, `Needs your decision`, or `Decision details` as
+default large sections.
+
+Use this main-view shape:
 
 # Anchor PM Installation Proposal
 
-Project:
-- Path:
-- Detected type: existing project / new project
-
-Recommendation:
-- Keep this conversation as the thread-management entrypoint.
-- Create N project specialist threads.
+Project: <path> (existing project / new project)
 
 Threads:
 - <project module or subsystem thread name>: one sentence responsibility.
 - <project module or subsystem thread name>: one sentence responsibility.
 - <project module or subsystem thread name>: one sentence responsibility.
 
-Changes:
-- Create: X Anchor PM files.
-- Update: Y existing files.
-- AGENTS.md: create / append Anchor PM discovery section / leave untouched pending confirmation.
+AGENTS.md: create / append Anchor PM discovery section / leave untouched pending confirmation.
 
-Needs your decision:
-- List only the 1-3 decisions or risks that matter for approval.
-
-Reply options:
+Reply:
 - Approve install
 - Adjust threads: ...
 - Cancel
 
-Decision details:
-- Observed: short direct facts only.
-- Inference: short rationale for the proposed thread split.
+Do not show file create/update counts, Observed, Inference, Needs Confirmation,
+or internal safety constraints in the main view by default.
+
+If there is a conflict or risk the user must know before approving, add one
+main-view line only:
+
+Note: <one sentence approval-relevant risk>
+
+Do not output a details block by default. Only when there is a real conflict or
+risk, or when the user asks for rationale, put details in a collapsed block
+instead of expanding them into the main response:
+
+<details>
+<summary>View rationale and file changes</summary>
+
+- File create/update counts.
+- Observed: short direct facts.
+- Inference: short rationale for the proposed split.
 - Needs Confirmation: assumptions that must not become project rules without approval.
+
+</details>
 
 Do not make me fill in placeholders such as <thread name> or <thread_file>. Generate the final copy-paste-ready prompt text for each proposed thread in docs/anchor_pm/thread_initialization.md.
 
@@ -163,11 +173,16 @@ Links:
 - docs/anchor_pm/contracts.md
 - docs/anchor_pm/interaction_guide.md
 - docs/anchor_pm/current_version.md
+- docs/anchor_pm/install_decision_record.md
 
 Also report:
 - Files created.
 - Files updated.
 - Files intentionally left untouched.
+
+After installation, write detailed rationale and file changes to
+docs/anchor_pm/install_decision_record.md instead of putting long decision
+details into the chat response.
 
 After installation, stop the installation task. Do not continue optimizing the business project unless I explicitly ask.
 ```

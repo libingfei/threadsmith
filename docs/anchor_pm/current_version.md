@@ -66,6 +66,10 @@ This means this repository uses its own minimal Anchor PM structure and now cont
   and `Knowledge Sync Gate` before final response. Default behavior should be
   silent, no-write, and minimal-read unless changed, blocked, unknown,
   conflicting, degraded, or durability-relevant.
+- Simplified install proposal output: the main proposal should show only
+  project path/type, specialist threads, AGENTS.md handling, and reply options;
+  detailed rationale and file changes move to optional details or
+  `docs/anchor_pm/install_decision_record.md`.
 
 ## Reanchor Requirement
 

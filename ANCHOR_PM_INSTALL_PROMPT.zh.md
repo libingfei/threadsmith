@@ -93,40 +93,46 @@ AGENTS.md 处理：
   - docs/module_state/
 - 如果存在冲突或不确定性，不要自动更新 AGENTS.md。请展示冲突，并请求我明确选择合并方式。
 
-安装提案必须简洁，并使用这个结构：
+安装提案必须极简，主视图只展示用户做决定真正需要的信息。不要把
+`建议`、`变更`、`需要你决定`、`决策细节` 作为默认大段落展示。
+
+安装提案主视图使用这个结构：
 
 # Anchor PM 安装提案
 
-项目：
-- 路径：
-- 检测类型：已有项目 / 新项目
-
-建议：
-- 保留当前对话作为线程管理入口。
-- 创建 N 个项目专家线程。
+项目：<路径>（已有项目 / 新项目）
 
 线程：
 - <项目模块或子系统线程名>：一句话说明职责。
 - <项目模块或子系统线程名>：一句话说明职责。
 - <项目模块或子系统线程名>：一句话说明职责。
 
-变更：
-- 创建：X 个 Anchor PM 文件。
-- 更新：Y 个现有文件。
-- AGENTS.md：创建 / 追加 Anchor PM discovery section / 暂不修改，等待确认。
+AGENTS.md：创建 / 追加 Anchor PM discovery section / 暂不修改，等待确认。
 
-需要你决定：
-- 只列出 1-3 个真正影响批准的决定或风险。
-
-你可以回复：
+回复：
 - 批准安装
 - 调整线程：...
 - 取消
 
-决策细节：
-- Observed：只写简短的直接事实。
-- Inference：简短说明为什么建议这样拆分线程。
-- Needs Confirmation：列出不能在未确认时写入项目规则的假设。
+默认不要在主视图展示文件创建/更新数量、Observed、Inference、Needs
+Confirmation 或内部安全说明。
+
+如果确实有批准前必须知道的冲突或风险，只在主视图增加一行：
+
+注意：<一句话说明真正影响批准的风险>
+
+默认不要输出细节块。只有当存在真实冲突/风险，或用户明确要求查看依据时，
+才把细节放进一个折叠块，不要展开成大段正文：
+
+<details>
+<summary>查看判断依据和文件变更</summary>
+
+- 创建/更新文件数量。
+- Observed：简短直接事实。
+- Inference：简短拆分依据。
+- Needs Confirmation：不能未经确认写入项目规则的假设。
+
+</details>
 
 不要让我填写 <thread name>、<thread_file> 这类占位符。请在 docs/anchor_pm/thread_initialization.md 中生成每个建议线程的最终可复制提示词。
 
@@ -150,11 +156,15 @@ AGENTS.md 处理：
 - docs/anchor_pm/contracts.md
 - docs/anchor_pm/interaction_guide.md
 - docs/anchor_pm/current_version.md
+- docs/anchor_pm/install_decision_record.md
 
 同时报告：
 - 已创建的文件。
 - 已更新的文件。
 - 有意保持不变的文件。
+
+安装完成后，把详细判断依据和文件变更写入
+docs/anchor_pm/install_decision_record.md，而不是把长篇决策细节塞进聊天回复。
 
 安装任务到这里停止。除非我明确要求，否则不要继续优化业务项目。
 ```

@@ -101,17 +101,16 @@ packages/anchor-pm-1.0-standard
 
 - 当前项目路径。
 - 已有项目 / 新项目判断。
-- 推荐项目专家线程数量。
 - 每个专家线程的一句话职责。
 - 线程名称语言与安装提示词语言一致。中文提示词下应使用中文线程名称，技术名词可保留英文。
-- 线程拆分依据来自项目模块、子系统或长期维护边界。
-- 将创建 / 更新的文件数量。
 - [AGENTS.md](#安装后锚点文件快速入口) 处理策略。
-- 1-3 个真正需要用户决定的问题或风险。
-- `Observed / Inference / Needs Confirmation`，或等价中文结构。
+- 回复选项：`批准安装`、`调整线程：...`、`取消`。
 
 提案不应包含：
 
+- `建议`、`变更`、`需要你决定`、`决策细节` 作为默认大段落。
+- 文件创建/更新数量作为主视图内容。
+- `Observed / Inference / Needs Confirmation` 作为主视图内容；如需要，应折叠或写入安装后的细节文档。
 - `Coordination / Implementation / Validation` 作为已有项目默认线程。
 - 大段 package 执行日志。
 - 大段内部安全声明。
@@ -136,6 +135,7 @@ packages/anchor-pm-1.0-standard
 - [docs/anchor_pm/contracts.md](#安装后锚点文件快速入口)。
 - [docs/anchor_pm/interaction_guide.md](#安装后锚点文件快速入口)。
 - [docs/anchor_pm/current_version.md](#安装后锚点文件快速入口)。
+- `docs/anchor_pm/install_decision_record.md`，用于保存判断依据和文件变更细节。
 
 安装后检查：
 

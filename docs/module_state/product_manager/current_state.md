@@ -38,6 +38,11 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Default install reply options should be limited to approve, adjust threads,
   and cancel. `Adjust AGENTS.md` should not appear as a default option; AGENTS
   conflicts should be handled as specific decisions only when needed.
+- Installation proposal main view should show only project path/type,
+  specialist thread list, `AGENTS.md` handling, and reply options. File counts,
+  `Observed / Inference / Needs Confirmation`, and long decision details belong
+  in an optional collapsed block or post-approval
+  `docs/anchor_pm/install_decision_record.md`.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
   is blocked, the installer should explain the consequence and ask for a
