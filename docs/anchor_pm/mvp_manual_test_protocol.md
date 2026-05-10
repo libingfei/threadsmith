@@ -138,10 +138,12 @@ packages/anchor-pm-1.0-standard
 - 中文安装流程下，标题、说明和操作引导应使用中文，不应出现
   `Files Created` / `Files Updated` / `Next Thread Prompts` 这类英文主标题。
 - 第一屏应先明确安装成功，然后用一小段话说明用户得到了什么：
-  `.threadsmith/` 工作区、推荐项目专家线程、共享契约、轻量重锚和知识同步规则。
+  Threadsmith 工作区、推荐项目专家线程、共享契约、轻量重锚和知识同步规则。
 - 清晰的线程创建教学引导：保留当前对话作为线程管理入口；对每个推荐专家线程，在同一项目中新建 Codex 对话；复制该线程完整提示词作为第一条消息。
 - 直接展示每个推荐线程的完整可复制提示词，且提示词语言与安装语言一致。
-- 说明所有 Threadsmith 文件都集中在 `.threadsmith/` 下；没有用这些提示词创建的普通 Codex 对话不会自动进入 Threadsmith 体系。
+- 在推荐线程提示词之后说明所有 Threadsmith 文件都集中在 `.threadsmith/`
+  下；没有用这些提示词创建的普通 Codex 对话不会自动进入 Threadsmith
+  体系。
 - 说明当前对话是线程管理线程，可用于创建新线程、修改线程边界、删除线程、重新生成提示词、查询线程信息。
 - 如需要细节，应链接到 `.threadsmith/thread_initialization.md` 或
   `.threadsmith/install_decision_record.md`，而不是默认展示完整文件清单。
@@ -151,6 +153,7 @@ packages/anchor-pm-1.0-standard
 - 大段已创建/已更新/保持不变文件清单作为主要内容。
 - 要求用户打开多个内部文件后自己判断下一步。
 - 只链接 [thread_initialization.md](#安装后锚点文件快速入口) 但不直接给出推荐线程提示词。
+- 在开头功能简介和结尾隔离说明中重复同一句 `.threadsmith/` 目录位置。
 
 安装后检查：
 
