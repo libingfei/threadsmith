@@ -67,9 +67,15 @@ This means this repository uses its own minimal Anchor PM structure and now cont
   silent, no-write, and minimal-read unless changed, blocked, unknown,
   conflicting, degraded, or durability-relevant.
 - Simplified install proposal output: the main proposal should show only
-  project path/type, specialist threads, AGENTS.md handling, and reply options;
-  detailed rationale and file changes move to optional details or
+  project path/type, specialist threads, and reply options; `AGENTS.md`
+  handling appears only for real approval-blocking conflicts. Detailed
+  rationale and file changes move to optional details or
   `docs/anchor_pm/install_decision_record.md`.
+- Compressed root English and Chinese install prompts into under-20-line
+  launcher prompts that point Codex to the package source and package-internal
+  install instructions.
+- Added `templates/install_proposal.template.md` to the package structure so
+  the first install proposal uses a stable, minimal output shape.
 
 ## Reanchor Requirement
 

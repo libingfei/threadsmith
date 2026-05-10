@@ -16,6 +16,11 @@ additions or prompt regeneration. If the Codex client cannot name a thread
 before the first message, the user can paste the install prompt first and rename
 the conversation later if supported.
 
+Root install prompts are short launchers. Detailed install behavior and the
+fixed proposal shape live in the package, especially
+`packages/anchor-pm-1.0-standard/INSTALL_PROMPT.md` and
+`packages/anchor-pm-1.0-standard/templates/install_proposal.template.md`.
+
 ## Lightweight Anchor Gates
 
 Codex should run anchor handling as lightweight gates, not as visible process.

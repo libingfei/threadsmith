@@ -9,8 +9,8 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Need a real user-facing walkthrough from new target project to installed
   Anchor PM anchors using the language-specific root install prompt files.
 - Need Codex App testing of `Thread Management` install prompt.
-- Need Codex Skill / Package Installer and Templates / Protocol handoff to
-  mirror the new confirmation-page output shape into package release prompts.
+- Need Codex Skill / Package Installer to mirror the new confirmation-page
+  output shape from package release prompts.
 - Need Templates / Protocol and Codex Skill / Package Installer to replace
   generic Coordination / Implementation / Validation defaults for existing
   projects with module/subsystem-based thread generation.

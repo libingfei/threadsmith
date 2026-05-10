@@ -50,6 +50,9 @@ Status: active shared dependency.
   no durable change means no visible closeout note by default.
 - Skill/installer guidance should enforce an anchor budget: gate handling must
   not crowd out the actual task response.
+- Public root install prompts should stay under 20 lines and function as
+  package indexes. The detailed install behavior and fixed proposal shape live
+  in the package, especially `templates/install_proposal.template.md`.
 
 ## Target Next Step
 

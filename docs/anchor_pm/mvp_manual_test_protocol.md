@@ -58,10 +58,12 @@ packages/anchor-pm-1.0-standard
 - [Threadsmith GitHub 仓库](https://github.com/libingfei/threadsmith)
 - [标准安装包目录](https://github.com/libingfei/threadsmith/tree/main/packages/anchor-pm-1.0-standard)
 - [中文安装提示词](https://github.com/libingfei/threadsmith/blob/main/ANCHOR_PM_INSTALL_PROMPT.zh.md)
+- [安装提案模板](https://github.com/libingfei/threadsmith/blob/main/packages/anchor-pm-1.0-standard/templates/install_proposal.template.md)
 - 本地中文安装提示词：[ANCHOR_PM_INSTALL_PROMPT.zh.md](/mnt/g/data/anchor_pm_framework/ANCHOR_PM_INSTALL_PROMPT.zh.md)
+- 本地安装提案模板：[install_proposal.template.md](/mnt/g/data/anchor_pm_framework/packages/anchor-pm-1.0-standard/templates/install_proposal.template.md)
 - 还原脚本：[threadsmith_restore_tests.sh](/mnt/g/data/threadsmith_restore_tests.sh)
 
-如果测试 public GitHub 流程，先确认 GitHub 上的中文安装提示词已经包含最新规则：不要求首轮先命名线程、不默认 `Coordination / Implementation / Validation`、中文提示词下使用中文线程名、不默认提供 `调整 AGENTS.md`、包含轻量 `Anchor Gate` 和 `Knowledge Sync Gate`。如果还没有 push 最新版本，先用本地中文安装提示词验证产品逻辑。
+如果测试 public GitHub 流程，先确认 GitHub 上的中文安装提示词已经是短入口：提示词块不超过 20 行，只索引到 package source、package directory、`PACKAGE_MANIFEST.md`、`ACTIVE_INSTALL_PLAN.md`、`INSTALL_PROMPT.md` 和 `templates/install_proposal.template.md`。详细规则应在包内，而不是塞进根提示词。
 
 ## 安装后锚点文件快速入口
 
@@ -94,7 +96,7 @@ packages/anchor-pm-1.0-standard
 
 1. 在 Codex 中打开目标项目目录。
 2. 开启一个安装/线程管理对话。如果 Codex 客户端支持重命名，可以命名为 `线程管理`；如果不支持，直接继续。
-3. 粘贴 [中文安装提示词](https://github.com/libingfei/threadsmith/blob/main/ANCHOR_PM_INSTALL_PROMPT.zh.md) 的完整提示词。
+3. 粘贴 [中文安装提示词](https://github.com/libingfei/threadsmith/blob/main/ANCHOR_PM_INSTALL_PROMPT.zh.md) 中的短提示词块。
 4. 第一轮只观察安装提案，不批准。
 
 提案必须包含：
@@ -110,6 +112,7 @@ packages/anchor-pm-1.0-standard
 - `建议`、`变更`、`需要你决定`、`决策细节` 作为默认大段落。
 - 文件创建/更新数量作为主视图内容。
 - [AGENTS.md](#安装后锚点文件快速入口) 处理详情作为主视图内容，除非存在冲突或需要用户明确选择合并方式。
+- `AGENTS.md：创建` 或类似独立行作为主视图内容。
 - `Observed / Inference / Needs Confirmation` 作为主视图内容；如需要，应折叠或写入安装后的细节文档。
 - `Coordination / Implementation / Validation` 作为已有项目默认线程。
 - 大段 package 执行日志。
@@ -117,6 +120,8 @@ packages/anchor-pm-1.0-standard
 - `调整 AGENTS.md` 作为默认回复选项。
 - `只安装 docs，不更新 AGENTS.md` 这类默认半集成选项。
 - 要求用户手动填写 `<thread name>`、`{{...}}` 等占位符。
+
+如果提案形状出现漂移，先检查包内 [install_proposal.template.md](/mnt/g/data/anchor_pm_framework/packages/anchor-pm-1.0-standard/templates/install_proposal.template.md) 是否被读取并遵守。
 
 ### 2. 批准安装
 

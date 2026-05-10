@@ -9,6 +9,22 @@ README should link directly to language-specific copy targets for GitHub users.
 `ANCHOR_PM_INSTALL_PROMPT.md` may exist as a chooser page, but should not be the
 primary call to action when direct language links are available.
 
+## Root Prompt Rule
+
+Root install prompts are launchers, not full instruction manuals. Keep each
+language-specific root prompt under 20 lines and point Codex to the package
+source:
+
+- repository: `https://github.com/libingfei/threadsmith`
+- package directory: `packages/anchor-pm-1.0-standard`
+- required package files: `PACKAGE_MANIFEST.md`, `ACTIVE_INSTALL_PLAN.md`,
+  `INSTALL_PROMPT.md`
+- fixed proposal template: `templates/install_proposal.template.md`
+
+Detailed behavior belongs inside the package so public GitHub users copy a
+small stable prompt while package updates can improve the installer without
+expanding the root prompt.
+
 ## Product Output Rule
 
 The `Thread Management` installer should treat its first response as an
@@ -40,6 +56,9 @@ such as Sans-IO, CLI, HTTP, and API when useful.
 Default reply options should be limited to approve, adjust threads, and cancel.
 Do not expose `Adjust AGENTS.md` as a default option; AGENTS-specific decisions
 belong in the approval-risk area only when the inspected project requires one.
+
+The package must provide and follow `templates/install_proposal.template.md` so
+the proposal shape does not drift between tests.
 
 Link or write to generated files:
 

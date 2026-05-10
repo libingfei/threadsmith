@@ -13,3 +13,6 @@ Current entries:
 - Flask install retest still had a language/option defect: Chinese install
   prompt output used English thread names and exposed `Adjust AGENTS.md` as a
   default reply option.
+- Flask install retest also showed proposal-detail drift: a standalone
+  `AGENTS.md: create` line appeared in the main view. The proposal template now
+  forbids AGENTS handling in the main view unless it is approval-blocking.

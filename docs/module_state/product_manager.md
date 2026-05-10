@@ -8,6 +8,10 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 
 - Anchor PM 1.0 uses a Codex package-first integration flow.
 - The main user-facing entrypoints for target projects are repository-root language-specific copy targets such as `ANCHOR_PM_INSTALL_PROMPT.en.md` and `ANCHOR_PM_INSTALL_PROMPT.zh.md`.
+- Root install prompts should be short launchers, not full instruction manuals:
+  each language-specific prompt should stay under 20 lines and index into the
+  public package source, package directory, package install instructions, and
+  package proposal template.
 - Target project installation should produce a proposal before writing files.
 - The installation proposal should behave like a concise confirmation page, not a technical audit log.
 - Thread initialization prompts must be complete and copy-paste-ready; users should not fill in placeholders Codex can generate.
@@ -37,6 +41,10 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   details, `Observed / Inference / Needs Confirmation`, and long decision
   details belong in an optional collapsed block or post-approval
   `docs/anchor_pm/install_decision_record.md`.
+- Package release artifacts should include
+  `templates/install_proposal.template.md` as the fixed output contract for the
+  first install proposal so future prompt edits do not drift back to verbose
+  sections or stray `AGENTS.md` lines.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
   is blocked, the installer should explain the consequence and ask for a
@@ -105,7 +113,8 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 
 - Need a real user-facing walkthrough from new target project to installed Anchor PM anchors using the language-specific root install prompt files.
 - Need Codex App testing of `Thread Management` install prompt.
-- Need Codex Skill / Package Installer and Templates / Protocol handoff to mirror the new confirmation-page output shape into package release prompts.
+- Need Codex Skill / Package Installer to mirror the new confirmation-page
+  output shape from package release prompts.
 - Need Templates / Protocol and Codex Skill / Package Installer to replace
   generic Coordination / Implementation / Validation defaults for existing
   projects with module/subsystem-based thread generation.
@@ -261,3 +270,6 @@ Pre-test GitHub Sync Gate:
 - Removed `AGENTS.md` handling from the default install proposal main view. It
   should appear only as a short risk/decision line when a real conflict or merge
   choice requires user input; otherwise record it after approval.
+- Compressed root English and Chinese install prompts into short package-index
+  launchers and added a package-level install proposal template so public users
+  copy a small stable prompt while fixed output structure lives in the package.

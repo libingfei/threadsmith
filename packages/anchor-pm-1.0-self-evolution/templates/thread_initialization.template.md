@@ -4,15 +4,22 @@ This document tells users how many Codex threads to create and what prompt to pa
 
 ## Recommended Thread Count
 
-Start with 3 threads unless the project clearly needs more:
+For existing projects, derive threads from real project modules, subsystems, or
+durable maintenance boundaries.
 
-- `Coordination`
-- `Implementation`
-- `Validation`
+For new or nearly empty projects, start with a small adjustable set:
+
+- `Project Direction`
+- `Core Implementation`
+- `Quality and Release`
 
 Use up to 5 threads when responsibilities are clearly separate.
+Existing projects may need more than 5 when module boundaries are strong, but
+avoid speculative threads.
 
 Avoid creating speculative threads.
+Thread Management is handled by the installation conversation; do not include a
+default `Coordination` thread for ordinary target projects.
 
 ## Proposed Threads
 
@@ -29,6 +36,8 @@ For each thread, include:
 - the exact thread name;
 - the exact module state file path;
 - a one-sentence scope summary from `docs/anchor_pm/contracts.md`;
+- lightweight Anchor Gate behavior before work;
+- lightweight Knowledge Sync Gate behavior before final response;
 - the cross-thread handoff rule.
 
 {{THREAD_PROMPTS}}

@@ -55,6 +55,12 @@ Status: active shared dependency.
   knowledge; no durable change means no visible closeout note by default.
 - Wording should enforce an anchor budget: gate handling must not crowd out the
   actual task response.
+- Root install prompts should stay under 20 lines and only point Codex to the
+  public package source, package directory, package install instructions, and
+  package proposal template.
+- Package templates should include `templates/install_proposal.template.md` as
+  the stable first-response output contract so proposal sections do not drift
+  back to verbose audit-style content.
 
 ## Target Next Step
 
@@ -71,5 +77,10 @@ dry-run include `packages/*/templates/thread_initialization.template.md`,
 `INSTALL_PROMPT.md` files. Anchor Gate and Knowledge Sync Gate wording needs
 mirroring into `packages/*/templates/interaction_guide.template.md` and any
 generated per-thread prompt text.
+
+Product Manager has made a narrow package-surface update to unblock public
+testing: shortened root prompts, added `templates/install_proposal.template.md`,
+and updated standard install prompt/plan/workflow wording. Templates / Protocol
+should review and normalize these changes across future package releases.
 
 Do not change detector internals or CLI packaging here.

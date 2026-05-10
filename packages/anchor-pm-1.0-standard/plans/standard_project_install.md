@@ -22,7 +22,9 @@ Deploy the smallest useful Anchor PM coordination structure into the target proj
    - `workflows/new_project_bootstrap.md`
    - `checklists/safety_check.md`
    - `checklists/conclusion_check.md`
-4. Read templates only when preparing the proposal.
+4. Read `templates/install_proposal.template.md` before composing the first
+   user-visible proposal.
+5. Read other templates only when preparing approved file outputs.
 
 ## Phase 2: Audit Target
 
@@ -39,16 +41,19 @@ Output findings as:
 
 ## Phase 3: Propose Installation
 
-Before writing, output:
+Before writing, output the concise proposal defined in
+`templates/install_proposal.template.md`.
 
-- Proposed mode: existing or new.
-- Proposed thread list.
-- Files to create.
-- Files to update.
-- Existing rule files that will not be overwritten.
-- Conflicts requiring user choice.
-- Recommended thread count and complete per-thread initialization prompts.
-- Exact approval request.
+Main-view content is limited to:
+
+- target project path and detected type;
+- proposed project specialist threads with one-sentence responsibilities;
+- approval / adjust threads / cancel reply options.
+
+File counts, `AGENTS.md` handling, `Observed / Inference / Needs Confirmation`,
+and detailed rationale must stay out of the main view by default. Use a one-line
+risk only for approval-blocking conflicts. Put details in a collapsed block only
+when needed, then write the full decision record after approval.
 
 Default target files:
 
@@ -58,6 +63,7 @@ docs/anchor_pm/current_version.md
 docs/anchor_pm/contracts.md
 docs/anchor_pm/thread_initialization.md
 docs/anchor_pm/interaction_guide.md
+docs/anchor_pm/install_decision_record.md
 docs/anchor_pm/review_log.md
 docs/anchor_pm/simplification.md
 docs/module_state/<thread>.md

@@ -45,3 +45,6 @@ Key memory:
 - Use lightweight gates: Anchor Gate before work and Knowledge Sync Gate before
   final response. Default is silent/no-write/minimal-read; escalate only when
   changed, unknown, blocked, conflicting, degraded, or durability-relevant.
+- Root install prompts should stay under 20 lines and work as package-index
+  launchers. Fixed proposal shape belongs in
+  `templates/install_proposal.template.md`, not in the root prompt.

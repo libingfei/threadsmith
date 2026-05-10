@@ -18,21 +18,32 @@ Do not modify files during audit.
 
 ## Classify Findings
 
-Report:
+Keep findings internally while preparing the proposal:
 
 - `Observed`: direct file facts.
-- `Inference`: likely thread boundaries or project rules.
+- `Inference`: likely module/subsystem boundaries or project rules.
 - `Needs Confirmation`: anything that would affect formal contracts.
+
+Do not show these as default proposal sections. Put them in an optional details
+block only when they affect approval, or write them after approval to
+`docs/anchor_pm/install_decision_record.md`.
 
 ## Proposed Integration
 
 Prefer creating Anchor PM docs without replacing existing project rules.
 
-If `AGENTS.md` already exists, propose one of:
+For existing projects, propose project specialist threads from real modules,
+subsystems, runtime surfaces, documentation/support surfaces, and durable
+maintenance boundaries. Do not use generic `Coordination / Implementation /
+Validation` as the default thread set.
 
-- keep existing `AGENTS.md` and add a short Anchor PM section;
-- create a draft merge plan;
-- leave `AGENTS.md` untouched and install only `docs/anchor_pm/` files.
+If `AGENTS.md` already exists, inspect it for conflicts.
+
+- If there is no clear conflict, plan a short Anchor PM discovery section.
+- If there is a conflict or uncertainty, pause for a specific merge decision.
+- Do not expose docs-only/no-AGENTS as a default reply option.
+- Do not show `AGENTS.md` handling in the main proposal unless it creates an
+  approval-blocking risk.
 
 ## Stop Conditions
 

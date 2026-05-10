@@ -81,3 +81,6 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Removed `AGENTS.md` handling from the default install proposal main view. It
   should appear only as a short risk/decision line when a real conflict or merge
   choice requires user input; otherwise record it after approval.
+- Compressed root English and Chinese install prompts into short package-index
+  launchers and added a package-level install proposal template so public users
+  copy a small stable prompt while fixed output structure lives in the package.

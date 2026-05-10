@@ -69,6 +69,8 @@ Outputs:
 - User opens target project in Codex.
 - User creates `Thread Management` / `线程管理` thread.
 - User pastes one language-specific install prompt.
+- The root prompt acts as a package index and points Codex to package-internal
+  instructions and templates.
 
 Acceptance:
 
@@ -76,6 +78,9 @@ Acceptance:
 - No user-filled placeholders are required for the package path in released
   prompts.
 - README states the public package source used by the install prompts.
+- Each root install prompt stays under 20 lines.
+- Detailed install behavior lives in package files rather than in the root
+  prompt.
 - User can tell when Anchor PM is probably unnecessary.
 
 Failure Signals:
@@ -96,6 +101,8 @@ Inputs:
 - Package root.
 - `PACKAGE_MANIFEST.md`.
 - `ACTIVE_INSTALL_PLAN.md`.
+- `INSTALL_PROMPT.md`.
+- `templates/install_proposal.template.md`.
 - Referenced install plan, workflows, checklists, and templates.
 
 Outputs Before Approval:

@@ -20,6 +20,10 @@ Anchor PM to a new target project:
 - `ANCHOR_PM_INSTALL_PROMPT.zh.md`
 
 Choose the file that matches the user's normal Codex conversation.
+These root prompts should stay under 20 lines and act as launchers into the
+package. Detailed install behavior and the fixed proposal shape live in the
+package, especially `packages/anchor-pm-1.0-standard/INSTALL_PROMPT.md` and
+`packages/anchor-pm-1.0-standard/templates/install_proposal.template.md`.
 
 `Thread Management` should remain available after installation for future
 thread additions or prompt regeneration. If the Codex client cannot name a

@@ -10,6 +10,10 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - The main user-facing entrypoints for target projects are repository-root
   language-specific copy targets such as `ANCHOR_PM_INSTALL_PROMPT.en.md` and
   `ANCHOR_PM_INSTALL_PROMPT.zh.md`.
+- Root install prompts should be short launchers, not full instruction manuals:
+  each language-specific prompt should stay under 20 lines and index into the
+  public package source, package directory, package install instructions, and
+  package proposal template.
 - Target project installation should produce a proposal before writing files.
 - The installation proposal should behave like a concise confirmation page, not
   a technical audit log.
@@ -43,6 +47,10 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   details, `Observed / Inference / Needs Confirmation`, and long decision
   details belong in an optional collapsed block or post-approval
   `docs/anchor_pm/install_decision_record.md`.
+- Package release artifacts should include
+  `templates/install_proposal.template.md` as the fixed output contract for the
+  first install proposal so future prompt edits do not drift back to verbose
+  sections or stray `AGENTS.md` lines.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
   is blocked, the installer should explain the consequence and ask for a

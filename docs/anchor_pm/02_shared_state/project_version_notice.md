@@ -35,6 +35,9 @@ PM 1.0 package-first release.
   Templates / Protocol, and Codex Skill / Package Installer for turning
   Reanchor Start into programmatic anchoring with degraded fallback only when no
   detector entrypoint is callable.
+- Root install prompts are now short package-index launchers. The stable
+  installation proposal shape lives in package template
+  `templates/install_proposal.template.md`.
 
 ## Reanchor Meaning
 

@@ -1,67 +1,72 @@
-# Anchor PM 1.0 Thread Management Install Prompt
+# Anchor PM 1.0 Standard Install Instructions
 
-Use this prompt in a new Codex thread inside the target project. Name the thread `Thread Management` or `线程管理`.
+This file is package-internal guidance for Codex after a root install prompt points here.
+Do not ask the user to paste this full file unless debugging the package.
 
-```text
-You are the Anchor PM Thread Management thread for this project.
+## Required Behavior
 
-Integrate Anchor PM 1.0 into this project using the public GitHub package source below.
+1. Reply in the user's install-prompt language.
+2. Treat the current conversation as Thread Management for installation and future thread changes.
+3. Inspect the target project before writing files.
+4. Do not write until the user explicitly approves installation.
+5. Use `templates/install_proposal.template.md` for the first installation proposal.
+6. After approval, write detailed rationale and file changes to `docs/anchor_pm/install_decision_record.md`.
+7. Stop after installation unless the user asks for follow-up work.
 
-Repository:
-https://github.com/libingfei/threadsmith
+If package source is not already available, clone or fetch Threadsmith outside
+the target project. Do not copy the Threadsmith repository into the target
+project.
 
-Package directory:
-packages/anchor-pm-1.0-standard
+## Project Classification
 
-Follow this process exactly:
+- `existing`: the target has source, docs, tests, rules, scripts, or project history.
+- `new`: the target is empty or nearly empty.
 
-1. Obtain or read the package source from the repository above. If it is not
-   already available locally, clone or fetch it into a temporary location
-   outside the target project.
-2. Read PACKAGE_MANIFEST.md from the package directory.
-3. Read ACTIVE_INSTALL_PLAN.md from the package directory.
-4. Follow the active install plan and referenced workflows/checklists.
-5. Inspect this target project before writing anything.
-6. Output an installation proposal first.
+For existing projects, proposed threads must come from real modules, subsystems,
+runtime surfaces, docs/support surfaces, or durable maintenance boundaries.
+Do not use generic `Coordination / Implementation / Validation` threads for
+existing projects.
 
-Language:
+For new projects, propose starter threads only as adjustable placeholders.
+Avoid `Coordination` because Thread Management is already handled by the
+installation conversation.
 
-- Reply to me in my usual conversation language.
-- If I am writing Chinese, reply in Chinese.
-- Project files and generated Anchor PM documents may use English unless I ask otherwise.
-- Do not force the interaction language to English just because the package documents are in English.
+## Proposal Main View
 
-The proposal must include:
+The user-visible proposal should show only:
 
-- Target project path
-- Detected mode: existing project or new project
-- Observed
-- Inference
-- Needs Confirmation
-- Recommended thread count
-- Complete per-thread initialization prompts with no user-filled placeholders
-- Proposed file creates
-- Proposed file updates
-- Existing files intentionally left untouched
-- Conflicts and merge risks
-- Explicit approval request
+- project path and detected type;
+- project specialist thread list with one-sentence responsibilities;
+- reply options: approve install, adjust threads, cancel.
 
-Do not make me fill in placeholders such as <thread name> or <thread_file>. Generate the final copy-paste-ready prompt text for each proposed thread.
+Do not show by default:
 
-Do not write files until I explicitly approve the proposal.
+- file create/update counts;
+- `AGENTS.md` handling;
+- `Observed / Inference / Needs Confirmation`;
+- package execution logs;
+- active-plan or workflow internals;
+- internal safety explanations;
+- `Adjust AGENTS.md`;
+- docs-only/no-AGENTS partial-install options.
 
-Do not copy the Threadsmith repository into this target project. Do not delete
-files, modify business code, run deploy commands, run migrations, or overwrite
-existing project rules.
+If a real `AGENTS.md` conflict or approval-blocking merge choice exists, add
+one short risk line in the main view and put details in a collapsed block.
 
-After approved installation, stop. Do not continue optimizing the business project.
-```
+## Generated Files
 
-## Expected User Flow
+Generated `docs/anchor_pm/thread_initialization.md` must contain complete,
+copy-paste-ready prompts for every proposed long-lived thread. Do not leave
+`<thread name>`, `<thread_file>`, `{{...}}`, or other user-filled placeholders.
 
-1. Open the target project in Codex.
-2. Create a new thread named `Thread Management`.
-3. Paste the prompt above.
-4. Review the installation proposal.
-5. Approve or request edits.
-6. After installation, use the generated `interaction_guide.md` to start module threads.
+Every generated long-lived thread prompt must include:
+
+- scope and out-of-scope boundaries;
+- lightweight Anchor Gate before work;
+- lightweight Knowledge Sync Gate before final response;
+- cross-thread handoff behavior.
+
+Anchor Gate should stay silent by default and only expand for changed,
+blocked, unknown, conflicting, degraded, or durable-correction cases.
+Knowledge Sync Gate should write or hand off only durable local/shared
+knowledge; when no durable knowledge changed, keep it silent.

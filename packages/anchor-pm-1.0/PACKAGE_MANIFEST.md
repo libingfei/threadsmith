@@ -36,6 +36,7 @@ package directory.
 - `ACTIVE_INSTALL_PLAN.md`
 - `plans/standard_project_install.md`
 - `plans/self_evolution_install.md`
+- `templates/install_proposal.template.md`
 - `templates/thread_initialization.template.md`
 - `templates/*.template.md`
 - `workflows/*.md`
@@ -50,6 +51,7 @@ The installer may propose these target-project files:
 - `docs/anchor_pm/contracts.md`
 - `docs/anchor_pm/thread_initialization.md`
 - `docs/anchor_pm/interaction_guide.md`
+- `docs/anchor_pm/install_decision_record.md`
 - `docs/anchor_pm/review_log.md`
 - `docs/anchor_pm/simplification.md`
 - `docs/module_state/<thread>.md`
@@ -60,19 +62,20 @@ The installer must not write them until the user confirms the installation plan.
 
 The installer should reply in the user's usual conversation language. Package files may be English, and generated project documents may be English unless the user asks otherwise.
 
-Before writing, the installer must output:
+Before writing, the installer must use
+`templates/install_proposal.template.md` for the user-visible proposal.
 
-- Target project path
-- Detected mode: existing project or new project
-- `Observed`
-- `Inference`
-- `Needs Confirmation`
-- Recommended thread count
-- Complete per-thread initialization prompts with no user-filled placeholders
-- Proposed file creates
-- Proposed file updates
-- Conflicts and merge risks
-- Explicit approval request
+The main proposal view should show only:
+
+- target project path and detected type;
+- proposed project specialist threads with one-sentence responsibilities;
+- reply options to approve install, adjust threads, or cancel.
+
+Do not show file counts, `AGENTS.md` handling, `Observed / Inference / Needs
+Confirmation`, package execution details, or internal safety explanations in
+the main view by default. Show a one-line risk only when it affects approval.
+Detailed rationale belongs in an optional collapsed block before approval, or
+in `docs/anchor_pm/install_decision_record.md` after approval.
 
 After writing, the installer must output:
 
@@ -84,6 +87,7 @@ After writing, the installer must output:
 ## Safety Contract
 
 - Do not delete files.
+- Do not copy the Threadsmith repository into the target project.
 - Do not modify business code.
 - Do not run build, test, deploy, or migration commands unless the user explicitly asks.
 - Do not overwrite existing project rules without showing a merge plan.
