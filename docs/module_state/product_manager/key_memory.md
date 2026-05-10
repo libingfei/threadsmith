@@ -48,3 +48,7 @@ Key memory:
 - Root install prompts should stay under 20 lines and work as package-index
   launchers. Fixed proposal shape belongs in
   `templates/install_proposal.template.md`, not in the root prompt.
+- Thread creation prompts are user-facing output and must match the install
+  prompt language. Completion pages should teach users to open
+  `thread_initialization.md`, create a new Codex conversation, and paste one
+  specialist prompt, instead of dumping every prompt into chat.

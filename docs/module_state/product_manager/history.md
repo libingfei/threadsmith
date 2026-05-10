@@ -84,3 +84,7 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Compressed root English and Chinese install prompts into short package-index
   launchers and added a package-level install proposal template so public users
   copy a small stable prompt while fixed output structure lives in the package.
+- Added a package-level install completion template and thread prompt language
+  rule: approved-install completion pages and thread creation prompts must match
+  the install prompt language, and completion should teach users how to create
+  specialist threads from `thread_initialization.md`.

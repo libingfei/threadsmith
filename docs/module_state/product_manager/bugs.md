@@ -16,3 +16,6 @@ Current entries:
 - Flask install retest also showed proposal-detail drift: a standalone
   `AGENTS.md: create` line appeared in the main view. The proposal template now
   forbids AGENTS handling in the main view unless it is approval-blocking.
+- Approved Flask install showed a language and onboarding defect: the
+  completion page used English headings/thread prompts under a Chinese install
+  flow and did not teach how to create the next specialist threads.

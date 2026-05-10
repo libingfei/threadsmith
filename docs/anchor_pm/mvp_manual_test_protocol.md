@@ -59,8 +59,10 @@ packages/anchor-pm-1.0-standard
 - [标准安装包目录](https://github.com/libingfei/threadsmith/tree/main/packages/anchor-pm-1.0-standard)
 - [中文安装提示词](https://github.com/libingfei/threadsmith/blob/main/ANCHOR_PM_INSTALL_PROMPT.zh.md)
 - [安装提案模板](https://github.com/libingfei/threadsmith/blob/main/packages/anchor-pm-1.0-standard/templates/install_proposal.template.md)
+- [安装完成页模板](https://github.com/libingfei/threadsmith/blob/main/packages/anchor-pm-1.0-standard/templates/install_completion.template.md)
 - 本地中文安装提示词：[ANCHOR_PM_INSTALL_PROMPT.zh.md](/mnt/g/data/anchor_pm_framework/ANCHOR_PM_INSTALL_PROMPT.zh.md)
 - 本地安装提案模板：[install_proposal.template.md](/mnt/g/data/anchor_pm_framework/packages/anchor-pm-1.0-standard/templates/install_proposal.template.md)
+- 本地安装完成页模板：[install_completion.template.md](/mnt/g/data/anchor_pm_framework/packages/anchor-pm-1.0-standard/templates/install_completion.template.md)
 - 还原脚本：[threadsmith_restore_tests.sh](/mnt/g/data/threadsmith_restore_tests.sh)
 
 如果测试 public GitHub 流程，先确认 GitHub 上的中文安装提示词已经是短入口：提示词块不超过 20 行，只索引到 package source、package directory、`PACKAGE_MANIFEST.md`、`ACTIVE_INSTALL_PLAN.md`、`INSTALL_PROMPT.md` 和 `templates/install_proposal.template.md`。详细规则应在包内，而不是塞进根提示词。
@@ -133,20 +135,26 @@ packages/anchor-pm-1.0-standard
 
 安装完成页必须包含：
 
-- 已创建文件。
-- 已更新文件。
-- 有意保持不变的文件。
+- 中文安装流程下，标题、说明和变更摘要应使用中文，不应出现 `Files Created`
+  / `Files Updated` / `Next Thread Prompts` 这类英文主标题。
+- 清晰的线程创建教学引导：打开 [thread_initialization.md](#安装后锚点文件快速入口)，选择一个线程，新建 Codex 对话，复制该线程完整提示词作为第一条消息。
+- 提醒保留当前线程管理对话，用于以后新增、删除、重命名或重新生成线程。
 - [docs/anchor_pm/thread_initialization.md](#安装后锚点文件快速入口)。
 - [docs/anchor_pm/contracts.md](#安装后锚点文件快速入口)。
 - [docs/anchor_pm/interaction_guide.md](#安装后锚点文件快速入口)。
 - [docs/anchor_pm/current_version.md](#安装后锚点文件快速入口)。
 - `docs/anchor_pm/install_decision_record.md`，用于保存判断依据和文件变更细节。
+- 已创建文件。
+- 已更新文件。
+- 有意保持不变的文件。
 
 安装后检查：
 
 - 没有修改业务代码、测试、配置或原有项目文档正文。
 - [AGENTS.md](#安装后锚点文件快速入口) 不覆盖已有规则；若原来不存在，可以创建。
 - [thread_initialization.md](#安装后锚点文件快速入口) 中每个线程提示词可直接复制。
+- 中文安装流程下，[thread_initialization.md](#安装后锚点文件快速入口) 中每个线程创建提示词应使用中文，例如以 `你是 ... 线程` 开头；项目名、Sans-IO、CLI、HTTP、API、JSON 等技术名词可以保留英文。
+- 安装完成页默认不应把所有线程提示词都贴到聊天里；应链接到 [thread_initialization.md](#安装后锚点文件快速入口) 并教用户如何使用。
 - 每个线程提示词同时包含 `Anchor Gate` 和 `Knowledge Sync Gate`。
 
 ### 3. 创建项目专家线程

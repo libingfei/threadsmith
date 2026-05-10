@@ -15,7 +15,10 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Target project installation should produce a proposal before writing files.
 - The installation proposal should behave like a concise confirmation page, not a technical audit log.
 - Thread initialization prompts must be complete and copy-paste-ready; users should not fill in placeholders Codex can generate.
-- Installer replies should follow the user's usual language, while generated project docs may remain English unless requested otherwise.
+- Installer replies should follow the user's usual language, while generated
+  project docs may remain English unless requested otherwise. Exception:
+  user-facing thread creation prompts in `thread_initialization.md` and the
+  post-approval completion page must match the install prompt language.
 - `Thread Management` should remain available after installation for future thread additions, removals, renames, or prompt regeneration.
 - Install prompts must not depend on the user naming the Codex conversation
   before the first message; thread naming can be optional when the client
@@ -45,6 +48,10 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   `templates/install_proposal.template.md` as the fixed output contract for the
   first install proposal so future prompt edits do not drift back to verbose
   sections or stray `AGENTS.md` lines.
+- Package release artifacts should include
+  `templates/install_completion.template.md` as the fixed output contract for
+  the approved-install completion page: localized headings, clear thread
+  creation teaching, links to key files, and concise change summary.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
   is blocked, the installer should explain the consequence and ask for a
@@ -122,8 +129,7 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   default approval path; partial integration should be exceptional and clearly
   labeled.
 - Need install prompt/package wording to enforce thread-name language matching
-  the selected install prompt, and remove `Adjust AGENTS.md` from default reply
-  options.
+  the selected install prompt in future Skill behavior.
 - Need package release artifacts and future Skill behavior to mirror the
   root-prompt rule that default reply options are approve, adjust threads, and
   cancel; AGENTS decisions appear only as concrete approval risks when blocked.
@@ -273,3 +279,7 @@ Pre-test GitHub Sync Gate:
 - Compressed root English and Chinese install prompts into short package-index
   launchers and added a package-level install proposal template so public users
   copy a small stable prompt while fixed output structure lives in the package.
+- Added a package-level install completion template and thread prompt language
+  rule: approved-install completion pages and thread creation prompts must match
+  the install prompt language, and completion should teach users how to create
+  specialist threads from `thread_initialization.md`.

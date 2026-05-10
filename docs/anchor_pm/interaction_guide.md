@@ -4,6 +4,17 @@
 
 Use `docs/anchor_pm/thread_initialization.md` to decide which threads to create and what prompt to paste into each new Codex thread.
 
+To create a project specialist thread:
+
+1. Open `docs/anchor_pm/thread_initialization.md`.
+2. Choose one specialist thread.
+3. Start a new Codex conversation in the same target project.
+4. Paste that thread's complete prompt as the first message.
+5. Keep the original Thread Management conversation for future thread changes.
+
+Thread creation prompts are user-facing and should match the install prompt
+language. Technical terms may remain in their conventional language.
+
 Use the repository-root language-specific install prompt files when adding
 Anchor PM to a new target project:
 

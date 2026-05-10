@@ -103,6 +103,7 @@ Inputs:
 - `ACTIVE_INSTALL_PLAN.md`.
 - `INSTALL_PROMPT.md`.
 - `templates/install_proposal.template.md`.
+- `templates/install_completion.template.md`.
 - Referenced install plan, workflows, checklists, and templates.
 
 Outputs Before Approval:
@@ -117,6 +118,8 @@ Outputs Before Approval:
   - `Adjust threads: ...`
   - `Cancel`
 - Thread-name language follows the selected install prompt language.
+- Generated thread creation prompts in `docs/anchor_pm/thread_initialization.md`
+  follow the selected install prompt language.
 - File create/update counts, `AGENTS.md` handling details, `Observed`,
   `Inference`, and `Needs Confirmation` should not appear in the main visible
   proposal by default.
@@ -137,9 +140,12 @@ Outputs After Approval:
 - Links to generated thread prompts and usage docs.
 - `docs/anchor_pm/install_decision_record.md` containing detailed rationale and
   file change information.
-- Clear next step: create long-lived threads from
-  `docs/anchor_pm/thread_initialization.md`.
+- Clear localized next step: open `docs/anchor_pm/thread_initialization.md`,
+  choose one specialist thread, create a new Codex conversation, and paste that
+  thread's full prompt as the first message.
 - Reminder that `Thread Management` remains available for future thread changes.
+- Does not paste every generated thread prompt into the completion chat by
+  default.
 
 Acceptance:
 
@@ -147,6 +153,7 @@ Acceptance:
 - Does not expose package internals unless user asks.
 - Does not continue optimizing the business project after standard install.
 - Follows the user's conversation language.
+- Completion page and thread creation prompts match the install prompt language.
 
 Failure Signals:
 
@@ -154,6 +161,10 @@ Failure Signals:
 - Proposal is longer than needed for a decision.
 - Installer shows manifest/workflow logs as primary output.
 - Installer starts implementation work after installing anchors.
+- Chinese install produces English thread creation prompts or English
+  completion headings.
+- Completion page links to files but fails to teach the user how to create the
+  next Codex thread.
 
 ## 3. Target Project Audit
 

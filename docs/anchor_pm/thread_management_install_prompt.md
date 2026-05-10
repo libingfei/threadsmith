@@ -20,6 +20,7 @@ source:
 - required package files: `PACKAGE_MANIFEST.md`, `ACTIVE_INSTALL_PLAN.md`,
   `INSTALL_PROMPT.md`
 - fixed proposal template: `templates/install_proposal.template.md`
+- fixed completion template: `templates/install_completion.template.md`
 
 Detailed behavior belongs inside the package so public GitHub users copy a
 small stable prompt while package updates can improve the installer without
@@ -53,12 +54,26 @@ Thread names shown to users should follow the selected install prompt language.
 For Chinese prompts, use Chinese thread names while preserving technical terms
 such as Sans-IO, CLI, HTTP, and API when useful.
 
+Thread creation prompts are also user-facing output. The complete prompts
+written to `docs/anchor_pm/thread_initialization.md` must match the selected
+install prompt language. For Chinese installs, prompts should be Chinese, for
+example `你是 ... 线程`, while conventional technical terms may remain English.
+
 Default reply options should be limited to approve, adjust threads, and cancel.
 Do not expose `Adjust AGENTS.md` as a default option; AGENTS-specific decisions
 belong in the approval-risk area only when the inspected project requires one.
 
 The package must provide and follow `templates/install_proposal.template.md` so
 the proposal shape does not drift between tests.
+
+After approval, the completion reply should follow
+`templates/install_completion.template.md`: teach the user to open
+`docs/anchor_pm/thread_initialization.md`, choose one specialist, create a new
+Codex conversation, paste that thread's full prompt, and keep the current
+Thread Management conversation for future thread changes.
+
+Do not paste every thread prompt into the completion chat by default. Link to
+`thread_initialization.md` instead.
 
 Link or write to generated files:
 

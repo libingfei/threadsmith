@@ -38,6 +38,9 @@ PM 1.0 package-first release.
 - Root install prompts are now short package-index launchers. The stable
   installation proposal shape lives in package template
   `templates/install_proposal.template.md`.
+- The package now includes `templates/install_completion.template.md`; approved
+  install completion pages should be localized and teach users how to create
+  specialist threads from `thread_initialization.md`.
 
 ## Reanchor Meaning
 

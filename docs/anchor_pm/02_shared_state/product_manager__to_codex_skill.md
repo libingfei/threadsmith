@@ -53,6 +53,14 @@ Status: active shared dependency.
 - Public root install prompts should stay under 20 lines and function as
   package indexes. The detailed install behavior and fixed proposal shape live
   in the package, especially `templates/install_proposal.template.md`.
+- After approval, installer completion should follow
+  `templates/install_completion.template.md`: localized completion headings,
+  clear next-thread creation teaching, key file links, concise change summary,
+  and no default dump of every thread prompt into chat.
+- Thread creation prompts in `docs/anchor_pm/thread_initialization.md` must
+  match the install prompt language. A Chinese install should generate Chinese
+  copy-paste prompts such as `你是 ... 线程`, while conventional technical terms
+  can remain English.
 
 ## Target Next Step
 
@@ -62,3 +70,6 @@ step, and so existing-project thread proposals are module/subsystem based
 instead of generic role based. Include Knowledge Sync Gate in the generated
 thread behavior so durable updates do not remain only in chat history, while
 normal turns stay silent when no state change is needed.
+
+Also ensure future Skill output preserves install-language matching for
+thread names, thread creation prompts, and completion pages.

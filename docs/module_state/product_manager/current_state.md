@@ -20,7 +20,9 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - Thread initialization prompts must be complete and copy-paste-ready; users
   should not fill in placeholders Codex can generate.
 - Installer replies should follow the user's usual language, while generated
-  project docs may remain English unless requested otherwise.
+  project docs may remain English unless requested otherwise. Exception:
+  user-facing thread creation prompts in `thread_initialization.md` and the
+  post-approval completion page must match the install prompt language.
 - `Thread Management` should remain available after installation for future
   thread additions, removals, renames, or prompt regeneration.
 - Install prompts must not depend on the user naming the Codex conversation
@@ -51,6 +53,10 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   `templates/install_proposal.template.md` as the fixed output contract for the
   first install proposal so future prompt edits do not drift back to verbose
   sections or stray `AGENTS.md` lines.
+- Package release artifacts should include
+  `templates/install_completion.template.md` as the fixed output contract for
+  the approved-install completion page: localized headings, clear thread
+  creation teaching, links to key files, and concise change summary.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option because it creates a confusing partial integration. If AGENTS handling
   is blocked, the installer should explain the consequence and ask for a

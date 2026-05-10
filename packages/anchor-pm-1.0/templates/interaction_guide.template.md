@@ -2,22 +2,36 @@
 
 ## Thread Setup
 
-Use `docs/anchor_pm/thread_initialization.md` to decide which threads to create and what prompt to paste into each new Codex thread.
+Use `docs/anchor_pm/thread_initialization.md` to decide which threads to create
+and what prompt to paste into each new Codex thread.
 
-## New Thread Reanchor Prompt
+To create a project specialist thread:
+
+1. Open `docs/anchor_pm/thread_initialization.md`.
+2. Choose one thread.
+3. Start a new Codex conversation in the target project.
+4. Paste that thread's complete prompt as the first message.
+5. Keep the original Thread Management conversation for future thread changes.
+
+Thread names and paste-ready prompts should match the install-prompt language.
+Technical terms may remain in their conventional language.
+
+## New Thread Anchor Gate
 
 ```text
 You are the <thread name> thread for this project.
-Before work, read AGENTS.md, docs/anchor_pm/current_version.md,
-docs/anchor_pm/contracts.md, and docs/module_state/<thread>.md.
+Before work, run Anchor Gate silently unless changed, blocked, unknown,
+conflicting, degraded, or the user gives a durable correction. Read only the
+required anchors.
 State your scope and out-of-scope boundaries if they affect the task.
 ```
 
 ## Existing Thread Reanchor Prompt
 
 ```text
-Reanchor this thread under the current Anchor PM version.
-Check docs/anchor_pm/current_version.md and the relevant module state file.
+Run Anchor Gate for this thread under the current Anchor PM version.
+Use a detector if available; otherwise report the degraded state and read the
+required anchors yourself.
 Continue only within this thread's contract.
 ```
 
@@ -34,12 +48,8 @@ Questions for target thread:
 Suggested next step:
 ```
 
-## Closeout Reminder
+## Knowledge Sync Reminder
 
-Before finishing substantial work, decide whether any module state file needs updates.
-
-If not, say:
-
-```text
-No module state update needed for this task.
-```
+Before the final response after substantial work, run Knowledge Sync Gate.
+Update or hand off only durable local/shared knowledge. If nothing durable
+changed, keep the gate silent.

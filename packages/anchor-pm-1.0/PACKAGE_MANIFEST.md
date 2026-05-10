@@ -37,6 +37,7 @@ package directory.
 - `plans/standard_project_install.md`
 - `plans/self_evolution_install.md`
 - `templates/install_proposal.template.md`
+- `templates/install_completion.template.md`
 - `templates/thread_initialization.template.md`
 - `templates/*.template.md`
 - `workflows/*.md`
@@ -62,6 +63,11 @@ The installer must not write them until the user confirms the installation plan.
 
 The installer should reply in the user's usual conversation language. Package files may be English, and generated project documents may be English unless the user asks otherwise.
 
+Exception: user-facing thread names, thread creation prompts in
+`docs/anchor_pm/thread_initialization.md`, and the installation completion
+message must match the install-prompt language. These are instructions users
+copy into Codex, so they must not silently switch language.
+
 Before writing, the installer must use
 `templates/install_proposal.template.md` for the user-visible proposal.
 
@@ -79,10 +85,15 @@ in `docs/anchor_pm/install_decision_record.md` after approval.
 
 After writing, the installer must output:
 
-- Files created
-- Files updated
-- Files intentionally left untouched
-- Next-thread usage instructions with copy-paste-ready prompts
+- a localized completion page using `templates/install_completion.template.md`;
+- next-thread creation instructions that teach the user to open
+  `docs/anchor_pm/thread_initialization.md`, create a new Codex conversation,
+  and paste the chosen thread's full prompt;
+- links to key generated files;
+- short summaries of files created, files updated, and files intentionally left
+  untouched.
+
+Do not paste every thread prompt into the completion chat by default.
 
 ## Safety Contract
 

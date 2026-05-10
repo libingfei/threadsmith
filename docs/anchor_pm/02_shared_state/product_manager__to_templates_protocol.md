@@ -61,6 +61,15 @@ Status: active shared dependency.
 - Package templates should include `templates/install_proposal.template.md` as
   the stable first-response output contract so proposal sections do not drift
   back to verbose audit-style content.
+- Package templates should include `templates/install_completion.template.md`
+  as the stable post-approval completion contract. The completion page should
+  be localized, teach users how to create a specialist thread from
+  `thread_initialization.md`, link key files, and avoid dumping every prompt
+  into chat.
+- Thread creation prompts in `thread_initialization.md` are user-facing output
+  and must match the install prompt language. Generated docs may otherwise be
+  English unless requested, but copy-paste thread prompts should not switch
+  language.
 
 ## Target Next Step
 
@@ -82,5 +91,9 @@ Product Manager has made a narrow package-surface update to unblock public
 testing: shortened root prompts, added `templates/install_proposal.template.md`,
 and updated standard install prompt/plan/workflow wording. Templates / Protocol
 should review and normalize these changes across future package releases.
+
+Product Manager also added `templates/install_completion.template.md` and a
+thread-prompt language rule after a Chinese Flask install produced English
+thread prompts and no clear next-thread creation teaching.
 
 Do not change detector internals or CLI packaging here.

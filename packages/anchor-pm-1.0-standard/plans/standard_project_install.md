@@ -24,7 +24,9 @@ Deploy the smallest useful Anchor PM coordination structure into the target proj
    - `checklists/conclusion_check.md`
 4. Read `templates/install_proposal.template.md` before composing the first
    user-visible proposal.
-5. Read other templates only when preparing approved file outputs.
+5. Read `templates/install_completion.template.md` before composing the
+   post-approval completion reply.
+6. Read other templates only when preparing approved file outputs.
 
 ## Phase 2: Audit Target
 
@@ -85,6 +87,9 @@ Output:
 - Files created.
 - Files updated.
 - Files left untouched.
-- Recommended next thread prompts that are ready to copy and paste.
+- Localized next-thread creation instructions using
+  `templates/install_completion.template.md`.
+- A link to `docs/anchor_pm/thread_initialization.md`, where the complete
+  copy-paste-ready prompts live.
 
 Stop here. Do not continue optimizing the target project.

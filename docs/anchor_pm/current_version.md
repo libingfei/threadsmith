@@ -76,6 +76,11 @@ This means this repository uses its own minimal Anchor PM structure and now cont
   install instructions.
 - Added `templates/install_proposal.template.md` to the package structure so
   the first install proposal uses a stable, minimal output shape.
+- Added `templates/install_completion.template.md` so the approved-install
+  completion page is localized, teaches users how to create project specialist
+  threads, and avoids dumping every thread prompt into chat.
+- Clarified that thread creation prompts in `thread_initialization.md` are
+  user-facing and must match the install prompt language.
 
 ## Reanchor Requirement
 
