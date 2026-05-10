@@ -39,8 +39,10 @@ PM 1.0 package-first release.
   installation proposal shape lives in package template
   `templates/install_proposal.template.md`.
 - The package now includes `templates/install_completion.template.md`; approved
-  install completion pages should be localized and teach users how to create
-  specialist threads from `thread_initialization.md`.
+  install completion pages should be localized success pages: briefly explain
+  what was added, teach users how to create specialist conversations, show the
+  recommended thread prompts directly, and avoid a generated-file inventory as
+  the main result.
 - Ordinary target-project installs now use `.threadsmith/` as the default
   isolated anchor directory and should not create or modify root `AGENTS.md`
   unless the user explicitly requests project-wide discovery.

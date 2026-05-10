@@ -60,8 +60,11 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   sections or stray `AGENTS.md` lines.
 - Package release artifacts should include
   `templates/install_completion.template.md` as the fixed output contract for
-  the approved-install completion page: localized headings, clear thread
-  creation teaching, links to key files, and concise change summary.
+  the approved-install completion page: localized success confirmation, a brief
+  feature summary, clear thread creation teaching, complete copy-paste-ready
+  prompts for each recommended thread, `.threadsmith/` isolation explanation,
+  and Thread Management capability guidance. Generated-file inventories belong
+  in `.threadsmith/install_decision_record.md`, not the main completion reply.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option. Default installation is already isolated under `.threadsmith/`;
   project-wide root `AGENTS.md` integration should be a separate explicit

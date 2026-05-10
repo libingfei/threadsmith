@@ -78,7 +78,12 @@ This means this repository uses its own minimal Anchor PM structure and now cont
   the first install proposal uses a stable, minimal output shape.
 - Added `templates/install_completion.template.md` so the approved-install
   completion page is localized, teaches users how to create project specialist
-  threads, and avoids dumping every thread prompt into chat.
+  threads, and avoids treating generated file lists as the main user result.
+- Revised `templates/install_completion.template.md` into a user-success page:
+  it now confirms installation success, explains what the user received, shows
+  complete recommended thread prompts, explains `.threadsmith/` isolation, and
+  positions the current conversation as Thread Management instead of showing a
+  generated-file inventory as the main result.
 - Clarified that thread creation prompts in `thread_initialization.md` are
   user-facing and must match the install prompt language.
 - Changed ordinary target-project install footprint to one isolated

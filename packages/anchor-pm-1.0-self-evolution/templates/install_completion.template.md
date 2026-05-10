@@ -1,73 +1,98 @@
 # Template: Install Completion Main View
 
-Use this template for the first reply after approved installation writes are complete.
+Use this template for the first reply after approved installation writes are
+complete.
 
-Localize headings, instructions, and thread-creation guidance to the user's
-install-prompt language. Do not use English headings such as `Files Created` in
-a Chinese install flow.
+The completion page is a user-success page, not an internal file report.
+Localize headings, instructions, and thread prompts to the user's install-prompt
+language. Do not use English headings such as `Files Created` in a Chinese
+install flow.
 
 ## English Shape
 
-```markdown
-# Anchor PM Installed
+````markdown
+# Anchor PM Installed Successfully
 
-Next: create project specialist threads
-1. Open [thread_initialization.md](<absolute path>/.threadsmith/thread_initialization.md).
-2. Pick one specialist thread.
-3. Start a new Codex conversation in the same target project.
-4. Copy the complete prompt under that thread and send it as the first message.
-5. Keep this Thread Management conversation for future thread changes.
+Your project now has a Threadsmith workspace. It gives you focused specialist
+threads, shared contracts, and lightweight reanchor/knowledge-sync instructions
+under one `.threadsmith/` folder.
 
-Key links:
-- [thread_initialization.md](<absolute path>/.threadsmith/thread_initialization.md)
-- [contracts.md](<absolute path>/.threadsmith/contracts.md)
-- [interaction_guide.md](<absolute path>/.threadsmith/interaction_guide.md)
-- [current_version.md](<absolute path>/.threadsmith/current_version.md)
-- [install_decision_record.md](<absolute path>/.threadsmith/install_decision_record.md)
+Create the recommended threads:
+1. Keep this conversation as Thread Management.
+2. For each specialist below, start a new Codex conversation in the same project.
+3. Copy that specialist's full prompt as the first message.
 
-Change summary:
-- Created: <short file/directory summary>
-- Updated: <short file/directory summary or none>
-- Left untouched: <short business-file summary>
+Recommended thread prompts:
+
+### <thread name>
+```text
+<complete copy-paste-ready prompt in the install-prompt language>
 ```
+
+### <thread name>
+```text
+<complete copy-paste-ready prompt in the install-prompt language>
+```
+
+All Threadsmith files are in [`.threadsmith/`](<absolute path>/.threadsmith/).
+Ordinary Codex conversations that are not started with these prompts will not
+automatically use Threadsmith.
+
+This conversation remains your Thread Management thread. You can ask it to
+create a new thread, change thread boundaries, remove a thread, regenerate
+prompts, or query current thread information.
+````
 
 ## Chinese Shape
 
-```markdown
-# Anchor PM 已安装
+````markdown
+# Anchor PM 安装成功
 
-下一步：创建项目专家线程
-1. 打开 [thread_initialization.md](<目标项目绝对路径>/.threadsmith/thread_initialization.md)。
-2. 选择一个项目专家线程。
-3. 在同一个目标项目中开启一个新的 Codex 对话。
-4. 复制该线程下的完整提示词，作为第一条消息发送。
-5. 保留当前线程管理对话；以后新增、删除、重命名或重新生成线程时回到这里。
+现在你的项目已经拥有一个 Threadsmith 工作区：它会提供聚焦的项目专家线程、共享契约，以及轻量的重锚/知识同步规则，全部集中在 `.threadsmith/` 目录中。
 
-常用链接：
-- [thread_initialization.md](<目标项目绝对路径>/.threadsmith/thread_initialization.md)
-- [contracts.md](<目标项目绝对路径>/.threadsmith/contracts.md)
-- [interaction_guide.md](<目标项目绝对路径>/.threadsmith/interaction_guide.md)
-- [current_version.md](<目标项目绝对路径>/.threadsmith/current_version.md)
-- [install_decision_record.md](<目标项目绝对路径>/.threadsmith/install_decision_record.md)
+创建推荐线程：
+1. 保留当前对话作为线程管理入口。
+2. 对下面每个项目专家，在同一个项目里新建一个 Codex 对话。
+3. 复制该专家的完整提示词，作为新对话第一条消息发送。
 
-变更摘要：
-- 已创建：<简短文件/目录摘要>
-- 已更新：<简短文件/目录摘要，或“无”>
-- 保持不变：<简短业务文件摘要>
+推荐线程提示词：
+
+### <线程名>
+```text
+<与安装语言一致的完整可复制提示词>
 ```
+
+### <线程名>
+```text
+<与安装语言一致的完整可复制提示词>
+```
+
+所有 Threadsmith 文件都在 [`.threadsmith/`](<目标项目绝对路径>/.threadsmith/) 中。没有使用这些提示词创建的普通 Codex 对话，不会自动进入 Threadsmith 的线程管理体系。
+
+当前对话就是线程管理线程。你可以在这里要求：创建新线程、修改线程边界、删除线程、重新生成提示词，或查询当前线程信息。
+````
 
 ## Completion Rules
 
-- Do not paste every thread prompt into the chat by default. Link to
-  `.threadsmith/thread_initialization.md` and teach the user how to use it.
-- If showing an example prompt, show at most one and only if it matches the
-  install-prompt language.
+- Show the generated recommended thread prompts directly in the completion page.
+  This is the user's next action and should not be hidden behind a file list.
+- Also write the same complete prompts to `.threadsmith/thread_initialization.md`
+  as a durable copy.
 - The generated `thread_initialization.md` must contain full copy-paste-ready
   prompts in the install-prompt language.
 - In a Chinese install flow, generated thread prompts should start in Chinese,
   for example `你是 <线程名> 线程...`, while conventional technical terms such
   as project names, Sans-IO, CLI, HTTP, API, JSON may remain in English.
 - In an English install flow, generated thread prompts should be English.
-- Keep completion concise. Detailed rationale belongs in
+- Do not show a file inventory by default. Detailed created/updated/untouched
+  file lists and rationale belong in
   `.threadsmith/install_decision_record.md`.
+- If file links are useful, show only the `.threadsmith/` folder and optionally
+  `.threadsmith/thread_initialization.md`; do not dump every generated file.
+- The final paragraph must explain isolation: Threadsmith files stay in
+  `.threadsmith/`, and ordinary Codex conversations are unaffected unless they
+  start with the generated prompts.
+- The final paragraph must explain that the current conversation remains Thread
+  Management and can create, remove, rename, adjust, regenerate, or query
+  threads.
 - Replace every placeholder in this template before user-visible output.

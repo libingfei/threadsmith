@@ -49,9 +49,10 @@ Key memory:
   launchers. Fixed proposal shape belongs in
   `templates/install_proposal.template.md`, not in the root prompt.
 - Thread creation prompts are user-facing output and must match the install
-  prompt language. Completion pages should teach users to open
-  `thread_initialization.md`, create a new Codex conversation, and paste one
-  specialist prompt, instead of dumping every prompt into chat.
+  prompt language. Completion pages should confirm success, briefly explain
+  what was installed, teach users to create specialist conversations, show each
+  recommended thread's full prompt, and move generated-file inventories into
+  `.threadsmith/install_decision_record.md`.
 - Target-project installs should default to a single `.threadsmith/` directory.
   Root `AGENTS.md` integration is opt-in because it affects unrelated Codex
   conversations; proposal copy should say root `AGENTS.md` only when project-wide

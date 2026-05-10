@@ -133,19 +133,22 @@ Outputs Before Approval:
 
 Outputs After Approval:
 
-- Approved files created.
-- Approved files updated.
-- Files intentionally left untouched.
-- Root `AGENTS.md` integration outcome, only if the user explicitly requested it.
-- Links to generated thread prompts and usage docs.
+- Localized installation success message.
+- Brief feature summary: the target project now has a `.threadsmith/`
+  workspace, recommended project specialist threads, shared contracts, and
+  lightweight reanchor/knowledge-sync instructions.
+- Clear next step: keep the current conversation as Thread Management, create a
+  new Codex conversation for each recommended specialist, and paste that
+  specialist's full prompt as the first message.
+- Complete copy-paste-ready prompts for each recommended specialist thread.
+- Isolation note: all Threadsmith files are under `.threadsmith/`; ordinary
+  Codex conversations that are not started with the generated prompts are not
+  pulled into Threadsmith behavior.
+- Thread Management capability note: the current conversation can create,
+  remove, rename, adjust, regenerate, or query threads.
 - `.threadsmith/install_decision_record.md` containing detailed rationale and
   file change information.
-- Clear localized next step: open `.threadsmith/thread_initialization.md`,
-  choose one specialist thread, create a new Codex conversation, and paste that
-  thread's full prompt as the first message.
-- Reminder that `Thread Management` remains available for future thread changes.
-- Does not paste every generated thread prompt into the completion chat by
-  default.
+- Generated-file inventory omitted from the main completion view by default.
 
 Acceptance:
 
@@ -165,6 +168,8 @@ Failure Signals:
   completion headings.
 - Completion page links to files but fails to teach the user how to create the
   next Codex thread.
+- Completion page forces the user to interpret a long generated-file list
+  instead of showing the recommended next actions and thread prompts.
 
 ## 3. Target Project Audit
 

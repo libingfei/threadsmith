@@ -63,9 +63,10 @@ Status: active shared dependency.
   back to verbose audit-style content.
 - Package templates should include `templates/install_completion.template.md`
   as the stable post-approval completion contract. The completion page should
-  be localized, teach users how to create a specialist thread from
-  `thread_initialization.md`, link key files, and avoid dumping every prompt
-  into chat.
+  be localized, start with a successful-install confirmation, briefly explain
+  what the user now has, teach users how to create specialist conversations,
+  show each complete copy-paste-ready thread prompt, and avoid turning the
+  reply into a generated-file inventory.
 - Thread creation prompts in `thread_initialization.md` are user-facing output
   and must match the install prompt language. Generated docs may otherwise be
   English unless requested, but copy-paste thread prompts should not switch
@@ -77,6 +78,11 @@ Status: active shared dependency.
 - Root `AGENTS.md` integration should be opt-in only. Default installation must
   not create or modify root `AGENTS.md`, so unrelated Codex conversations are
   not automatically pulled into Anchor PM behavior.
+- The completion page should explicitly tell users that `.threadsmith/` keeps
+  Threadsmith isolated from ordinary Codex conversations unless those
+  conversations start with generated thread prompts, and that the current
+  install conversation remains Thread Management for creating, deleting,
+  changing, regenerating, or querying threads.
 
 ## Target Next Step
 
@@ -107,5 +113,10 @@ Product Manager then changed the standard target-project footprint to
 `.threadsmith/` after testing showed files scattered across root, `docs/`, and
 module state directories were harder to maintain and leaked the framework into
 unrelated threads.
+
+Product Manager then revised the install completion template from a file-report
+shape into a success/next-action page that includes recommended thread prompts
+directly and explains `.threadsmith/` isolation plus Thread Management
+capabilities.
 
 Do not change detector internals or CLI packaging here.

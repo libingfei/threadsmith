@@ -95,16 +95,24 @@ knowledge; when no durable knowledge changed, keep it silent.
 
 ## Completion Main View
 
-The completion reply must be localized and teach the next action. It should:
+The completion reply must be localized and feel like a successful setup page,
+not an internal file report. It should:
 
-- say installation is complete;
-- tell the user to open `.threadsmith/thread_initialization.md`;
+- start by telling the user the installation succeeded;
+- briefly explain what they now have: a `.threadsmith/` workspace, project
+  specialist threads, shared contracts, and lightweight reanchor/knowledge-sync
+  instructions;
 - explain that each recommended specialist thread should be created as a new
   Codex conversation by copying that thread's full prompt;
+- show the complete copy-paste-ready prompt for each recommended thread in the
+  completion reply;
 - remind the user to keep the current Thread Management conversation for future
   thread changes;
-- link to key generated files;
-- summarize created, updated, and intentionally untouched files.
+- explain that all Threadsmith files live under `.threadsmith/` and ordinary
+  Codex conversations that do not use the generated prompts are unaffected;
+- tell the user they can ask this Thread Management conversation to create new
+  threads, change thread boundaries, delete threads, regenerate prompts, or
+  query thread information.
 
-Do not paste every thread prompt into the completion chat by default. The
-complete prompts live in `thread_initialization.md`.
+Do not show a generated-file inventory by default. Detailed file changes and
+rationale belong in `.threadsmith/install_decision_record.md`.

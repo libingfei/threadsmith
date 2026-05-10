@@ -135,18 +135,22 @@ packages/anchor-pm-1.0-standard
 
 安装完成页必须包含：
 
-- 中文安装流程下，标题、说明和变更摘要应使用中文，不应出现 `Files Created`
-  / `Files Updated` / `Next Thread Prompts` 这类英文主标题。
-- 清晰的线程创建教学引导：打开 [thread_initialization.md](#安装后锚点文件快速入口)，选择一个线程，新建 Codex 对话，复制该线程完整提示词作为第一条消息。
-- 提醒保留当前线程管理对话，用于以后新增、删除、重命名或重新生成线程。
-- [.threadsmith/thread_initialization.md](#安装后锚点文件快速入口)。
-- [.threadsmith/contracts.md](#安装后锚点文件快速入口)。
-- [.threadsmith/interaction_guide.md](#安装后锚点文件快速入口)。
-- [.threadsmith/current_version.md](#安装后锚点文件快速入口)。
-- `.threadsmith/install_decision_record.md`，用于保存判断依据和文件变更细节。
-- 已创建文件。
-- 已更新文件。
-- 有意保持不变的文件。
+- 中文安装流程下，标题、说明和操作引导应使用中文，不应出现
+  `Files Created` / `Files Updated` / `Next Thread Prompts` 这类英文主标题。
+- 第一屏应先明确安装成功，然后用一小段话说明用户得到了什么：
+  `.threadsmith/` 工作区、推荐项目专家线程、共享契约、轻量重锚和知识同步规则。
+- 清晰的线程创建教学引导：保留当前对话作为线程管理入口；对每个推荐专家线程，在同一项目中新建 Codex 对话；复制该线程完整提示词作为第一条消息。
+- 直接展示每个推荐线程的完整可复制提示词，且提示词语言与安装语言一致。
+- 说明所有 Threadsmith 文件都集中在 `.threadsmith/` 下；没有用这些提示词创建的普通 Codex 对话不会自动进入 Threadsmith 体系。
+- 说明当前对话是线程管理线程，可用于创建新线程、修改线程边界、删除线程、重新生成提示词、查询线程信息。
+- 如需要细节，应链接到 `.threadsmith/thread_initialization.md` 或
+  `.threadsmith/install_decision_record.md`，而不是默认展示完整文件清单。
+
+安装完成页不应包含：
+
+- 大段已创建/已更新/保持不变文件清单作为主要内容。
+- 要求用户打开多个内部文件后自己判断下一步。
+- 只链接 [thread_initialization.md](#安装后锚点文件快速入口) 但不直接给出推荐线程提示词。
 
 安装后检查：
 
@@ -155,7 +159,8 @@ packages/anchor-pm-1.0-standard
 - [.threadsmith/AGENTS.md](#安装后锚点文件快速入口) 存在，并只被使用 Anchor PM 线程提示词的新对话读取。
 - [thread_initialization.md](#安装后锚点文件快速入口) 中每个线程提示词可直接复制。
 - 中文安装流程下，[thread_initialization.md](#安装后锚点文件快速入口) 中每个线程创建提示词应使用中文，例如以 `你是 ... 线程` 开头；项目名、Sans-IO、CLI、HTTP、API、JSON 等技术名词可以保留英文。
-- 安装完成页默认不应把所有线程提示词都贴到聊天里；应链接到 [thread_initialization.md](#安装后锚点文件快速入口) 并教用户如何使用。
+- 安装完成页应直接展示推荐线程提示词，同时在
+  [thread_initialization.md](#安装后锚点文件快速入口) 中保留同一份可复制提示词。
 - 每个线程提示词同时包含 `Anchor Gate` 和 `Knowledge Sync Gate`。
 
 ### 3. 创建项目专家线程

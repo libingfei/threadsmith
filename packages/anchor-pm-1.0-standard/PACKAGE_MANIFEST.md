@@ -87,15 +87,22 @@ Detailed rationale belongs in an optional collapsed block before approval, or in
 
 After writing, the installer must output:
 
-- a localized completion page using `templates/install_completion.template.md`;
-- next-thread creation instructions that teach the user to open
-  `.threadsmith/thread_initialization.md`, create a new Codex conversation,
-  and paste the chosen thread's full prompt;
-- links to key generated files;
-- short summaries of files created, files updated, and files intentionally left
-  untouched.
+- a localized success page using `templates/install_completion.template.md`;
+- a brief explanation of what the user now has: a `.threadsmith/` workspace,
+  project specialist threads, shared contracts, and lightweight
+  reanchor/knowledge-sync instructions;
+- next-thread creation instructions that teach the user to create a new Codex
+  conversation for each recommended specialist and paste that specialist's full
+  prompt as the first message;
+- complete copy-paste-ready prompts for each recommended specialist thread;
+- a short explanation that all Threadsmith files live under `.threadsmith/`,
+  and ordinary Codex conversations are unaffected unless started with the
+  generated prompts;
+- a short explanation that the current conversation remains Thread Management
+  and can create, remove, rename, adjust, regenerate, or query threads.
 
-Do not paste every thread prompt into the completion chat by default.
+Do not show a generated-file inventory by default. Detailed file changes and
+rationale belong in `.threadsmith/install_decision_record.md`.
 
 ## Safety Contract
 

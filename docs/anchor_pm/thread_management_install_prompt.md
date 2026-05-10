@@ -90,13 +90,13 @@ The package must provide and follow `templates/install_proposal.template.md` so
 the proposal shape does not drift between tests.
 
 After approval, the completion reply should follow
-`templates/install_completion.template.md`: teach the user to open
-`.threadsmith/thread_initialization.md`, choose one specialist, create a new
-Codex conversation, paste that thread's full prompt, and keep the current
-Thread Management conversation for future thread changes.
+`templates/install_completion.template.md`: first confirm installation success,
+briefly explain what the user got, teach the user to create recommended
+specialist conversations, show each complete copy-paste-ready thread prompt,
+and keep the current Thread Management conversation for future thread changes.
 
-Do not paste every thread prompt into the completion chat by default. Link to
-`thread_initialization.md` instead.
+Do not make the user interpret a generated-file inventory as the main result.
+Detailed file changes belong in `.threadsmith/install_decision_record.md`.
 
 Link or write to generated files:
 
@@ -113,6 +113,7 @@ Do not show by default:
 - active plan internals;
 - workflow/checklist execution detail;
 - full scan file lists;
+- generated-file inventories;
 - template internals.
 
 ## Thread Management Lifecycle

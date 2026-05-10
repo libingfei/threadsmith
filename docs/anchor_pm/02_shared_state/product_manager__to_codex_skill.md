@@ -54,9 +54,10 @@ Status: active shared dependency.
   package indexes. The detailed install behavior and fixed proposal shape live
   in the package, especially `templates/install_proposal.template.md`.
 - After approval, installer completion should follow
-  `templates/install_completion.template.md`: localized completion headings,
-  clear next-thread creation teaching, key file links, concise change summary,
-  and no default dump of every thread prompt into chat.
+  `templates/install_completion.template.md`: localized success confirmation,
+  a short "what you now have" explanation, clear next-thread creation teaching,
+  complete copy-paste-ready prompts for each recommended thread, and no default
+  generated-file inventory.
 - Thread creation prompts in `.threadsmith/thread_initialization.md` must
   match the install prompt language. A Chinese install should generate Chinese
   copy-paste prompts such as `你是 ... 线程`, while conventional technical terms
@@ -79,3 +80,6 @@ thread names, thread creation prompts, and completion pages.
 
 Also preserve the `.threadsmith/` isolation model so ordinary Codex
 conversations that do not use generated Anchor PM prompts remain unaffected.
+The completion page should state that the current install conversation remains
+Thread Management and can create, remove, rename, adjust, regenerate, or query
+threads.

@@ -86,12 +86,18 @@ Only after explicit user approval:
 
 Output:
 
-- Files created.
-- Files updated.
-- Files left untouched.
-- Localized next-thread creation instructions using
+- A localized installation-success message using
   `templates/install_completion.template.md`.
-- A link to `.threadsmith/thread_initialization.md`, where the complete
-  copy-paste-ready prompts live.
+- A short user-facing explanation of what Threadsmith added.
+- Localized next-thread creation instructions.
+- Complete copy-paste-ready prompts for each recommended specialist thread.
+- A short isolation note: all Threadsmith files are under `.threadsmith/`, and
+  ordinary Codex conversations are unaffected unless started with the generated
+  prompts.
+- A short Thread Management note: this current conversation can create, remove,
+  rename, adjust, regenerate, or query threads.
+
+Do not show the generated-file inventory by default. Store detailed file
+changes and rationale in `.threadsmith/install_decision_record.md`.
 
 Stop here. Do not continue optimizing the target project.

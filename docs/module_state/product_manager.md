@@ -55,8 +55,11 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   sections or stray `AGENTS.md` lines.
 - Package release artifacts should include
   `templates/install_completion.template.md` as the fixed output contract for
-  the approved-install completion page: localized headings, clear thread
-  creation teaching, links to key files, and concise change summary.
+  the approved-install completion page: localized success confirmation, a brief
+  feature summary, clear thread creation teaching, complete copy-paste-ready
+  prompts for each recommended thread, `.threadsmith/` isolation explanation,
+  and Thread Management capability guidance. Generated-file inventories belong
+  in `.threadsmith/install_decision_record.md`, not the main completion reply.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option. Default installation is already isolated under `.threadsmith/`;
   project-wide root `AGENTS.md` integration should be a separate explicit
@@ -298,3 +301,7 @@ Pre-test GitHub Sync Gate:
 - Changed target-project install footprint to a single `.threadsmith/`
   directory and made root `AGENTS.md` integration opt-in, reducing interference
   with target projects and unrelated Codex conversations.
+- Revised install completion UX: the main reply should be a success and next
+  action page, not a generated-file report. It should show what the user got,
+  teach recommended thread creation, include each thread prompt directly, and
+  explain `.threadsmith/` isolation plus Thread Management capabilities.
