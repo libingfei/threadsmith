@@ -22,7 +22,7 @@ Hard Rules:
 
 State File:
 
-- `docs/module_state/{{THREAD_FILE}}.md`
+- `.threadsmith/module_state/{{THREAD_FILE}}.md`
 
 Handoff Rule:
 

@@ -52,3 +52,7 @@ Key memory:
   prompt language. Completion pages should teach users to open
   `thread_initialization.md`, create a new Codex conversation, and paste one
   specialist prompt, instead of dumping every prompt into chat.
+- Target-project installs should default to a single `.threadsmith/` directory.
+  Root `AGENTS.md` integration is opt-in because it affects unrelated Codex
+  conversations; proposal copy should say root `AGENTS.md` only when project-wide
+  discovery was explicitly requested.

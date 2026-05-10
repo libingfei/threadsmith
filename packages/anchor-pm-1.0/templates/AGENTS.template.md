@@ -8,10 +8,10 @@
 
 Authoritative coordination files:
 
-- `AGENTS.md`
-- `docs/anchor_pm/current_version.md`
-- `docs/anchor_pm/contracts.md`
-- `docs/module_state/*.md`
+- `.threadsmith/AGENTS.md`
+- `.threadsmith/current_version.md`
+- `.threadsmith/contracts.md`
+- `.threadsmith/module_state/*.md`
 
 Project reference documents remain reference material unless promoted into the coordination files above.
 
@@ -19,10 +19,10 @@ Project reference documents remain reference material unless promoted into the c
 
 Before substantial work, each long-lived thread should read:
 
-1. `AGENTS.md`
-2. `docs/anchor_pm/current_version.md`
-3. `docs/anchor_pm/contracts.md`
-4. Its own `docs/module_state/<thread>.md`
+1. `.threadsmith/AGENTS.md`
+2. `.threadsmith/current_version.md`
+3. `.threadsmith/contracts.md`
+4. Its own `.threadsmith/module_state/<thread>.md`
 
 Threads must stay inside their contract. Cross-thread work requires a handoff summary.
 

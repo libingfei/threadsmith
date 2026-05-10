@@ -45,6 +45,9 @@ The install prompts use the public GitHub package source:
 `https://github.com/libingfei/threadsmith`, package directory
 `packages/anchor-pm-1.0-standard`.
 
+By default, generated Anchor PM files stay inside one `.threadsmith/` folder in
+the target project.
+
 ### Example
 
 A project starts as one feature, then grows into data import, backend rules,
@@ -99,6 +102,8 @@ Anchor PM 把分散的 AI 编程对话，收束成一组可重锚、可交接、
 安装提示词使用公开 GitHub package source：
 `https://github.com/libingfei/threadsmith`，package directory 为
 `packages/anchor-pm-1.0-standard`。
+
+默认情况下，生成的 Anchor PM 文件会集中放在目标项目的 `.threadsmith/` 目录中。
 
 ### 案例
 

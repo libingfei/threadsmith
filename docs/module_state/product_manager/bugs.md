@@ -19,3 +19,6 @@ Current entries:
 - Approved Flask install showed a language and onboarding defect: the
   completion page used English headings/thread prompts under a Chinese install
   flow and did not teach how to create the next specialist threads.
+- Flask install exposed an installation-footprint defect: Anchor PM files were
+  scattered across root, `docs/anchor_pm/`, and `docs/module_state/`, making
+  maintenance harder and affecting unrelated threads via root-level discovery.

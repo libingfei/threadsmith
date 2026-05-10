@@ -21,16 +21,16 @@ not create a separate `Coordination` thread by default.
 ## Proposed Files
 
 ```text
-AGENTS.md
-docs/anchor_pm/current_version.md
-docs/anchor_pm/contracts.md
-docs/anchor_pm/thread_initialization.md
-docs/anchor_pm/interaction_guide.md
-docs/anchor_pm/review_log.md
-docs/anchor_pm/simplification.md
-docs/module_state/project_direction.md
-docs/module_state/core_implementation.md
-docs/module_state/quality_release.md
+.threadsmith/AGENTS.md
+.threadsmith/current_version.md
+.threadsmith/contracts.md
+.threadsmith/thread_initialization.md
+.threadsmith/interaction_guide.md
+.threadsmith/review_log.md
+.threadsmith/simplification.md
+.threadsmith/module_state/project_direction.md
+.threadsmith/module_state/core_implementation.md
+.threadsmith/module_state/quality_release.md
 ```
 
 ## Confirmation

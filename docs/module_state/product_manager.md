@@ -13,6 +13,10 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   public package source, package directory, package install instructions, and
   package proposal template.
 - Target project installation should produce a proposal before writing files.
+- Ordinary target-project installation should keep Anchor PM files under one
+  isolated root directory, `.threadsmith/`, to minimize project interference and
+  keep unrelated Codex conversations outside Anchor PM unless they use the
+  generated thread prompts.
 - The installation proposal should behave like a concise confirmation page, not a technical audit log.
 - Thread initialization prompts must be complete and copy-paste-ready; users should not fill in placeholders Codex can generate.
 - Installer replies should follow the user's usual language, while generated
@@ -37,13 +41,14 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - User-visible thread names should use the same language as the selected
   install prompt. Technical terms may remain in their conventional language.
 - Default install reply options should be limited to approve, adjust threads,
-  and cancel. `Adjust AGENTS.md` should not appear as a default option; AGENTS
-  conflicts should be handled as specific decisions only when needed.
+  and cancel. `Adjust AGENTS.md` should not appear as a default option; root
+  `AGENTS.md` integration is opt-in and should appear only when the user
+  explicitly asks for project-wide discovery.
 - Installation proposal main view should show only project path/type,
-  specialist thread list, and reply options. File counts, `AGENTS.md` handling
-  details, `Observed / Inference / Needs Confirmation`, and long decision
-  details belong in an optional collapsed block or post-approval
-  `docs/anchor_pm/install_decision_record.md`.
+  specialist thread list, and reply options. File counts, root `AGENTS.md`
+  integration details, `Observed / Inference / Needs Confirmation`, and long
+  decision details belong in an optional collapsed block or post-approval
+  `.threadsmith/install_decision_record.md` for target installs.
 - Package release artifacts should include
   `templates/install_proposal.template.md` as the fixed output contract for the
   first install proposal so future prompt edits do not drift back to verbose
@@ -53,10 +58,12 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
   the approved-install completion page: localized headings, clear thread
   creation teaching, links to key files, and concise change summary.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
-  option because it creates a confusing partial integration. If AGENTS handling
-  is blocked, the installer should explain the consequence and ask for a
-  specific merge/skip decision.
-- README should state the exact approval reply and explain that post-install long-lived threads are created from `docs/anchor_pm/thread_initialization.md`.
+  option. Default installation is already isolated under `.threadsmith/`;
+  project-wide root `AGENTS.md` integration should be a separate explicit
+  request.
+- README should state the exact approval reply and explain that post-install
+  long-lived threads are created from `.threadsmith/thread_initialization.md`
+  in target projects.
 - README should frame the primary value as modular specialist threads: narrower business scope per thread, less unrelated context, better Codex answer quality, and reanchor/module-state synchronization when paths, data, commands, or methods change.
 - Public positioning should explain Anchor PM as organization design for AI coding: stable general AI capability is directed into focused specialist threads, with lightweight communication channels for dependency information.
 - Public examples should stay generic and anonymized so they can recruit testers without exposing private source projects.
@@ -65,6 +72,8 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - README should state the public GitHub package source used by install prompts:
   `https://github.com/libingfei/threadsmith` with package directory
   `packages/anchor-pm-1.0-standard`.
+- README should state that standard target-project installs place generated
+  files under `.threadsmith/` by default.
 - README should explicitly invite feedback about installation clarity, thread-boundary choice, and whether reanchor/module state reduces repeat explanations.
 - Product work must continuously test whether Anchor PM improves real AI coding experience; if users struggle to understand/use it, or if evidence suggests it does not improve experience, this thread should report that clearly and recommend stopping or changing direction.
 - Product Manager must not treat checklist completeness as product success.
@@ -114,7 +123,10 @@ Thread contract: `Product Manager` in `docs/anchor_pm/contracts.md`
 - Package release artifacts still contain older read-first reanchor wording; the
   owning Templates / Protocol thread must update package workflows and templates
   to match the programmatic/degraded-fallback distinction.
-- If a target project already has `AGENTS.md`, the installer should inspect it for conflicts. If no conflict is found, it should propose appending a short Anchor PM discovery section with the relevant `docs/anchor_pm/` and `docs/module_state/` paths.
+- If a target project already has root `AGENTS.md`, the installer may inspect
+  it for awareness but should not propose modifying it by default. If the user
+  explicitly asks for global discovery, propose a short `.threadsmith/`
+  discovery section with a displayed merge plan.
 
 ## Open Issues
 
@@ -283,3 +295,6 @@ Pre-test GitHub Sync Gate:
   rule: approved-install completion pages and thread creation prompts must match
   the install prompt language, and completion should teach users how to create
   specialist threads from `thread_initialization.md`.
+- Changed target-project install footprint to a single `.threadsmith/`
+  directory and made root `AGENTS.md` integration opt-in, reducing interference
+  with target projects and unrelated Codex conversations.

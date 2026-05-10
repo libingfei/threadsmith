@@ -10,13 +10,21 @@ Do not ask the user to paste this full file unless debugging the package.
 3. Inspect the target project before writing files.
 4. Do not write until the user explicitly approves installation.
 5. Use `templates/install_proposal.template.md` for the first installation proposal.
-6. After approval, write detailed rationale and file changes to `docs/anchor_pm/install_decision_record.md`.
+6. After approval, write detailed rationale and file changes to `.threadsmith/install_decision_record.md`.
 7. Use `templates/install_completion.template.md` for the first completion reply.
 8. Stop after installation unless the user asks for follow-up work.
 
 If package source is not already available, clone or fetch Threadsmith outside
 the target project. Do not copy the Threadsmith repository into the target
 project.
+
+Default install root: `.threadsmith/`. Keep all Anchor PM files under that one
+directory unless the user explicitly asks for root-level discovery.
+
+Do not create or modify the target project's root `AGENTS.md` by default. This
+keeps Anchor PM isolated: ordinary Codex conversations that do not use the
+generated thread prompts should not automatically see the thread-management
+anchors.
 
 ## Project Classification
 
@@ -43,20 +51,21 @@ The user-visible proposal should show only:
 Do not show by default:
 
 - file create/update counts;
-- `AGENTS.md` handling;
+- root `AGENTS.md` integration;
 - `Observed / Inference / Needs Confirmation`;
 - package execution logs;
 - active-plan or workflow internals;
 - internal safety explanations;
-- `Adjust AGENTS.md`;
+- `Adjust AGENTS.md` or root `AGENTS.md` options;
 - docs-only/no-AGENTS partial-install options.
 
-If a real `AGENTS.md` conflict or approval-blocking merge choice exists, add
-one short risk line in the main view and put details in a collapsed block.
+Only discuss root `AGENTS.md` when the user explicitly asks for global
+discovery or when a requested root integration creates an approval-blocking
+merge choice.
 
 ## Generated Files
 
-Generated `docs/anchor_pm/thread_initialization.md` must contain complete,
+Generated `.threadsmith/thread_initialization.md` must contain complete,
 copy-paste-ready prompts for every proposed long-lived thread. Do not leave
 `<thread name>`, `<thread_file>`, `{{...}}`, or other user-filled placeholders.
 
@@ -89,7 +98,7 @@ knowledge; when no durable knowledge changed, keep it silent.
 The completion reply must be localized and teach the next action. It should:
 
 - say installation is complete;
-- tell the user to open `docs/anchor_pm/thread_initialization.md`;
+- tell the user to open `.threadsmith/thread_initialization.md`;
 - explain that each recommended specialist thread should be created as a new
   Codex conversation by copying that thread's full prompt;
 - remind the user to keep the current Thread Management conversation for future

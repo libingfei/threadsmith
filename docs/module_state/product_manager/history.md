@@ -88,3 +88,6 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   rule: approved-install completion pages and thread creation prompts must match
   the install prompt language, and completion should teach users how to create
   specialist threads from `thread_initialization.md`.
+- Changed target-project install footprint to a single `.threadsmith/`
+  directory and made root `AGENTS.md` integration opt-in, reducing interference
+  with target projects and unrelated Codex conversations.

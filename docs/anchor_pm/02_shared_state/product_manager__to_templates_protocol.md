@@ -70,6 +70,13 @@ Status: active shared dependency.
   and must match the install prompt language. Generated docs may otherwise be
   English unless requested, but copy-paste thread prompts should not switch
   language.
+- Ordinary target-project installs should place all Anchor PM files under one
+  `.threadsmith/` directory, including `.threadsmith/AGENTS.md`,
+  `.threadsmith/thread_initialization.md`, and
+  `.threadsmith/module_state/<thread>.md`.
+- Root `AGENTS.md` integration should be opt-in only. Default installation must
+  not create or modify root `AGENTS.md`, so unrelated Codex conversations are
+  not automatically pulled into Anchor PM behavior.
 
 ## Target Next Step
 
@@ -95,5 +102,10 @@ should review and normalize these changes across future package releases.
 Product Manager also added `templates/install_completion.template.md` and a
 thread-prompt language rule after a Chinese Flask install produced English
 thread prompts and no clear next-thread creation teaching.
+
+Product Manager then changed the standard target-project footprint to
+`.threadsmith/` after testing showed files scattered across root, `docs/`, and
+module state directories were harder to maintain and leaked the framework into
+unrelated threads.
 
 Do not change detector internals or CLI packaging here.

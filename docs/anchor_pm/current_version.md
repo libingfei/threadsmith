@@ -67,10 +67,10 @@ This means this repository uses its own minimal Anchor PM structure and now cont
   silent, no-write, and minimal-read unless changed, blocked, unknown,
   conflicting, degraded, or durability-relevant.
 - Simplified install proposal output: the main proposal should show only
-  project path/type, specialist threads, and reply options; `AGENTS.md`
-  handling appears only for real approval-blocking conflicts. Detailed
-  rationale and file changes move to optional details or
-  `docs/anchor_pm/install_decision_record.md`.
+  project path/type, specialist threads, and reply options; root `AGENTS.md`
+  integration appears only when explicitly requested and approval-blocking.
+  Detailed rationale and file changes move to optional details or
+  `.threadsmith/install_decision_record.md` in target installs.
 - Compressed root English and Chinese install prompts into under-20-line
   launcher prompts that point Codex to the package source and package-internal
   install instructions.
@@ -81,6 +81,10 @@ This means this repository uses its own minimal Anchor PM structure and now cont
   threads, and avoids dumping every thread prompt into chat.
 - Clarified that thread creation prompts in `thread_initialization.md` are
   user-facing and must match the install prompt language.
+- Changed ordinary target-project install footprint to one isolated
+  `.threadsmith/` directory. Standard installs should not create or modify root
+  `AGENTS.md` by default; root-level discovery is opt-in because it affects
+  unrelated Codex conversations.
 
 ## Reanchor Requirement
 

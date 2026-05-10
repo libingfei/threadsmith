@@ -13,6 +13,11 @@ Authoritative source until promoted:
 Use `docs/anchor_pm/thread_initialization.md` to decide which threads to create
 and what prompt to paste into each new Codex thread.
 
+For ordinary target projects installed from the public package, the equivalent
+file is `.threadsmith/thread_initialization.md`. This repository keeps its
+self-hosting files under `docs/anchor_pm/` for compatibility, while downstream
+installs should be isolated under `.threadsmith/`.
+
 Thread creation flow:
 
 1. Open `docs/anchor_pm/thread_initialization.md`.

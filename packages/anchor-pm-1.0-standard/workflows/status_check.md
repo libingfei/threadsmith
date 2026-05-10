@@ -19,8 +19,8 @@ Use `WARN` when:
 
 Use `FAIL` when:
 
-- `docs/anchor_pm/current_version.md` is missing;
-- `docs/anchor_pm/contracts.md` is missing;
+- `.threadsmith/current_version.md` is missing;
+- `.threadsmith/contracts.md` is missing;
 - a contract references a missing module state file;
 - a module state file lacks required sections;
 - an existing project rule would be overwritten without approval.

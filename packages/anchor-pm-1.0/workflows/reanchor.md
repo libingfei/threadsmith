@@ -4,8 +4,8 @@ Use this workflow at the start of substantial thread work.
 
 ## Steps
 
-1. Read `docs/anchor_pm/current_version.md`.
-2. Read `docs/anchor_pm/contracts.md`.
+1. Read `.threadsmith/current_version.md`.
+2. Read `.threadsmith/contracts.md`.
 3. Read the current thread state file.
 4. State:
    - thread identity;

@@ -4,6 +4,11 @@
 
 Use `docs/anchor_pm/thread_initialization.md` to decide which threads to create and what prompt to paste into each new Codex thread.
 
+For ordinary target projects installed from the public package, use the same
+flow from `.threadsmith/thread_initialization.md`. This repository keeps its
+self-hosting files under `docs/anchor_pm/` for compatibility, but downstream
+installs should be isolated under `.threadsmith/`.
+
 To create a project specialist thread:
 
 1. Open `docs/anchor_pm/thread_initialization.md`.

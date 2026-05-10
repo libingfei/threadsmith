@@ -41,6 +41,9 @@ PM 1.0 package-first release.
 - The package now includes `templates/install_completion.template.md`; approved
   install completion pages should be localized and teach users how to create
   specialist threads from `thread_initialization.md`.
+- Ordinary target-project installs now use `.threadsmith/` as the default
+  isolated anchor directory and should not create or modify root `AGENTS.md`
+  unless the user explicitly requests project-wide discovery.
 
 ## Reanchor Meaning
 

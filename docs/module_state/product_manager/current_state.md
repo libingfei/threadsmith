@@ -14,6 +14,10 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   each language-specific prompt should stay under 20 lines and index into the
   public package source, package directory, package install instructions, and
   package proposal template.
+- Ordinary target-project installation should keep Anchor PM files under one
+  isolated root directory, `.threadsmith/`, to minimize project interference and
+  keep unrelated Codex conversations outside Anchor PM unless they use the
+  generated thread prompts.
 - Target project installation should produce a proposal before writing files.
 - The installation proposal should behave like a concise confirmation page, not
   a technical audit log.
@@ -42,13 +46,14 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - User-visible thread names should use the same language as the selected
   install prompt. Technical terms may remain in their conventional language.
 - Default install reply options should be limited to approve, adjust threads,
-  and cancel. `Adjust AGENTS.md` should not appear as a default option; AGENTS
-  conflicts should be handled as specific decisions only when needed.
+  and cancel. `Adjust AGENTS.md` should not appear as a default option; root
+  `AGENTS.md` integration is opt-in and should appear only when the user
+  explicitly asks for project-wide discovery.
 - Installation proposal main view should show only project path/type,
-  specialist thread list, and reply options. File counts, `AGENTS.md` handling
-  details, `Observed / Inference / Needs Confirmation`, and long decision
-  details belong in an optional collapsed block or post-approval
-  `docs/anchor_pm/install_decision_record.md`.
+  specialist thread list, and reply options. File counts, root `AGENTS.md`
+  integration details, `Observed / Inference / Needs Confirmation`, and long
+  decision details belong in an optional collapsed block or post-approval
+  `.threadsmith/install_decision_record.md` for target installs.
 - Package release artifacts should include
   `templates/install_proposal.template.md` as the fixed output contract for the
   first install proposal so future prompt edits do not drift back to verbose
@@ -58,11 +63,12 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   the approved-install completion page: localized headings, clear thread
   creation teaching, links to key files, and concise change summary.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
-  option because it creates a confusing partial integration. If AGENTS handling
-  is blocked, the installer should explain the consequence and ask for a
-  specific merge/skip decision.
+  option. Default installation is already isolated under `.threadsmith/`;
+  project-wide root `AGENTS.md` integration should be a separate explicit
+  request.
 - README should state the exact approval reply and explain that post-install
-  long-lived threads are created from `docs/anchor_pm/thread_initialization.md`.
+  long-lived threads are created from `.threadsmith/thread_initialization.md`
+  in target projects.
 - README should frame the primary value as modular specialist threads: narrower
   business scope per thread, less unrelated context, better Codex answer
   quality, and reanchor/module-state synchronization when paths, data,
@@ -80,6 +86,8 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
 - README should state the public GitHub package source used by install prompts:
   `https://github.com/libingfei/threadsmith` with package directory
   `packages/anchor-pm-1.0-standard`.
+- README should state that standard target-project installs place generated
+  files under `.threadsmith/` by default.
 - README should explicitly invite feedback about installation clarity,
   thread-boundary choice, and whether reanchor/module state reduces repeat
   explanations.

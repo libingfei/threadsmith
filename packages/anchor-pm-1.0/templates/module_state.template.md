@@ -2,7 +2,7 @@
 
 ## Contract
 
-Thread contract: `{{THREAD_NAME}}` in `docs/anchor_pm/contracts.md`
+Thread contract: `{{THREAD_NAME}}` in `.threadsmith/contracts.md`
 
 ## Current State
 
@@ -16,9 +16,9 @@ Thread contract: `{{THREAD_NAME}}` in `docs/anchor_pm/contracts.md`
 
 Before substantial work:
 
-1. Read `AGENTS.md`.
-2. Read `docs/anchor_pm/current_version.md`.
-3. Read `docs/anchor_pm/contracts.md`.
+1. Read `.threadsmith/AGENTS.md`.
+2. Read `.threadsmith/current_version.md`.
+3. Read `.threadsmith/contracts.md`.
 4. Read this file.
 
 ## History / Notes

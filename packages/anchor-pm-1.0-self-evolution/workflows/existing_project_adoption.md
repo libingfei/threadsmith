@@ -26,24 +26,29 @@ Keep findings internally while preparing the proposal:
 
 Do not show these as default proposal sections. Put them in an optional details
 block only when they affect approval, or write them after approval to
-`docs/anchor_pm/install_decision_record.md`.
+`.threadsmith/install_decision_record.md`.
 
 ## Proposed Integration
 
-Prefer creating Anchor PM docs without replacing existing project rules.
+Prefer creating Anchor PM docs under `.threadsmith/` without replacing existing
+project rules.
 
 For existing projects, propose project specialist threads from real modules,
 subsystems, runtime surfaces, documentation/support surfaces, and durable
 maintenance boundaries. Do not use generic `Coordination / Implementation /
 Validation` as the default thread set.
 
-If `AGENTS.md` already exists, inspect it for conflicts.
+If root `AGENTS.md` already exists, inspect it only to avoid conflict with
+existing project rules. Do not modify it by default.
 
-- If there is no clear conflict, plan a short Anchor PM discovery section.
-- If there is a conflict or uncertainty, pause for a specific merge decision.
-- Do not expose docs-only/no-AGENTS as a default reply option.
-- Do not show `AGENTS.md` handling in the main proposal unless it creates an
-  approval-blocking risk.
+- Root `AGENTS.md` integration is opt-in because it affects unrelated Codex
+  conversations in the target project.
+- If the user explicitly asks for global discovery, propose a short discovery
+  section and show the planned merge before writing.
+- Do not expose docs-only/no-AGENTS as a default reply option. The default
+  install already uses `.threadsmith/` isolation.
+- Do not show root `AGENTS.md` handling in the main proposal unless the user
+  requested root integration and it creates an approval-blocking risk.
 
 ## Stop Conditions
 

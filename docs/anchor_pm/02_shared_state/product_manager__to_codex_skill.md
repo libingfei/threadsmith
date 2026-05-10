@@ -57,10 +57,13 @@ Status: active shared dependency.
   `templates/install_completion.template.md`: localized completion headings,
   clear next-thread creation teaching, key file links, concise change summary,
   and no default dump of every thread prompt into chat.
-- Thread creation prompts in `docs/anchor_pm/thread_initialization.md` must
+- Thread creation prompts in `.threadsmith/thread_initialization.md` must
   match the install prompt language. A Chinese install should generate Chinese
   copy-paste prompts such as `你是 ... 线程`, while conventional technical terms
   can remain English.
+- Future installer behavior should write ordinary target-project anchors under
+  `.threadsmith/` by default and should not create or modify root `AGENTS.md`
+  unless the user explicitly asks for project-wide discovery.
 
 ## Target Next Step
 
@@ -73,3 +76,6 @@ normal turns stay silent when no state change is needed.
 
 Also ensure future Skill output preserves install-language matching for
 thread names, thread creation prompts, and completion pages.
+
+Also preserve the `.threadsmith/` isolation model so ordinary Codex
+conversations that do not use generated Anchor PM prompts remain unaffected.

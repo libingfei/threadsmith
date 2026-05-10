@@ -43,7 +43,7 @@ For each thread, include:
 
 - the exact thread name;
 - the exact module state file path;
-- a one-sentence scope summary from `docs/anchor_pm/contracts.md`;
+- a one-sentence scope summary from `.threadsmith/contracts.md`;
 - lightweight Anchor Gate behavior before work;
 - lightweight Knowledge Sync Gate behavior before final response;
 - the cross-thread handoff rule.
@@ -55,7 +55,7 @@ Chinese install flow:
 ```text
 你是 <线程名> 线程，负责 <目标项目路径> 中的 <一句话 scope>。
 开工前运行 Anchor Gate：默认静默；如锚点 changed / blocked / unknown / conflicting / degraded，或用户给出持久纠偏，再读取必要锚点。
-需要读取的锚点：AGENTS.md、docs/anchor_pm/current_version.md、docs/anchor_pm/contracts.md、docs/module_state/<thread>.md。
+需要读取的锚点：.threadsmith/AGENTS.md、.threadsmith/current_version.md、.threadsmith/contracts.md、.threadsmith/module_state/<thread>.md。
 Scope：<本线程负责什么>。
 Out-of-scope：<不属于本线程的事项>。
 回复前运行 Knowledge Sync Gate：只在产生持久本地知识、共享知识或 handoff 时更新/说明；没有持久变化时保持静默。
@@ -67,7 +67,7 @@ English install flow:
 ```text
 You are the <thread name> thread for <target project path>.
 Before work, run Anchor Gate silently unless changed, blocked, unknown, conflicting, degraded, or the user gives a durable correction.
-Read required anchors: AGENTS.md, docs/anchor_pm/current_version.md, docs/anchor_pm/contracts.md, and docs/module_state/<thread>.md.
+Read required anchors: .threadsmith/AGENTS.md, .threadsmith/current_version.md, .threadsmith/contracts.md, and .threadsmith/module_state/<thread>.md.
 Scope: <what this thread owns>.
 Out-of-scope: <what this thread must hand off>.
 Before final response, run Knowledge Sync Gate: update or hand off only durable local/shared knowledge; otherwise keep it silent.

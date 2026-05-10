@@ -2,12 +2,12 @@
 
 ## Thread Setup
 
-Use `docs/anchor_pm/thread_initialization.md` to decide which threads to create
+Use `.threadsmith/thread_initialization.md` to decide which threads to create
 and what prompt to paste into each new Codex thread.
 
 To create a project specialist thread:
 
-1. Open `docs/anchor_pm/thread_initialization.md`.
+1. Open `.threadsmith/thread_initialization.md`.
 2. Choose one thread.
 3. Start a new Codex conversation in the target project.
 4. Paste that thread's complete prompt as the first message.

@@ -40,7 +40,7 @@ User README / Prompt Entry
   -> Target Project Audit
   -> Thread Plan Generator
   -> Anchor File Generator
-  -> AGENTS.md Integration
+  -> Optional Root AGENTS.md Integration
   -> Post-Install Thread Creation Guide
   -> Anchor Gate
   -> Contract Version / Reanchor State Detector
@@ -118,16 +118,16 @@ Outputs Before Approval:
   - `Adjust threads: ...`
   - `Cancel`
 - Thread-name language follows the selected install prompt language.
-- Generated thread creation prompts in `docs/anchor_pm/thread_initialization.md`
+- Generated thread creation prompts in `.threadsmith/thread_initialization.md`
   follow the selected install prompt language.
-- File create/update counts, `AGENTS.md` handling details, `Observed`,
+- File create/update counts, root `AGENTS.md` integration, `Observed`,
   `Inference`, and `Needs Confirmation` should not appear in the main visible
   proposal by default.
 - Approval-relevant conflicts or risks may appear as one short `Note` line.
 - Optional rationale should be omitted before approval unless there is a real
   approval-blocking risk or the user asks for it. If needed, use a collapsed
   details block; after approval, write details to
-  `docs/anchor_pm/install_decision_record.md`.
+  `.threadsmith/install_decision_record.md`.
 - Internal safety constraints should not be expanded as a visible proposal
   section unless the user asks.
 
@@ -136,11 +136,11 @@ Outputs After Approval:
 - Approved files created.
 - Approved files updated.
 - Files intentionally left untouched.
-- `AGENTS.md` handling outcome.
+- Root `AGENTS.md` integration outcome, only if the user explicitly requested it.
 - Links to generated thread prompts and usage docs.
-- `docs/anchor_pm/install_decision_record.md` containing detailed rationale and
+- `.threadsmith/install_decision_record.md` containing detailed rationale and
   file change information.
-- Clear localized next step: open `docs/anchor_pm/thread_initialization.md`,
+- Clear localized next step: open `.threadsmith/thread_initialization.md`,
   choose one specialist thread, create a new Codex conversation, and paste that
   thread's full prompt as the first message.
 - Reminder that `Thread Management` remains available for future thread changes.
@@ -286,15 +286,15 @@ Inputs:
 
 Outputs:
 
-- `AGENTS.md` create or approved update.
-- `docs/anchor_pm/current_version.md`.
-- `docs/anchor_pm/contracts.md`.
-- `docs/anchor_pm/thread_initialization.md`.
-- `docs/anchor_pm/interaction_guide.md`.
+- `.threadsmith/AGENTS.md`.
+- `.threadsmith/current_version.md`.
+- `.threadsmith/contracts.md`.
+- `.threadsmith/thread_initialization.md`.
+- `.threadsmith/interaction_guide.md`.
 - Optional support docs:
-  - `docs/anchor_pm/review_log.md`
-  - `docs/anchor_pm/simplification.md`
-- `docs/module_state/<thread>.md` files.
+  - `.threadsmith/review_log.md`
+  - `.threadsmith/simplification.md`
+- `.threadsmith/module_state/<thread>.md` files.
 
 Acceptance:
 
@@ -309,7 +309,7 @@ Failure Signals:
 - Multiple files repeat the same rules.
 - Inference is written as confirmed project fact.
 
-## 6. AGENTS.md Integration
+## 6. Optional Root AGENTS.md Integration
 
 Owner: Codex Skill / Package Installer for behavior; Templates / Protocol for
 wording; Coordination for rule conflicts.
@@ -323,20 +323,18 @@ Inputs:
 
 Outputs:
 
-- If missing: proposed new `AGENTS.md`.
-- If present and no conflict: proposed short Anchor PM discovery section pointing
-  to:
-  - `docs/anchor_pm/current_version.md`
-  - `docs/anchor_pm/contracts.md`
-  - `docs/anchor_pm/thread_initialization.md`
-  - `docs/anchor_pm/interaction_guide.md`
-  - `docs/module_state/`
+- Default: no root `AGENTS.md` create/update.
+- If the user explicitly asks for global discovery: proposed short Anchor PM
+  discovery section pointing to `.threadsmith/`.
 - If conflict or uncertainty: conflict summary and explicit merge decision.
 
 Acceptance:
 
 - Existing rules remain authoritative unless user approves a merge.
-- Anchor PM section helps AI agents discover anchors.
+- Default install is isolated: unrelated Codex conversations do not
+  automatically enter Anchor PM behavior.
+- Optional Anchor PM section helps AI agents discover anchors only when the user
+  wants project-wide discovery.
 - No business rules are invented.
 
 Failure Signals:
@@ -344,6 +342,7 @@ Failure Signals:
 - Installer replaces existing project policy.
 - Anchor PM discovery section becomes a second project constitution.
 - Conflict is hidden inside a large proposal.
+- Root `AGENTS.md` is created or modified by default.
 
 ## 7. Post-Install Thread Creation Guide
 
@@ -357,12 +356,12 @@ Inputs:
 
 Outputs:
 
-- `docs/anchor_pm/thread_initialization.md` with one complete prompt per thread.
+- `.threadsmith/thread_initialization.md` with one complete prompt per thread.
 - Installer completion message linking to:
-  - `docs/anchor_pm/thread_initialization.md`
-  - `docs/anchor_pm/contracts.md`
-  - `docs/anchor_pm/interaction_guide.md`
-  - `docs/anchor_pm/current_version.md`
+  - `.threadsmith/thread_initialization.md`
+  - `.threadsmith/contracts.md`
+  - `.threadsmith/interaction_guide.md`
+  - `.threadsmith/current_version.md`
 
 Acceptance:
 
@@ -523,10 +522,10 @@ Owner: Templates / Protocol; Coordination for version semantics.
 Inputs:
 
 - Optional detector result, when a detector command/tool is available.
-- `AGENTS.md`.
-- `docs/anchor_pm/current_version.md`.
-- `docs/anchor_pm/contracts.md`.
-- Current thread's `docs/module_state/<thread>.md`.
+- `.threadsmith/AGENTS.md`.
+- `.threadsmith/current_version.md`.
+- `.threadsmith/contracts.md`.
+- Current thread's `.threadsmith/module_state/<thread>.md`.
 - User task.
 
 Outputs:

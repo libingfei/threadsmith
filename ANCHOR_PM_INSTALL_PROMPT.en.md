@@ -10,5 +10,6 @@ Use package directory: packages/anchor-pm-1.0-standard
 Read PACKAGE_MANIFEST.md, ACTIVE_INSTALL_PLAN.md, and INSTALL_PROMPT.md in that package directory.
 Follow the package documents; if this root prompt conflicts with package docs, use the latest package docs.
 The installation proposal must use package template: templates/install_proposal.template.md.
+Keep generated files under the target project's .threadsmith/ directory by default.
 Do not write any files until I explicitly reply "Approve install".
 ```

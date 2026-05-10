@@ -52,23 +52,24 @@ Main-view content is limited to:
 - proposed project specialist threads with one-sentence responsibilities;
 - approval / adjust threads / cancel reply options.
 
-File counts, `AGENTS.md` handling, `Observed / Inference / Needs Confirmation`,
-and detailed rationale must stay out of the main view by default. Use a one-line
-risk only for approval-blocking conflicts. Put details in a collapsed block only
-when needed, then write the full decision record after approval.
+File counts, root `AGENTS.md` integration, `Observed / Inference / Needs
+Confirmation`, and detailed rationale must stay out of the main view by
+default. Use a one-line risk only for approval-blocking conflicts. Put details
+in a collapsed block only when needed, then write the full decision record after
+approval.
 
 Default target files:
 
 ```text
-AGENTS.md
-docs/anchor_pm/current_version.md
-docs/anchor_pm/contracts.md
-docs/anchor_pm/thread_initialization.md
-docs/anchor_pm/interaction_guide.md
-docs/anchor_pm/install_decision_record.md
-docs/anchor_pm/review_log.md
-docs/anchor_pm/simplification.md
-docs/module_state/<thread>.md
+.threadsmith/AGENTS.md
+.threadsmith/current_version.md
+.threadsmith/contracts.md
+.threadsmith/thread_initialization.md
+.threadsmith/interaction_guide.md
+.threadsmith/install_decision_record.md
+.threadsmith/review_log.md
+.threadsmith/simplification.md
+.threadsmith/module_state/<thread>.md
 ```
 
 ## Phase 4: Write After Approval
@@ -78,7 +79,8 @@ Only after explicit user approval:
 1. Create missing directories.
 2. Create approved new files from templates.
 3. Apply approved updates to existing files.
-4. Preserve existing user rules unless a specific merge was approved.
+4. Preserve existing user rules unless a specific root-level merge was
+   explicitly requested and approved.
 
 ## Phase 5: Close
 
@@ -89,7 +91,7 @@ Output:
 - Files left untouched.
 - Localized next-thread creation instructions using
   `templates/install_completion.template.md`.
-- A link to `docs/anchor_pm/thread_initialization.md`, where the complete
+- A link to `.threadsmith/thread_initialization.md`, where the complete
   copy-paste-ready prompts live.
 
 Stop here. Do not continue optimizing the target project.

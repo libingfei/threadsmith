@@ -10,5 +10,6 @@
 读取该目录的 PACKAGE_MANIFEST.md、ACTIVE_INSTALL_PLAN.md、INSTALL_PROMPT.md。
 按 package 内文档执行安装；若本提示词和 package 冲突，以 package 内最新文档为准。
 安装提案必须使用 package 内模板：templates/install_proposal.template.md。
+默认把生成文件集中放在目标项目的 .threadsmith/ 目录下。
 未得到我明确“批准安装”前，不要写入任何文件。
 ```

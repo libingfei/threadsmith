@@ -21,7 +21,8 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   thread names, thread creation prompts, and completion pages.
 - Need package release artifacts and future Skill behavior to mirror the
   root-prompt rule that default reply options are approve, adjust threads, and
-  cancel; AGENTS decisions appear only as concrete approval risks when blocked.
+  cancel; root `AGENTS.md` integration appears only when the user explicitly
+  requests project-wide discovery and a concrete merge decision is needed.
 - Templates / Protocol and Codex Skill / Package Installer need to mirror
   automatic lightweight Anchor Gate behavior into package workflow text and
   install prompts without making users run CLI commands.

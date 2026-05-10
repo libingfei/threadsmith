@@ -73,12 +73,12 @@ packages/anchor-pm-1.0-standard
 
 | 用途 | Flask | Vite | Django |
 | --- | --- | --- | --- |
-| 项目规则入口 | [AGENTS.md](/mnt/g/data/threadsmith_test_flask/AGENTS.md) | [AGENTS.md](/mnt/g/data/threadsmith_test_vite/AGENTS.md) | [AGENTS.md](/mnt/g/data/threadsmith_test_django/AGENTS.md) |
-| 线程提示词 | [thread_initialization.md](/mnt/g/data/threadsmith_test_flask/docs/anchor_pm/thread_initialization.md) | [thread_initialization.md](/mnt/g/data/threadsmith_test_vite/docs/anchor_pm/thread_initialization.md) | [thread_initialization.md](/mnt/g/data/threadsmith_test_django/docs/anchor_pm/thread_initialization.md) |
-| 线程契约 | [contracts.md](/mnt/g/data/threadsmith_test_flask/docs/anchor_pm/contracts.md) | [contracts.md](/mnt/g/data/threadsmith_test_vite/docs/anchor_pm/contracts.md) | [contracts.md](/mnt/g/data/threadsmith_test_django/docs/anchor_pm/contracts.md) |
-| 交互指南 | [interaction_guide.md](/mnt/g/data/threadsmith_test_flask/docs/anchor_pm/interaction_guide.md) | [interaction_guide.md](/mnt/g/data/threadsmith_test_vite/docs/anchor_pm/interaction_guide.md) | [interaction_guide.md](/mnt/g/data/threadsmith_test_django/docs/anchor_pm/interaction_guide.md) |
-| 当前版本 | [current_version.md](/mnt/g/data/threadsmith_test_flask/docs/anchor_pm/current_version.md) | [current_version.md](/mnt/g/data/threadsmith_test_vite/docs/anchor_pm/current_version.md) | [current_version.md](/mnt/g/data/threadsmith_test_django/docs/anchor_pm/current_version.md) |
-| 线程状态目录 | [module_state/](/mnt/g/data/threadsmith_test_flask/docs/module_state) | [module_state/](/mnt/g/data/threadsmith_test_vite/docs/module_state) | [module_state/](/mnt/g/data/threadsmith_test_django/docs/module_state) |
+| 项目规则入口 | [.threadsmith/AGENTS.md](/mnt/g/data/threadsmith_test_flask/.threadsmith/AGENTS.md) | [.threadsmith/AGENTS.md](/mnt/g/data/threadsmith_test_vite/.threadsmith/AGENTS.md) | [.threadsmith/AGENTS.md](/mnt/g/data/threadsmith_test_django/.threadsmith/AGENTS.md) |
+| 线程提示词 | [thread_initialization.md](/mnt/g/data/threadsmith_test_flask/.threadsmith/thread_initialization.md) | [thread_initialization.md](/mnt/g/data/threadsmith_test_vite/.threadsmith/thread_initialization.md) | [thread_initialization.md](/mnt/g/data/threadsmith_test_django/.threadsmith/thread_initialization.md) |
+| 线程契约 | [contracts.md](/mnt/g/data/threadsmith_test_flask/.threadsmith/contracts.md) | [contracts.md](/mnt/g/data/threadsmith_test_vite/.threadsmith/contracts.md) | [contracts.md](/mnt/g/data/threadsmith_test_django/.threadsmith/contracts.md) |
+| 交互指南 | [interaction_guide.md](/mnt/g/data/threadsmith_test_flask/.threadsmith/interaction_guide.md) | [interaction_guide.md](/mnt/g/data/threadsmith_test_vite/.threadsmith/interaction_guide.md) | [interaction_guide.md](/mnt/g/data/threadsmith_test_django/.threadsmith/interaction_guide.md) |
+| 当前版本 | [current_version.md](/mnt/g/data/threadsmith_test_flask/.threadsmith/current_version.md) | [current_version.md](/mnt/g/data/threadsmith_test_vite/.threadsmith/current_version.md) | [current_version.md](/mnt/g/data/threadsmith_test_django/.threadsmith/current_version.md) |
+| 线程状态目录 | [module_state/](/mnt/g/data/threadsmith_test_flask/.threadsmith/module_state) | [module_state/](/mnt/g/data/threadsmith_test_vite/.threadsmith/module_state) | [module_state/](/mnt/g/data/threadsmith_test_django/.threadsmith/module_state) |
 
 ## 每个项目的完整测试链路
 
@@ -113,8 +113,8 @@ packages/anchor-pm-1.0-standard
 
 - `建议`、`变更`、`需要你决定`、`决策细节` 作为默认大段落。
 - 文件创建/更新数量作为主视图内容。
-- [AGENTS.md](#安装后锚点文件快速入口) 处理详情作为主视图内容，除非存在冲突或需要用户明确选择合并方式。
-- `AGENTS.md：创建` 或类似独立行作为主视图内容。
+- root `AGENTS.md` 集成详情作为主视图内容，除非用户明确请求 root 级 discovery 且存在冲突或需要用户明确选择合并方式。
+- `AGENTS.md：创建` 或类似 root 规则文件独立行作为主视图内容。
 - `Observed / Inference / Needs Confirmation` 作为主视图内容；如需要，应折叠或写入安装后的细节文档。
 - `Coordination / Implementation / Validation` 作为已有项目默认线程。
 - 大段 package 执行日志。
@@ -139,11 +139,11 @@ packages/anchor-pm-1.0-standard
   / `Files Updated` / `Next Thread Prompts` 这类英文主标题。
 - 清晰的线程创建教学引导：打开 [thread_initialization.md](#安装后锚点文件快速入口)，选择一个线程，新建 Codex 对话，复制该线程完整提示词作为第一条消息。
 - 提醒保留当前线程管理对话，用于以后新增、删除、重命名或重新生成线程。
-- [docs/anchor_pm/thread_initialization.md](#安装后锚点文件快速入口)。
-- [docs/anchor_pm/contracts.md](#安装后锚点文件快速入口)。
-- [docs/anchor_pm/interaction_guide.md](#安装后锚点文件快速入口)。
-- [docs/anchor_pm/current_version.md](#安装后锚点文件快速入口)。
-- `docs/anchor_pm/install_decision_record.md`，用于保存判断依据和文件变更细节。
+- [.threadsmith/thread_initialization.md](#安装后锚点文件快速入口)。
+- [.threadsmith/contracts.md](#安装后锚点文件快速入口)。
+- [.threadsmith/interaction_guide.md](#安装后锚点文件快速入口)。
+- [.threadsmith/current_version.md](#安装后锚点文件快速入口)。
+- `.threadsmith/install_decision_record.md`，用于保存判断依据和文件变更细节。
 - 已创建文件。
 - 已更新文件。
 - 有意保持不变的文件。
@@ -151,7 +151,8 @@ packages/anchor-pm-1.0-standard
 安装后检查：
 
 - 没有修改业务代码、测试、配置或原有项目文档正文。
-- [AGENTS.md](#安装后锚点文件快速入口) 不覆盖已有规则；若原来不存在，可以创建。
+- 所有 Anchor PM 默认文件集中在 `.threadsmith/` 下；默认不创建或修改目标项目根目录 `AGENTS.md`。
+- [.threadsmith/AGENTS.md](#安装后锚点文件快速入口) 存在，并只被使用 Anchor PM 线程提示词的新对话读取。
 - [thread_initialization.md](#安装后锚点文件快速入口) 中每个线程提示词可直接复制。
 - 中文安装流程下，[thread_initialization.md](#安装后锚点文件快速入口) 中每个线程创建提示词应使用中文，例如以 `你是 ... 线程` 开头；项目名、Sans-IO、CLI、HTTP、API、JSON 等技术名词可以保留英文。
 - 安装完成页默认不应把所有线程提示词都贴到聊天里；应链接到 [thread_initialization.md](#安装后锚点文件快速入口) 并教用户如何使用。
@@ -341,7 +342,8 @@ packages/anchor-pm-1.0-standard
 - 跨边界事项能 handoff，不被一个线程全部吞掉。
 - 新增线程后，共享锚点能被新线程恢复。
 - Knowledge Sync Gate 能判断本地 Layer 3、Layer 2 shared state、Thread Management、框架级 handoff 的归属。
-- [AGENTS.md](#安装后锚点文件快速入口) 已存在时不被静默覆盖。
+- 目标项目根目录 `AGENTS.md` 已存在时不被静默覆盖；默认安装不创建或修改 root `AGENTS.md`。
+- Anchor PM 默认安装文件全部位于 `.threadsmith/` 下。
 - 还原脚本可以把测试项目恢复到 clean 状态。
 - 每个项目都完成验证记录。
 
@@ -355,9 +357,10 @@ packages/anchor-pm-1.0-standard
 - 修改业务代码、运行部署命令或运行迁移命令。
 - 已有项目安装提案使用 `Coordination / Implementation / Validation` 代替项目模块拆分。
 - 线程名称语言与安装提示词语言不一致。
-- 默认提供 `调整 AGENTS.md` 作为回复选项。
+- 默认提供 `调整 AGENTS.md` 或 root AGENTS 集成作为回复选项。
 - 用户可见安装提案大量解释内部安全约束、package 执行细节或 Anchor PM 内部机制。
 - 默认提供“只安装 docs，不更新 AGENTS.md”之类会让集成不生效或让用户难以理解后果的选项。
+- Anchor PM 文件默认散落到 root、`docs/anchor_pm/`、`docs/module_state/` 等多个位置，而不是集中在 `.threadsmith/`。
 - 线程没有 `Anchor Gate`。
 - 线程没有 `Knowledge Sync Gate`。
 - 锚点流程说明明显淹没实际任务回答。

@@ -19,5 +19,5 @@ Never do these by default:
 - modify business code;
 - run deploy commands;
 - run migrations;
-- overwrite `AGENTS.md`;
+- create or overwrite root `AGENTS.md`;
 - promote unconfirmed inference into contracts.
