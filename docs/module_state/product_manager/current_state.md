@@ -65,6 +65,10 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   prompts for each recommended thread, `.threadsmith/` isolation explanation,
   and Thread Management capability guidance. Generated-file inventories belong
   in `.threadsmith/install_decision_record.md`, not the main completion reply.
+- Completion pages should not repeat the `.threadsmith/` location in both the
+  opening feature summary and the closing isolation note. The opening summary
+  should explain user value; the closing note should explain file location and
+  isolation from ordinary Codex conversations.
 - "Install docs only; do not update AGENTS.md" should not be a default approval
   option. Default installation is already isolated under `.threadsmith/`;
   project-wide root `AGENTS.md` integration should be a separate explicit

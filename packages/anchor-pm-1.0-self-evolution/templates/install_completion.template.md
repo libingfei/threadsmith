@@ -14,8 +14,8 @@ install flow.
 # Anchor PM Installed Successfully
 
 Your project now has a Threadsmith workspace. It gives you focused specialist
-threads, shared contracts, and lightweight reanchor/knowledge-sync instructions
-under one `.threadsmith/` folder.
+threads, shared contracts, and lightweight reanchor/knowledge-sync
+instructions.
 
 Create the recommended threads:
 1. Keep this conversation as Thread Management.
@@ -48,7 +48,7 @@ prompts, or query current thread information.
 ````markdown
 # Anchor PM 安装成功
 
-现在你的项目已经拥有一个 Threadsmith 工作区：它会提供聚焦的项目专家线程、共享契约，以及轻量的重锚/知识同步规则，全部集中在 `.threadsmith/` 目录中。
+现在你的项目已经拥有一个 Threadsmith 工作区：它会提供聚焦的项目专家线程、共享契约，以及轻量的重锚/知识同步规则。
 
 创建推荐线程：
 1. 保留当前对话作为线程管理入口。

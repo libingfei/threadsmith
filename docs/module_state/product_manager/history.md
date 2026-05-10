@@ -82,6 +82,9 @@ Status: compatibility mirror of `docs/module_state/product_manager.md`.
   action page, not a generated-file report. It should show what the user got,
   teach recommended thread creation, include each thread prompt directly, and
   explain `.threadsmith/` isolation plus Thread Management capabilities.
+- Removed duplicated `.threadsmith/` location wording from the completion page
+  opening summary; the directory/isolation explanation belongs in the final
+  note.
 - Removed `AGENTS.md` handling from the default install proposal main view. It
   should appear only as a short risk/decision line when a real conflict or merge
   choice requires user input; otherwise record it after approval.

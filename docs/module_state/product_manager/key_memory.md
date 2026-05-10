@@ -53,6 +53,9 @@ Key memory:
   what was installed, teach users to create specialist conversations, show each
   recommended thread's full prompt, and move generated-file inventories into
   `.threadsmith/install_decision_record.md`.
+- Completion-page information order matters: opening summary explains user
+  value; closing note explains `.threadsmith/` file location and isolation.
+  Avoid repeating the same directory sentence in both places.
 - Target-project installs should default to a single `.threadsmith/` directory.
   Root `AGENTS.md` integration is opt-in because it affects unrelated Codex
   conversations; proposal copy should say root `AGENTS.md` only when project-wide

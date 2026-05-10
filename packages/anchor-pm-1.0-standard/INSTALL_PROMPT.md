@@ -99,7 +99,7 @@ The completion reply must be localized and feel like a successful setup page,
 not an internal file report. It should:
 
 - start by telling the user the installation succeeded;
-- briefly explain what they now have: a `.threadsmith/` workspace, project
+- briefly explain what they now have: a Threadsmith workspace, project
   specialist threads, shared contracts, and lightweight reanchor/knowledge-sync
   instructions;
 - explain that each recommended specialist thread should be created as a new

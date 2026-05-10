@@ -134,9 +134,9 @@ Outputs Before Approval:
 Outputs After Approval:
 
 - Localized installation success message.
-- Brief feature summary: the target project now has a `.threadsmith/`
-  workspace, recommended project specialist threads, shared contracts, and
-  lightweight reanchor/knowledge-sync instructions.
+- Brief feature summary: the target project now has a Threadsmith workspace,
+  recommended project specialist threads, shared contracts, and lightweight
+  reanchor/knowledge-sync instructions.
 - Clear next step: keep the current conversation as Thread Management, create a
   new Codex conversation for each recommended specialist, and paste that
   specialist's full prompt as the first message.

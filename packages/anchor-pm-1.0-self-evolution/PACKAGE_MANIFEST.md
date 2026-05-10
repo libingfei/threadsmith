@@ -88,7 +88,7 @@ Detailed rationale belongs in an optional collapsed block before approval, or in
 After writing, the installer must output:
 
 - a localized success page using `templates/install_completion.template.md`;
-- a brief explanation of what the user now has: a `.threadsmith/` workspace,
+- a brief explanation of what the user now has: a Threadsmith workspace,
   project specialist threads, shared contracts, and lightweight
   reanchor/knowledge-sync instructions;
 - next-thread creation instructions that teach the user to create a new Codex
